@@ -19,3 +19,9 @@
   > 如果要使用代理 npm config set proxy http://127.0.0.1:1080  
 * npm run dev
   > http://localhost:9527/  
+# todolist
+- [ ] 创建小说组件
+- [ ] 大纲书写组件
+- [ ] 角色设定组件
+- [ ] 小说书写组件
+- [ ] ......
