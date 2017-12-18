@@ -15,8 +15,7 @@
 * cd src/destiny-web
 
 * npm install
-  > windows 下注意使用管理员打开命令行界面
-  > 如果要使用淘宝镜像 npm --registry https://registry.npm.taobao.org install
-  > 如果要使用代理 npm config set proxy http://127.0.0.1:1080
+  > 如果要使用淘宝镜像 npm --registry https://registry.npm.taobao.org install  
+  > 如果要使用代理 npm config set proxy http://127.0.0.1:1080  
 * npm run dev
-  > http://localhost:9527/
+  > http://localhost:9527/  
