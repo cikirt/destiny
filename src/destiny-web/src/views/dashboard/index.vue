@@ -8,23 +8,24 @@
 import { mapGetters } from 'vuex'
 import adminDashboard from './admin'
 import editorDashboard from './editor'
+import writerDashboard from './writer'
 
 export default {
   name: 'dashboard',
-  components: { adminDashboard, editorDashboard },
+  components: { adminDashboard, editorDashboard, writerDashboard },
   data() {
     return {
       currentRole: 'adminDashboard'
     }
   },
   computed: {
-    ...mapGetters([
-      'roles'
-    ])
+    ...mapGetters(['roles'])
   },
   created() {
-    if (!this.roles.includes('admin')) {
+    if (this.roles.includes('editor')) {
       this.currentRole = 'editorDashboard'
+    } else if (this.roles.includes('writer')) {
+      this.currentRole = 'writerDashboard'
     }
   }
 }

@@ -24,6 +24,7 @@ function filterAsyncRouter(asyncRouterMap, roles) {
       if (route.children && route.children.length) {
         route.children = filterAsyncRouter(route.children, roles)
       }
+      console.log(route)
       return true
     }
     return false
@@ -51,6 +52,7 @@ const permission = {
           accessedRouters = asyncRouterMap
         } else {
           accessedRouters = filterAsyncRouter(asyncRouterMap, roles)
+          console.log(accessedRouters)
         }
         commit('SET_ROUTERS', accessedRouters)
         resolve()

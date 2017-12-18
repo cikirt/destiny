@@ -1,5 +1,9 @@
 export default {
   route: {
+    writer_tools: 'writer_tools',
+    players: 'players',
+    outline: 'Outline',
+    chapter: 'Chapter',
     dashboard: 'Dashboard',
     introduction: 'Introduction',
     documentation: 'Documentation',

@@ -28,6 +28,7 @@
    <el-row>
   <el-col :span="14"><div class="grid-content bg-purple">
     多人协同写作，。。。。。。。。。。。。。
+ 
     </div></el-col>
   <el-col :span="10"><div class="grid-content bg-purple-light">
     <el-form class="card-box login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
@@ -48,11 +49,7 @@
       </el-form-item>
 
       <el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">登录</el-button>
-
-      <div class="tips">账号:admin 密码随便填</div>
-      <div class="tips">账号:editor  密码随便填</div>
-
-      <el-button class="thirdparty-button" type="primary" @click="showDialog=true">打开第三方登录</el-button>
+      <!-- <el-button class="thirdparty-button" type="primary" @click="showDialog=true">打开第三方登录</el-button> -->
     </el-form>
 
     <el-dialog title="第三方验证" :visible.sync="showDialog">
@@ -109,7 +106,7 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
+        username: 'writer',
         password: '1111111'
       },
       loginRules: {
@@ -132,6 +129,12 @@ export default {
       } else {
         this.pwdType = 'password'
       }
+    },
+    handleOutlone() {
+      this.$router.push({ path: '/' })
+    },
+    handleChapter() {
+      this.$router.push({ path: '/' })
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {

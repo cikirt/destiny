@@ -8,6 +8,7 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '../views/layout/Layout'
+import WriterLayout from '../views/layout/WriterLayout'
 
 /**
 * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
@@ -22,33 +23,46 @@ import Layout from '../views/layout/Layout'
 **/
 export const constantRouterMap = [
   { path: '/login', component: _import('login/index'), hidden: true },
-  { path: '/authredirect', component: _import('login/authredirect'), hidden: true },
+  {
+    path: '/authredirect',
+    component: _import('login/authredirect'),
+    hidden: true
+  },
   { path: '/404', component: _import('errorPage/404'), hidden: true },
   { path: '/401', component: _import('errorPage/401'), hidden: true },
   {
     path: '',
-    component: Layout,
+    component: WriterLayout,
     redirect: 'dashboard',
-    children: [{
-      path: 'dashboard',
-      component: _import('dashboard/index'),
-      name: 'dashboard',
-      meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
-    }]
-  },
-  {
-    path: '/documentation',
-    component: Layout,
-    redirect: '/documentation/index',
-    children: [{
-      path: 'index',
-      component: _import('documentation/index'),
-      name: 'documentation',
-      meta: { title: 'documentation', icon: 'documentation', noCache: true }
-    }]
+    children: [
+      {
+        path: 'dashboard',
+        component: _import('dashboard/index'),
+        name: 'dashboard',
+        meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
+      }
+    ]
   }
 ]
-
+// ,
+// {
+//   path: '/documentation',
+//   component: Layout,
+//   redirect: '/documentation/index',
+//   meta: {
+//     title: 'documentation',
+//     icon: 'documentation',
+//     role: ['admin']
+//   },
+//   children: [
+//     {
+//       path: 'index',
+//       component: _import('documentation/index'),
+//       name: 'documentation',
+//       meta: { title: 'documentation', icon: 'documentation', noCache: true, role: ['admin'] }
+//     }
+//   ]
+// }
 export default new Router({
   // mode: 'history', //后端支持可开
   scrollBehavior: () => ({ y: 0 }),
@@ -57,31 +71,90 @@ export default new Router({
 
 export const asyncRouterMap = [
   {
+    path: '/outline',
+    component: Layout,
+    redirect: '/outline/index',
+    meta: { role: ['writer'] },
+    children: [
+      {
+        path: 'index',
+        component: _import('outline/index'),
+        name: 'outline',
+        meta: {
+          title: 'outline',
+          icon: 'lock',
+          role: ['writer']
+        }
+      }
+    ]
+  },
+  {
+    path: '/players',
+    component: Layout,
+    redirect: '/players/index',
+    meta: { role: ['writer'] },
+    children: [
+      {
+        path: 'index',
+        component: _import('players/index'),
+        name: 'players',
+        meta: {
+          title: 'players',
+          icon: 'lock',
+          role: ['writer']
+        }
+      }
+    ]
+  },
+  {
+    path: '/chapter',
+    component: Layout,
+    redirect: '/chapter/index',
+    meta: { role: ['writer'] },
+    children: [
+      {
+        path: 'index',
+        component: _import('chapter/index'),
+        name: 'chapter',
+        meta: {
+          title: 'chapter',
+          icon: 'lock',
+          role: ['writer']
+        }
+      }
+    ]
+  },
+  {
     path: '/permission',
     component: Layout,
     redirect: '/permission/index',
     meta: { role: ['admin'] },
-    children: [{
-      path: 'index',
-      component: _import('permission/index'),
-      name: 'permission',
-      meta: {
-        title: 'permission',
-        icon: 'lock',
-        role: ['admin']
+    children: [
+      {
+        path: 'index',
+        component: _import('permission/index'),
+        name: 'permission',
+        meta: {
+          title: 'permission',
+          icon: 'lock',
+          role: ['admin']
+        }
       }
-    }]
+    ]
   },
 
   {
     path: '/icon',
     component: Layout,
-    children: [{
-      path: 'index',
-      component: _import('svg-icons/index'),
-      name: 'icons',
-      meta: { title: 'icons', icon: 'icon', noCache: true }
-    }]
+    meta: { role: ['admin'] },
+    children: [
+      {
+        path: 'index',
+        component: _import('svg-icons/index'),
+        name: 'icons',
+        meta: { title: 'icons', icon: 'icon', noCache: true, role: ['admin'] }
+      }
+    ]
   },
 
   {
@@ -91,20 +164,76 @@ export const asyncRouterMap = [
     name: 'component-demo',
     meta: {
       title: 'components',
-      icon: 'component'
+      icon: 'component',
+      role: ['admin']
     },
     children: [
-      { path: 'tinymce', component: _import('components-demo/tinymce'), name: 'tinymce-demo', meta: { title: 'tinymce' }},
-      { path: 'markdown', component: _import('components-demo/markdown'), name: 'markdown-demo', meta: { title: 'markdown' }},
-      { path: 'json-editor', component: _import('components-demo/jsonEditor'), name: 'jsonEditor-demo', meta: { title: 'jsonEditor' }},
-      { path: 'dnd-list', component: _import('components-demo/dndList'), name: 'dndList-demo', meta: { title: 'dndList' }},
-      { path: 'splitpane', component: _import('components-demo/splitpane'), name: 'splitpane-demo', meta: { title: 'splitPane' }},
-      { path: 'avatar-upload', component: _import('components-demo/avatarUpload'), name: 'avatarUpload-demo', meta: { title: 'avatarUpload' }},
-      { path: 'dropzone', component: _import('components-demo/dropzone'), name: 'dropzone-demo', meta: { title: 'dropzone' }},
-      { path: 'sticky', component: _import('components-demo/sticky'), name: 'sticky-demo', meta: { title: 'sticky' }},
-      { path: 'count-to', component: _import('components-demo/countTo'), name: 'countTo-demo', meta: { title: 'countTo' }},
-      { path: 'mixin', component: _import('components-demo/mixin'), name: 'componentMixin-demo', meta: { title: 'componentMixin' }},
-      { path: 'back-to-top', component: _import('components-demo/backToTop'), name: 'backToTop-demo', meta: { title: 'backToTop' }}
+      {
+        path: 'tinymce',
+        component: _import('components-demo/tinymce'),
+        name: 'tinymce-demo',
+        meta: { title: 'tinymce', role: ['admin'] }
+      },
+      {
+        path: 'markdown',
+        component: _import('components-demo/markdown'),
+        name: 'markdown-demo',
+        meta: { title: 'markdown', role: ['admin'] }
+      },
+      {
+        path: 'json-editor',
+        component: _import('components-demo/jsonEditor'),
+        name: 'jsonEditor-demo',
+        meta: { title: 'jsonEditor', role: ['admin'] }
+      },
+      {
+        path: 'dnd-list',
+        component: _import('components-demo/dndList'),
+        name: 'dndList-demo',
+        meta: { title: 'dndList', role: ['admin'] }
+      },
+      {
+        path: 'splitpane',
+        component: _import('components-demo/splitpane'),
+        name: 'splitpane-demo',
+        meta: { title: 'splitPane', role: ['admin'] }
+      },
+      {
+        path: 'avatar-upload',
+        component: _import('components-demo/avatarUpload'),
+        name: 'avatarUpload-demo',
+        meta: { title: 'avatarUpload', role: ['admin'] }
+      },
+      {
+        path: 'dropzone',
+        component: _import('components-demo/dropzone'),
+        name: 'dropzone-demo',
+        meta: { title: 'dropzone', role: ['admin'] }
+      },
+      {
+        path: 'sticky',
+        component: _import('components-demo/sticky'),
+        name: 'sticky-demo',
+        meta: { title: 'sticky', role: ['admin'] }
+      },
+      {
+        path: 'count-to',
+        component: _import('components-demo/countTo'),
+        name: 'countTo-demo',
+        meta: { title: 'countTo', role: ['admin'] }
+      },
+      {
+        path: 'mixin',
+        component: _import('components-demo/mixin'),
+        name: 'componentMixin-demo',
+        meta: { title: 'componentMixin', role: ['admin'] }
+      },
+      {
+        path: 'back-to-top',
+        component: _import('components-demo/backToTop'),
+        name: 'backToTop-demo',
+        meta: { title: 'backToTop', role: ['admin'] }
+      }
     ]
   },
 
@@ -115,12 +244,28 @@ export const asyncRouterMap = [
     name: 'charts',
     meta: {
       title: 'charts',
-      icon: 'chart'
+      icon: 'chart',
+      role: ['admin']
     },
     children: [
-      { path: 'keyboard', component: _import('charts/keyboard'), name: 'keyboardChart', meta: { title: 'keyboardChart', noCache: true }},
-      { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: 'lineChart', noCache: true }},
-      { path: 'mixchart', component: _import('charts/mixChart'), name: 'mixChart', meta: { title: 'mixChart', noCache: true }}
+      {
+        path: 'keyboard',
+        component: _import('charts/keyboard'),
+        name: 'keyboardChart',
+        meta: { title: 'keyboardChart', noCache: true, role: ['admin'] }
+      },
+      {
+        path: 'line',
+        component: _import('charts/line'),
+        name: 'lineChart',
+        meta: { title: 'lineChart', noCache: true, role: ['admin'] }
+      },
+      {
+        path: 'mixchart',
+        component: _import('charts/mixChart'),
+        name: 'mixChart',
+        meta: { title: 'mixChart', noCache: true, role: ['admin'] }
+      }
     ]
   },
 
@@ -131,7 +276,8 @@ export const asyncRouterMap = [
     name: 'example',
     meta: {
       title: 'example',
-      icon: 'example'
+      icon: 'example',
+      role: ['admin']
     },
     children: [
       {
@@ -141,16 +287,43 @@ export const asyncRouterMap = [
         name: 'Table',
         meta: {
           title: 'Table',
-          icon: 'table'
+          icon: 'table',
+          role: ['admin']
         },
         children: [
-          { path: 'dynamic-table', component: _import('example/table/dynamicTable/index'), name: 'dynamicTable', meta: { title: 'dynamicTable' }},
-          { path: 'drag-table', component: _import('example/table/dragTable'), name: 'dragTable', meta: { title: 'dragTable' }},
-          { path: 'inline-edit-table', component: _import('example/table/inlineEditTable'), name: 'inlineEditTable', meta: { title: 'inlineEditTable' }},
-          { path: 'complex-table', component: _import('example/table/complexTable'), name: 'complexTable', meta: { title: 'complexTable' }}
+          {
+            path: 'dynamic-table',
+            component: _import('example/table/dynamicTable/index'),
+            name: 'dynamicTable',
+            meta: { title: 'dynamicTable', role: ['admin'] }
+          },
+          {
+            path: 'drag-table',
+            component: _import('example/table/dragTable'),
+            name: 'dragTable',
+            meta: { title: 'dragTable', role: ['admin'] }
+          },
+          {
+            path: 'inline-edit-table',
+            component: _import('example/table/inlineEditTable'),
+            name: 'inlineEditTable',
+            meta: { title: 'inlineEditTable', role: ['admin'] }
+          },
+          {
+            path: 'complex-table',
+            component: _import('example/table/complexTable'),
+            name: 'complexTable',
+            meta: { title: 'complexTable', role: ['admin'] }
+          }
         ]
       },
-      { path: 'tab/index', icon: 'tab', component: _import('example/tab/index'), name: 'tab', meta: { title: 'tab' }}
+      {
+        path: 'tab/index',
+        icon: 'tab',
+        component: _import('example/tab/index'),
+        name: 'tab',
+        meta: { title: 'tab', role: ['admin'] }
+      }
     ]
   },
 
@@ -161,11 +334,22 @@ export const asyncRouterMap = [
     name: 'form',
     meta: {
       title: 'form',
-      icon: 'form'
+      icon: 'form',
+      role: ['admin']
     },
     children: [
-      { path: 'create-form', component: _import('form/create'), name: 'createForm', meta: { title: 'createForm', icon: 'table' }},
-      { path: 'edit-form', component: _import('form/edit'), name: 'editForm', meta: { title: 'editForm', icon: 'table' }}
+      {
+        path: 'create-form',
+        component: _import('form/create'),
+        name: 'createForm',
+        meta: { title: 'createForm', icon: 'table' }
+      },
+      {
+        path: 'edit-form',
+        component: _import('form/edit'),
+        name: 'editForm',
+        meta: { title: 'editForm', icon: 'table' }
+      }
     ]
   },
 
@@ -176,11 +360,22 @@ export const asyncRouterMap = [
     name: 'errorPages',
     meta: {
       title: 'errorPages',
-      icon: '404'
+      icon: '404',
+      role: ['admin']
     },
     children: [
-      { path: '401', component: _import('errorPage/401'), name: 'page401', meta: { title: 'page401', noCache: true }},
-      { path: '404', component: _import('errorPage/404'), name: 'page404', meta: { title: 'page404', noCache: true }}
+      {
+        path: '401',
+        component: _import('errorPage/401'),
+        name: 'page401',
+        meta: { title: 'page401', noCache: true }
+      },
+      {
+        path: '404',
+        component: _import('errorPage/404'),
+        name: 'page404',
+        meta: { title: 'page404', noCache: true }
+      }
     ]
   },
 
@@ -188,7 +383,15 @@ export const asyncRouterMap = [
     path: '/error-log',
     component: Layout,
     redirect: 'noredirect',
-    children: [{ path: 'log', component: _import('errorLog/index'), name: 'errorLog', meta: { title: 'errorLog', icon: 'bug' }}]
+    meta: { role: ['admin'] },
+    children: [
+      {
+        path: 'log',
+        component: _import('errorLog/index'),
+        name: 'errorLog',
+        meta: { title: 'errorLog', icon: 'bug', role: ['admin'] }
+      }
+    ]
   },
 
   {
@@ -198,12 +401,28 @@ export const asyncRouterMap = [
     name: 'excel',
     meta: {
       title: 'excel',
-      icon: 'excel'
+      icon: 'excel',
+      role: ['admin']
     },
     children: [
-      { path: 'export-excel', component: _import('excel/exportExcel'), name: 'exportExcel', meta: { title: 'exportExcel' }},
-      { path: 'export-selected-excel', component: _import('excel/selectExcel'), name: 'selectExcel', meta: { title: 'selectExcel' }},
-      { path: 'upload-excel', component: _import('excel/uploadExcel'), name: 'uploadExcel', meta: { title: 'uploadExcel' }}
+      {
+        path: 'export-excel',
+        component: _import('excel/exportExcel'),
+        name: 'exportExcel',
+        meta: { title: 'exportExcel' }
+      },
+      {
+        path: 'export-selected-excel',
+        component: _import('excel/selectExcel'),
+        name: 'selectExcel',
+        meta: { title: 'selectExcel' }
+      },
+      {
+        path: 'upload-excel',
+        component: _import('excel/uploadExcel'),
+        name: 'uploadExcel',
+        meta: { title: 'uploadExcel' }
+      }
     ]
   },
 
@@ -211,27 +430,59 @@ export const asyncRouterMap = [
     path: '/zip',
     component: Layout,
     redirect: '/zip/download',
-    children: [{ path: 'download', component: _import('zip/index'), name: 'exportZip', meta: { title: 'exportZip', icon: 'zip' }}]
+    meta: { role: ['admin'] },
+    children: [
+      {
+        path: 'download',
+        component: _import('zip/index'),
+        name: 'exportZip',
+        meta: { title: 'exportZip', icon: 'zip', role: ['admin'] }
+      }
+    ]
   },
 
   {
     path: '/theme',
     component: Layout,
     redirect: 'noredirect',
-    children: [{ path: 'index', component: _import('theme/index'), name: 'theme', meta: { title: 'theme', icon: 'theme' }}]
+    meta: { role: ['admin'] },
+    children: [
+      {
+        path: 'index',
+        component: _import('theme/index'),
+        name: 'theme',
+        meta: { title: 'theme', icon: 'theme', role: ['admin'] }
+      }
+    ]
   },
 
   {
     path: '/clipboard',
     component: Layout,
     redirect: 'noredirect',
-    children: [{ path: 'index', component: _import('clipboard/index'), name: 'clipboardDemo', meta: { title: 'clipboardDemo', icon: 'clipboard' }}]
+    meta: { role: ['admin'] },
+    children: [
+      {
+        path: 'index',
+        component: _import('clipboard/index'),
+        name: 'clipboardDemo',
+        meta: { title: 'clipboardDemo', icon: 'clipboard', role: ['admin'] }
+      }
+    ]
   },
 
   {
     path: '/i18n',
     component: Layout,
-    children: [{ path: 'index', component: _import('i18n-demo/index'), name: 'i18n', meta: { title: 'i18n', icon: 'international' }}]
+    meta: { role: ['admin'] },
+    children: [
+      {
+        path: 'index',
+        component: _import('i18n-demo/index'),
+        name: 'i18n',
+        meta: { title: 'i18n', icon: 'international', role: ['admin'] }
+      }
+    ]
   },
 
   { path: '*', redirect: '/404', hidden: true }

@@ -1,5 +1,9 @@
 export default {
   route: {
+    writer_tools: '辅助工具',
+    players: '角色设定',
+    outline: '小说大纲',
+    chapter: '章节书写',
     dashboard: '首页',
     introduction: '简述',
     documentation: '文档',

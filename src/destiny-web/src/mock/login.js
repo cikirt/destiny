@@ -14,6 +14,13 @@ const userMap = {
     introduction: '我是编辑',
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
     name: 'Normal Editor'
+  },
+  writer: {
+    role: ['writer'],
+    token: 'writer',
+    introduction: '我是作家',
+    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+    name: 'Normal writer'
   }
 }
 
