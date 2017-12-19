@@ -1,5 +1,7 @@
 export default {
   route: {
+    commits: 'commits',
+    books: 'books',
     writer_tools: 'writer_tools',
     players: 'players',
     outline: 'Outline',

@@ -1,23 +1,12 @@
 <template>
   <div class="app-container">
-    章节书写<br/> 此处可以为任何一本书写章节
-    <br/> 书的作者可以审核别人提供的章节。
-    <br/> 提供写小说需要的一些辅助工具，比如社会环境，自然环境，外貌描写，心里描写等等素材聚合辅助工具
-    <br/> 社会热点事件
-    <br/>
-    <el-select v-model="value8" filterable placeholder="章节选择">
-        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-      </el-option>
-    </el-select>
-    <el-select v-model="value8" filterable placeholder="章节所属大纲选择">
-        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-      </el-option>
-    </el-select>
+    提交审核<br/> 
+    此处查看其它用户针对某一提纲所写的章节，审核通过，则作者可直接只用或者修改其它用户提交的内容<br/>
+    也可以拒绝，并提示修改意见<br/>
       <div>
         <tinymce :height="200" v-model="content"></tinymce>
       </div>
       <div class="editor-content" v-html="content"></div>
-    
     <br/>
   </div>
 </template>
@@ -33,7 +22,7 @@ export default {
   data() {
     return {
       role: '',
-      content: 'Tinymce',
+      content: '别的用户提交的文章，这是详情页，左边应该是一个列表',
       options: [
         {
           value: '选项1',

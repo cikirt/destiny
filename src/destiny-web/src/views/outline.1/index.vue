@@ -1,23 +1,24 @@
 <template>
   <div class="app-container">
-     角色设定<br/>
-     角色性格，三观，情感，命运，服饰，各方面的社会地位，与其它角色的关系等等<br/>
-     角色各个时间点的重大事件，出场，退场，剧情关键人，....<br/>
-     <players></players>
+     故事架构，<br/>
+     方案1.计划使用思维导图的方式由作家自由发挥。<br/>
+     方案2.固定格式 ，便于整个章节和故事架构的精度管理。<br/>
+     一句话故事<br/>
+     <books></books>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import players from './chart/players'
+import books from './chart/books'
 export default {
-  name: 'my_players',
+  name: 'permission',
+  components: { books },
   data() {
     return {
       role: ''
     }
   },
-  components: { players },
   computed: {
     ...mapGetters(['roles'])
   },
@@ -27,6 +28,7 @@ export default {
         this.$router.push({ path: '/permission/index?' + +new Date() })
       })
     }
-  }
+  },
+  created() {}
 }
 </script>

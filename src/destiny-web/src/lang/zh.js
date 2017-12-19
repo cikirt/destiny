@@ -1,5 +1,7 @@
 export default {
   route: {
+    commits: '提交审核',
+    books: '作品管理',
     writer_tools: '辅助工具',
     players: '角色设定',
     outline: '小说大纲',

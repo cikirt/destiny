@@ -71,6 +71,24 @@ export default new Router({
 
 export const asyncRouterMap = [
   {
+    path: '/books',
+    component: Layout,
+    redirect: '/books/index',
+    meta: { role: ['writer'] },
+    children: [
+      {
+        path: 'index',
+        component: _import('books/index'),
+        name: 'books',
+        meta: {
+          title: 'books',
+          icon: 'lock',
+          role: ['writer']
+        }
+      }
+    ]
+  },
+  {
     path: '/outline',
     component: Layout,
     redirect: '/outline/index',
@@ -118,6 +136,24 @@ export const asyncRouterMap = [
         name: 'chapter',
         meta: {
           title: 'chapter',
+          icon: 'lock',
+          role: ['writer']
+        }
+      }
+    ]
+  },
+  {
+    path: '/commits',
+    component: Layout,
+    redirect: '/commits/index',
+    meta: { role: ['writer'] },
+    children: [
+      {
+        path: 'index',
+        component: _import('commits/index'),
+        name: 'commits',
+        meta: {
+          title: 'commits',
           icon: 'lock',
           role: ['writer']
         }
