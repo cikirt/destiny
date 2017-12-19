@@ -8,11 +8,18 @@
       <div class="info-container">
         <span class="display_name">{{name}}</span>
         <span style="font-size:20px;padding-top:20px;display:inline-block;">作家首页</span>
+        作家典型应用场景:<br/>
+        <el-steps direction="vertical" :active="4">
+          <el-step title="创建新书" description="作家在平台上创建一本新书"></el-step>
+          <el-step title="编写大纲" description="作家独立为新书编写大纲，其它用户可为作家提参考意见，作家可根据意见随时修改大纲"></el-step>
+          <el-step title="编写章节" description="作家/其它用户为每个章节编写内容，由作家进行筛选后进行二次修稿，处理好衔接和文风问题，使作品焕然一体。创作时，系统提供必要的辅助插件"></el-step>
+          <el-step title="稿酬分配" description="根据实际贡献，系统为作家和有有效贡献的用户自动分配稿酬。"></el-step>
+        </el-steps>
       </div>
     </div>
-    <div>
+    <!-- <div>
       <img class="emptyGif" :src="emptyGif">
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -57,7 +64,6 @@ export default {
   .info-container {
     position: relative;
     margin-left: 190px;
-    height: 150px;
     line-height: 200px;
     .display_name {
       font-size: 48px;
