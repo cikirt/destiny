@@ -12,7 +12,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import books from './chart/books'
-import timeLine from './chart/timeLine.vue'
+import timeLine from './chart/timeline.vue'
 export default {
   name: 'permission',
   components: { books, timeLine },
