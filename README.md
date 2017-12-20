@@ -26,8 +26,8 @@
 * npm run dev
   > http://localhost:9527/  
 # todolist
-- [ ] 创建小说组件
-- [ ] 大纲书写组件
-- [ ] 角色设定组件
-- [ ] 小说书写组件
-- [ ] ......
+- [x] 作品管理demo
+- [ ] 大纲管理demo
+- [ ] 角色设定demo
+- [ ] 章节书写demo
+- [ ] 章节审核demo

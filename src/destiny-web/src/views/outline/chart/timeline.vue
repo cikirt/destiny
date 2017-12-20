@@ -17,6 +17,11 @@
            v-html="point.linkText!=undefined?point.linkText:'Read more'"
         ></a>
         <span v-if="point.date" class="date" v-text="point.date"></span>
+        <el-button-group>
+  <el-button type="primary" icon="el-icon-edit">编辑</el-button>
+  <el-button type="primary" icon="el-icon-share">新增</el-button>
+  <el-button type="primary" icon="el-icon-delete">删除</el-button>
+</el-button-group>
       </div>
     </div>
   </section>
