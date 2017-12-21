@@ -1,93 +1,96 @@
 <template>
-<el-container>
-  <el-header>
-    <el-menu
-  :default-active="activeIndex2"
-  class="el-menu-demo"
-  mode="horizontal"
-  @select="handleSelect"
-  background-color="#545c64"
-  text-color="#fff"
-  active-text-color="#ffd04b">
-  <el-menu-item index="1">公共书架</el-menu-item>
-  <el-menu-item index="2">联系我们</el-menu-item>
-  <el-submenu index="3">
-    <template slot="title">个人中心</template>
-    <el-menu-item index="2-1">我的项目</el-menu-item>
-    <el-menu-item index="2-2">登录</el-menu-item>
-    <el-menu-item index="2-3">注销</el-menu-item>
-  </el-submenu>
-</el-menu>
-
-  </el-header>
-  <el-main>
- 
- <div class="jumbotron jumbotron-codelines">
-       <div class="container-lg  p-responsive position-relative{">
-   <div class="d-md-flex flex-items-center gutter-md-spacious">
-   <el-row>
-  <el-col :span="14"><div class="grid-content bg-purple">
-    多人协同写作，。。。。。。。。。。。。。
- 
-    </div></el-col>
-  <el-col :span="10"><div class="grid-content bg-purple-light">
-    <el-form class="card-box login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
-      <el-form-item prop="username">
-        <span class="svg-container svg-container_login">
-          <svg-icon icon-class="user" />
-        </span>
-        <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="邮箱" />
-      </el-form-item>
-
-      <el-form-item prop="password">
-        <span class="svg-container">
-          <svg-icon icon-class="password" />
-        </span>
-        <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on"
-          placeholder="密码" />
-        <span class="show-pwd" @click="showPwd"><svg-icon icon-class="eye" /></span>
-      </el-form-item>
-
-      <el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">登录</el-button>
-      <!-- <el-button class="thirdparty-button" type="primary" @click="showDialog=true">打开第三方登录</el-button> -->
-    </el-form>
-
-    <el-dialog title="第三方验证" :visible.sync="showDialog">
-      本地不能模拟，请结合自己业务进行模拟！！！<br/><br/><br/>
-      邮箱登录成功,请选择第三方验证<br/>
-      <social-sign />
-    </el-dialog>
-    </div></el-col>
-</el-row>
-</div></div>
-</div>
- <div class="featurette ">
-    <div class="container-lg p-responsive">
-   <div >
-   <el-row>
-  <el-col :span="14"><div class="grid-content bg-purple">
- balabala
-    </div>
-    </el-col>
-  <el-col :span="10"><div class="grid-content bg-purple-light">
-  balabaall
-    </div>
-  </el-col>
-</el-row>
-</div></div>
-</div>
-  </el-main>
-  <el-footer>Footer</el-footer>
-</el-container>
-  
+  <el-container>
+    <el-header style="background-color:#24292e">
+      <el-row>
+        <el-col :span="2">a</el-col>
+        <el-col :span="11" justify="center">
+          <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#24292e" text-color="#fff" active-text-color="#ffd04b">
+            <el-menu-item index="1">
+              <i class="el-icon-setting"></i></el-menu-item>
+            <el-menu-item index="2">公共书架</el-menu-item>
+            <el-menu-item index="3">联系我们</el-menu-item>
+          </el-menu>
+        </el-col>
+        <el-col :span="10" justify="center">
+          <el-form :inline="true" style="padding-top: 10px;" :model="formInline" class="demo-form-inline">
+            <el-form-item>
+              <el-input v-model="formInline.user" placeholder="搜索"></el-input>
+            </el-form-item>
+          </el-form>
+        </el-col>
+        <el-col :span="1">d</el-col>
+      </el-row>
+    </el-header>
+    <el-main>
+      <div style="margin:-20px;">
+        <el-row class="jumbotron-codelines" style="padding:60px;">
+          <el-col :span="3"></el-col>
+          <el-col :span="15" class='bg-text-primary'>
+            <h1>然而这只是一个测试而已啦</h1>
+            <p>为什么呢，测试是上司是生死是是是</p>
+          </el-col>
+          <el-col :span="3">
+            <el-card class="box-card">
+              <el-form class="card-box login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
+                <el-form-item prop="username">
+                   <el-col :span="4"><span class="svg-container svg-container_login">
+                      <svg-icon icon-class="user" />
+                    </span></el-col>
+                   <el-col :span="16"><el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="邮箱" /></el-col>
+                   <el-col :span="4"></el-col>
+                </el-form-item>
+                <el-form-item prop="password">
+                   <el-col :span="4"> <span class="svg-container">
+                      <svg-icon icon-class="password" />
+                    </span></el-col>
+                   <el-col :span="16"> <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on" placeholder="密码" /></el-col>
+                   <el-col :span="4"><span class="show-pwd" @click="showPwd"><svg-icon icon-class="eye" /></span></el-col>
+                </el-form-item>
+                <el-col :span="10"><el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">登录</el-button></el-col>
+                <el-col :span="10" :offset="4"><el-button class="thirdparty-button" type="success" @click="showDialog=true">第三方登录</el-button></el-col>
+              </el-form>
+              <el-dialog title="第三方验证" :visible.sync="showDialog">
+                暂不支持<br/><br/><br/> 邮箱登录成功,请选择第三方验证
+                <br/>
+                <social-sign />
+              </el-dialog>
+            </el-card>
+          </el-col>
+          <el-col :span="3"></el-col>
+        </el-row>
+        <el-row class="border-top" style="padding:60px;background-color:#f5f7fa;">
+          <el-steps :active="4" align-center>
+            <el-step title="步骤1" description="这是一段很长很长很长的描述性文字"></el-step>
+            <el-step title="步骤2" description="这是一段很长很长很长的描述性文字"></el-step>
+            <el-step title="步骤3" description="这是一段很长很长很长的描述性文字"></el-step>
+            <el-step title="步骤4" description="这是一段很长很长很长的描述性文字"></el-step>
+          </el-steps>
+        </el-row>
+        <el-row  class="border-top" style="padding:60px;background-color:#f5f7fa;">
+          <el-col :span="3"></el-col>
+          <el-col :span="15" class='bg-text-primary'>
+            <p>为什么呢，测试是上司是生死是是是</p>
+          </el-col>
+          <el-col :span="3">
+            <p>为什么呢，测试是上司是生死是是是</p>
+          </el-col>
+          <el-col :span="3"></el-col>
+        </el-row>
+      </div>
+    </el-main>
+    <el-footer style="background-color:#eee">
+      <p>Posted by: Cikir <a href="mailto:someone@example.com">someone@example.com</a>.</p>
+    </el-footer>
+  </el-container>
 </template>
 
 <script>
 import { isvalidUsername } from '@/utils/validate'
 import socialSign from './socialsignin'
-
 export default {
-  components: { socialSign },
+  components: {
+    socialSign
+  },
   name: 'login',
   data() {
     const validateUsername = (rule, value, callback) => {
@@ -105,16 +108,28 @@ export default {
       }
     }
     return {
+      formInline: {
+        user: '',
+        region: ''
+      },
       loginForm: {
         username: 'writer',
         password: '1111111'
       },
       loginRules: {
         username: [
-          { required: true, trigger: 'blur', validator: validateUsername }
+          {
+            required: true,
+            trigger: 'blur',
+            validator: validateUsername
+          }
         ],
         password: [
-          { required: true, trigger: 'blur', validator: validatePassword }
+          {
+            required: true,
+            trigger: 'blur',
+            validator: validatePassword
+          }
         ]
       },
       pwdType: 'password',
@@ -131,10 +146,14 @@ export default {
       }
     },
     handleOutlone() {
-      this.$router.push({ path: '/' })
+      this.$router.push({
+        path: '/'
+      })
     },
     handleChapter() {
-      this.$router.push({ path: '/' })
+      this.$router.push({
+        path: '/'
+      })
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
@@ -144,7 +163,9 @@ export default {
             .dispatch('LoginByUsername', this.loginForm)
             .then(() => {
               this.loading = false
-              this.$router.push({ path: '/' })
+              this.$router.push({
+                path: '/'
+              })
               // this.showDialog = true
             })
             .catch(() => {
@@ -190,7 +211,31 @@ $bg: #2d3a4b;
 $dark_gray: #889aa4;
 $light_gray: #eee;
 .box-card {
-  width: 480px;
+  width: 300px;
+}
+
+.border-top {
+  border-top: 1px #e1e4e8 solid !important;
+}
+.el-col {
+  border-radius: 4px;
+}
+.bg-purple-dark {
+  background: #99a9bf;
+}
+.bg-purple {
+  background: #d3dce6;
+}
+.bg-purple-light {
+  background: #e5e9f2;
+}
+.grid-content {
+  border-radius: 4px;
+  min-height: 36px;
+}
+.row-bg {
+  padding: 10px 0;
+  background-color: #f9fafc;
 }
 /*media all*/
 .container-lg {
@@ -203,11 +248,10 @@ $light_gray: #eee;
   padding-top: 120px;
   padding-bottom: 120px;
 }
-
 /*media all*/
 .jumbotron-codelines {
   color: rgba(255, 255, 255, 0.6);
-  background: url('/gifs/dynamictable'), #2b3137;
+  background: url('http://destiny-1254002014.cosbj.myqcloud.com/timg.jpg?sign=X7ePePYiOcN4RMKbQdrhuk2pRe5hPTEyNTQwMDIwMTQmaz1BS0lENDJwVHdFdDZIR2lPeU1UWk81Qjh1aE1wOXhjQnNqaVYmZT0xNTE2NDM1NDk1JnQ9MTUxMzg0MzQ5NSZyPTE0MTY4NDMzMjUmZj0vdGltZy5qcGcmYj1kZXN0aW55'), #2b3137;
   background-position: center 10%;
   background-size: cover;
 }
@@ -220,13 +264,11 @@ $light_gray: #eee;
   padding-top: 80px;
   padding-bottom: 80px;
 }
-
 /*media all*/
 .p-responsive {
   padding-right: 16px !important;
   padding-left: 16px !important;
 }
-
 .el-header,
 .el-footer {
   background-color: #b3c0d1;
@@ -234,7 +276,6 @@ $light_gray: #eee;
   text-align: center;
   line-height: 24px;
 }
-
 /*@media all and (min-width:768px)*/
 .d-md-flex {
   display: -webkit-box !important;
@@ -250,18 +291,15 @@ $light_gray: #eee;
   margin-right: -24px;
   margin-left: -24px;
 }
-
 .el-main {
   background-color: #e9eef3;
   color: #333;
   text-align: center;
   line-height: 24px;
 }
-
 body > .el-container {
   margin-bottom: 40px;
 }
-
 .login-container {
   @include relative;
   height: 100vh;
@@ -334,6 +372,11 @@ body > .el-container {
     position: absolute;
     right: 35px;
     bottom: 28px;
+  }
+  .bg-text-primary {
+    background-color: #303133;
+  }
+  .demo-color-box {
   }
 }
 </style>
