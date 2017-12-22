@@ -1,16 +1,8 @@
 <template>
   <div class="app-container">
-    您的作品集<br/>
-  
-     <el-radio-group v-model="radio3">
-      <el-radio-button label="全部作品"></el-radio-button>
-      <el-radio-button label="自有作品"></el-radio-button>
-      <el-radio-button label="编辑作品"></el-radio-button>
-      <el-radio-button label="撰稿作品"></el-radio-button>
-    </el-radio-group>
-     <el-button type="success" round icon="el-icon-plus" @click="addBook">创建作品</el-button>
-     <timeLine :points="points"></timeLine>
-        <el-dialog :visible.sync="showAddBookDialog">
+    <el-button type="success" round icon="el-icon-plus" @click="addBook">添加新书</el-button>
+    <books></books>
+    <el-dialog :visible.sync="showAddBookDialog">
       <el-row>
         <el-col :span="6">
           <pan-thumb :image="image"></pan-thumb>
@@ -86,22 +78,24 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import books from './chart/books'
 import ImageCropper from '@/components/ImageCropper'
 import PanThumb from '@/components/PanThumb'
-import timeLine from './chart/timeline.vue'
+import { mapGetters } from 'vuex'
+import books from './chart/books'
 export default {
   name: 'permission',
   components: {
-    books,
-    timeLine,
     ImageCropper,
-    PanThumb
+    PanThumb,
+    books
   },
   data() {
     return {
-      radio3: '全部书籍',
+      imagecropperShow: false,
+      imagecropperKey: 0,
+      image: 'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191',
+      showAddBookDialog: false,
+      role: '',
       ruleForm: {
         name: '',
         region: '',
@@ -113,76 +107,70 @@ export default {
         desc: '',
         tuijianyu: ''
       },
-      showAddBookDialog: false,
-      options: [
-        {
-          value: '全部作品',
-          label: '全部作品'
-        },
-        {
-          value: '自有作品',
-          label: '自有作品'
-        },
-        {
-          value: '编辑作品',
-          label: '编辑作品'
-        },
-        {
-          value: '撰稿作品',
-          label: '撰稿作品'
-        }
-      ],
-      value: '全部作品',
-      imagecropperShow: false,
-      imagecropperKey: 0,
-      image: 'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191',
-      role: '',
-      points: [
-        {
-          pointColor: 'red', // *关键点颜色 可选red yellow green
-          img:
-            'http://www.jikexueyuan.com/event/static/images/bootstrap/bootstrap-logo.png', // 图片地址 可留空
-          title: '《红楼梦》', // *时间点标题
-          text: '红楼梦简介....', // *时间点内容
-          linkUrl: '', // *链接url 留空则不显示按钮
-          linkText: '在此之后添加条目', // 按钮显示内容 默认为Read more
-          date: '自有作品' // 时间点
-        },
-        {
-          pointColor: 'yellow', // *关键点颜色 可选red yellow green
-          img: '1', // 图片地址 可留空
-          title: '《三国志》', // *时间点标题
-          text: '', // *时间点内容
-          date: '自有作品' // 时间点
-        },
-        {
-          pointColor: 'green', // *关键点颜色 可选red yellow green
-          title: '《水浒传》', // *时间点标题
-          text: '....', // *时间点内容
-          linkUrl: '', // *链接url 留空则不显示按钮
-          date: '编辑作品' // 时间点
-        },
-        {
-          pointColor: 'green', // *关键点颜色 可选red yellow green
-          title: '《天龙八部》', // *时间点标题
-          text: '。。。。', // *时间点内容
-          linkUrl: '', // *链接url 留空则不显示按钮
-          date: '撰稿作品' // 时间点
-        }
-      ]
+      rules: {
+        name: [
+          {
+            required: true,
+            message: '请输入活动名称',
+            trigger: 'blur'
+          },
+          {
+            min: 3,
+            max: 5,
+            message: '长度在 3 到 5 个字符',
+            trigger: 'blur'
+          }
+        ],
+        region: [
+          {
+            required: true,
+            message: '请选择活动区域',
+            trigger: 'change'
+          }
+        ],
+        date1: [
+          {
+            type: 'date',
+            required: true,
+            message: '请选择日期',
+            trigger: 'change'
+          }
+        ],
+        date2: [
+          {
+            type: 'date',
+            required: true,
+            message: '请选择时间',
+            trigger: 'change'
+          }
+        ],
+        type: [
+          {
+            type: 'array',
+            required: true,
+            message: '请至少选择一个活动性质',
+            trigger: 'change'
+          }
+        ],
+        resource: [
+          {
+            required: true,
+            message: '请选择活动资源',
+            trigger: 'change'
+          }
+        ],
+        desc: [
+          {
+            required: true,
+            message: '请填写活动形式',
+            trigger: 'blur'
+          }
+        ]
+      }
     }
   },
   computed: {
     ...mapGetters(['roles'])
-  },
-  watch: {
-    role(val) {
-      this.$store.dispatch('ChangeRole', val).then(() => {
-        this.$router.push({
-          path: '/permission/index?' + +new Date()
-        })
-      })
-    }
   },
   methods: {
     cropSuccess(resData) {
@@ -192,6 +180,9 @@ export default {
     },
     close() {
       this.imagecropperShow = false
+    },
+    addBook() {
+      this.showAddBookDialog = true
     },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
@@ -205,11 +196,25 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields()
-    },
-    addBook() {
-      this.showAddBookDialog = true
+    }
+  },
+  watch: {
+    role(val) {
+      this.$store.dispatch('ChangeRole', val).then(() => {
+        this.$router.push({
+          path: '/permission/index?' + +new Date()
+        })
+      })
     }
   },
   created() {}
 }
 </script>
+
+<style scoped>
+.avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+</style>

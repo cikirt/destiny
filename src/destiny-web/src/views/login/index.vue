@@ -26,28 +26,40 @@
         <el-row class="jumbotron-codelines" style="padding:60px;">
           <el-col :span="3"></el-col>
           <el-col :span="15" class='bg-text-primary'>
-            <h1>然而这只是一个测试而已啦</h1>
-            <p>为什么呢，测试是上司是生死是是是</p>
+            <h1>功能概述</h1>
+            <p align="left">
+              用户:作家||读者<br/>
+              作家在不同的作品有不同的角色：作品所有者 作品编辑 作品自由撰稿人<br/>
+              作品所有者:创建作品，大纲，角色设定，章节 审批角色设定 审批章节 等<br/>
+              作品编辑: 可对各个模块提修改意见<br/>
+              自由撰稿人:可对大纲设定等提意见 可根据大纲自由撰稿，提交章节，角色设定<br/>
+            </p>
           </el-col>
           <el-col :span="3">
             <el-card class="box-card">
               <el-form class="card-box login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
                 <el-form-item prop="username">
-                   <el-col :span="4"><span class="svg-container svg-container_login">
-                      <svg-icon icon-class="user" />
-                    </span></el-col>
-                   <el-col :span="16"><el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="邮箱" /></el-col>
-                   <el-col :span="4"></el-col>
+                  <el-col :span="4"><span class="svg-container svg-container_login">
+                        <svg-icon icon-class="user" />
+                      </span></el-col>
+                  <el-col :span="16">
+                    <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="邮箱" /></el-col>
+                  <el-col :span="4"></el-col>
                 </el-form-item>
                 <el-form-item prop="password">
-                   <el-col :span="4"> <span class="svg-container">
-                      <svg-icon icon-class="password" />
-                    </span></el-col>
-                   <el-col :span="16"> <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on" placeholder="密码" /></el-col>
-                   <el-col :span="4"><span class="show-pwd" @click="showPwd"><svg-icon icon-class="eye" /></span></el-col>
+                  <el-col :span="4"> <span class="svg-container">
+                        <svg-icon icon-class="password" />
+                      </span></el-col>
+                  <el-col :span="16">
+                    <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on" placeholder="密码" /></el-col>
+                  <el-col :span="4"><span class="show-pwd" @click="showPwd"><svg-icon icon-class="eye" /></span></el-col>
                 </el-form-item>
-                <el-col :span="10"><el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">登录</el-button></el-col>
-                <el-col :span="10" :offset="4"><el-button class="thirdparty-button" type="success" @click="showDialog=true">第三方登录</el-button></el-col>
+                <el-col :span="10">
+                  <el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">登录</el-button>
+                </el-col>
+                <el-col :span="10" :offset="4">
+                  <el-button class="thirdparty-button" type="success" @click="showDialog=true">第三方登录</el-button>
+                </el-col>
               </el-form>
               <el-dialog title="第三方验证" :visible.sync="showDialog">
                 暂不支持<br/><br/><br/> 邮箱登录成功,请选择第三方验证
@@ -66,7 +78,7 @@
             <el-step title="步骤4" description="这是一段很长很长很长的描述性文字"></el-step>
           </el-steps>
         </el-row>
-        <el-row  class="border-top" style="padding:60px;background-color:#f5f7fa;">
+        <el-row class="border-top" style="padding:60px;background-color:#f5f7fa;">
           <el-col :span="3"></el-col>
           <el-col :span="15" class='bg-text-primary'>
             <p>为什么呢，测试是上司是生死是是是</p>
@@ -213,7 +225,6 @@ $light_gray: #eee;
 .box-card {
   width: 300px;
 }
-
 .border-top {
   border-top: 1px #e1e4e8 solid !important;
 }
@@ -250,8 +261,9 @@ $light_gray: #eee;
 }
 /*media all*/
 .jumbotron-codelines {
-  color: rgba(255, 255, 255, 0.6);
-  background: url('http://destiny-1254002014.cosbj.myqcloud.com/timg.jpg?sign=X7ePePYiOcN4RMKbQdrhuk2pRe5hPTEyNTQwMDIwMTQmaz1BS0lENDJwVHdFdDZIR2lPeU1UWk81Qjh1aE1wOXhjQnNqaVYmZT0xNTE2NDM1NDk1JnQ9MTUxMzg0MzQ5NSZyPTE0MTY4NDMzMjUmZj0vdGltZy5qcGcmYj1kZXN0aW55'), #2b3137;
+  color: rgba(12, 12, 12, 0.6);
+  background: url('http://destiny-1254002014.cosbj.myqcloud.com/timg.jpg?sign=X7ePePYiOcN4RMKbQdrhuk2pRe5hPTEyNTQwMDIwMTQmaz1BS0lENDJwVHdFdDZIR2lPeU1UWk81Qjh1aE1wOXhjQnNqaVYmZT0xNTE2NDM1NDk1JnQ9MTUxMzg0MzQ5NSZyPTE0MTY4NDMzMjUmZj0vdGltZy5qcGcmYj1kZXN0aW55'),
+    #2b3137;
   background-position: center 10%;
   background-size: cover;
 }
