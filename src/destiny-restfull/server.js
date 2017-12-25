@@ -6,7 +6,6 @@ var mongoose = require('mongoose')
 //加载相关模型
 var User = require('./api/models/user')
 
-
 //加载解析中间件
 var bodyParser = require('body-parser')
 //连接mongodb
@@ -50,4 +49,3 @@ app.use(function(req, res) {
 
 //启动监听
 app.listen(port)
-

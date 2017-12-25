@@ -1,8 +1,7 @@
 'use strict'
 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-
+var mongoose = require('mongoose')
+var Schema = mongoose.Schema
 var UserSchema = new Schema({
   user_name: {
     type: String,
@@ -20,6 +19,6 @@ var UserSchema = new Schema({
     enum: ['draft', 'published', 'deleted'],
     default: 'draft'
   }
-});
+})
 
 module.exports = mongoose.model('User', UserSchema)
