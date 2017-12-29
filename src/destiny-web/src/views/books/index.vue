@@ -24,19 +24,19 @@
             <el-form-item label="作品名称" prop="name">
               <el-input v-model="ruleForm.name"></el-input>
             </el-form-item>
-            <el-col :span="11">
+            <!-- <el-col :span="11">
               <el-form-item label="授权级别" prop="region">
                 <el-select v-model="ruleForm.region" placeholder="请选择首发站点">
                   <el-option label="独家发布" value="shanghai"></el-option>
                   <el-option label="驻站作品" value="beijing"></el-option>
                 </el-select>
               </el-form-item>
-            </el-col>
-            <el-col :span="11">
+            </el-col> -->
+            <!-- <el-col :span="11">
               <el-form-item label="书号" prop="region">8246963104076103
               </el-form-item>
-            </el-col>
-            <el-form-item label="作品类型" required>
+            </el-col> -->
+            <!-- <el-form-item label="作品类型" required>
               <el-col :span="11">
                 <el-form-item prop="date1">
                   <el-select v-model="ruleForm.region" placeholder="玄幻言情">
@@ -55,25 +55,25 @@
                   </el-select>
                 </el-form-item>
               </el-col>
-            </el-form-item>
-            <el-form-item label="推荐语" prop="delivery">
+            </el-form-item> -->
+            <!-- <el-form-item label="推荐语" prop="delivery">
               <el-input v-model="ruleForm.tuijianyu"></el-input>
-            </el-form-item>
-            <el-form-item label="编辑分组" prop="region">
+            </el-form-item> -->
+            <!-- <el-form-item label="编辑分组" prop="region">
               玄幻言情组
             </el-form-item>
             <el-form-item label="作品状态" prop="region">
               新建
-            </el-form-item>
-            <el-form-item label="作品标签" prop="region">
+            </el-form-item> -->
+            <!-- <el-form-item label="作品标签" prop="region">
               <el-input v-model="ruleForm.tuijianyu"></el-input>
-            </el-form-item>
+            </el-form-item> -->
             <el-form-item label="作品介绍" prop="region">
-              <el-input type="textarea" :rows="2" v-model="ruleForm.tuijianyu"></el-input>
+              <el-input type="textarea" :rows="2" v-model="ruleForm.zuopinjieshao"></el-input>
             </el-form-item>
-            <el-form-item label="扉页寄语" prop="region">
-              <el-input type="textarea" :rows="2" v-model="ruleForm.tuijianyu"></el-input>
-            </el-form-item>
+            <!-- <el-form-item label="扉页寄语" prop="region">
+              <el-input type="textarea" :rows="2" v-model="ruleForm.feiyejiyu"></el-input>
+            </el-form-item> -->
             <el-form-item>
               <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
               <el-button @click="resetForm('ruleForm')">重置</el-button>
