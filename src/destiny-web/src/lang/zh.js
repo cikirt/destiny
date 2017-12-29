@@ -1,11 +1,11 @@
 export default {
   route: {
-    commits: '提交审核',
+    commits: '审核',
     books: '作品管理',
     writer_tools: '辅助工具',
     players: '角色管理',
-    outline: '大纲管理',
-    chapter: '章节管理',
+    outline: '分卷大纲',
+    chapter: '章节编写',
     dashboard: '首页',
     introduction: '简述',
     documentation: '文档',

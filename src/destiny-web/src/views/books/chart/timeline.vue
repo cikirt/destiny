@@ -19,7 +19,7 @@
         <span v-if="point.date" class="date" v-text="point.date"></span>
         <el-button-group>
   <el-button type="primary" icon="el-icon-edit" @click="showBookOutLine">作品大纲</el-button>
-  <el-button type="primary" icon="el-icon-edit">继续创作</el-button>
+  <el-button type="primary" icon="el-icon-edit">章节编写</el-button>
   <el-button type="primary" icon="el-icon-delete">移除作品</el-button>
 </el-button-group>
       </div>

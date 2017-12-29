@@ -1,15 +1,27 @@
 <template>
   <div class="app-container">
-     <SingleList :list1="list1"  list1Title="分卷大纲" ></SingleList>
-  <el-select v-model="value" placeholder="时间地点选择">
+<el-row >
+  <el-col :span="6">
+  <el-select v-model="valueBook" placeholder="请选择">
     <el-option
-      v-for="item in options"
+      v-for="item in optionsBook"
       :key="item.value"
       :label="item.label"
       :value="item.value">
     </el-option>
   </el-select>
-     <timeLine :points="points"></timeLine>
+  </el-col>
+</el-row>
+
+  <el-collapse v-model="activeNames" @change="handleChange">
+  <el-collapse-item title="分卷大纲" name="1">
+ <SingleList :list1="list1"  list1Title="分卷大纲" ></SingleList>
+  </el-collapse-item>
+  <el-collapse-item title="一句话故事" name="2">
+    <timeLine :points="points"></timeLine>
+  </el-collapse-item>
+</el-collapse>
+
   </div>
 
 </template>
@@ -25,6 +37,22 @@ export default {
   components: { books, timeLine, SingleList },
   data() {
     return {
+      activeNames: ['1', '2'],
+      optionsBook: [
+        {
+          value: '选项1',
+          label: '《红楼梦》'
+        },
+        {
+          value: '选项2',
+          label: '《三国演义》'
+        },
+        {
+          value: '选项3',
+          label: '《水浒传》'
+        }
+      ],
+      valueBook: '选项1',
       list1: [],
       list2: [],
       options: [
