@@ -1,7 +1,6 @@
 <template>
   <div class="app-container">
-     作品名称:韶华倾负<br/>
-     <template>
+     <SingleList :list1="list1"  list1Title="分卷大纲" ></SingleList>
   <el-select v-model="value" placeholder="时间地点选择">
     <el-option
       v-for="item in options"
@@ -10,7 +9,6 @@
       :value="item.value">
     </el-option>
   </el-select>
-</template>
      <timeLine :points="points"></timeLine>
   </div>
 
@@ -20,11 +18,15 @@
 import { mapGetters } from 'vuex'
 import books from './chart/books'
 import timeLine from './chart/timeline.vue'
+import SingleList from '@/components/SingleList'
+import { fetchList } from '@/api/article'
 export default {
   name: 'permission',
-  components: { books, timeLine },
+  components: { books, timeLine, SingleList },
   data() {
     return {
+      list1: [],
+      list2: [],
       options: [
         {
           value: '时间地点1',
@@ -93,6 +95,17 @@ export default {
       })
     }
   },
-  created() {}
+  created() {
+    this.getData()
+  },
+  methods: {
+    getData() {
+      this.listLoading = true
+      fetchList().then(response => {
+        this.list1 = response.data.items.splice(0, 5)
+        this.list2 = response.data.items
+      })
+    }
+  }
 }
 </script>

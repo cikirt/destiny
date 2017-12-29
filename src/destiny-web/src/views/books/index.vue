@@ -1,26 +1,24 @@
 <template>
-  <div class="app-container">
-    您的作品集<br/>
-  
+  <div class="app-container">  
      <el-radio-group v-model="radio3">
       <el-radio-button label="全部作品"></el-radio-button>
       <el-radio-button label="自有作品"></el-radio-button>
       <el-radio-button label="编辑作品"></el-radio-button>
       <el-radio-button label="撰稿作品"></el-radio-button>
     </el-radio-group>
-     <el-button type="success" round icon="el-icon-plus" @click="addBook">创建作品</el-button>
+     <el-button type="success" round icon="el-icon-circle-plus" @click="addBook">创建</el-button>
      <timeLine :points="points"></timeLine>
-        <el-dialog :visible.sync="showAddBookDialog">
+        <el-dialog width="40%" :visible.sync="showAddBookDialog">
       <el-row>
-        <el-col :span="6">
+        <el-col :span="10">
           <pan-thumb :image="image"></pan-thumb>
           <el-button type="primary" icon="upload" style="bottom: 15px;margin-left: 20px;" @click="imagecropperShow=true">修改封面
           </el-button>
-          <image-cropper :width="300" :height="300" url="https://httpbin.org/post" @close='close' @crop-upload-success="cropSuccess" :key="imagecropperKey" v-show="imagecropperShow">
+          <image-cropper :width="100" :height="100" url="https://httpbin.org/post" @close='close' @crop-upload-success="cropSuccess" :key="imagecropperKey" v-show="imagecropperShow">
           </image-cropper>
         </el-col>
-        <el-col :span="18">
-          <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+        <el-col :span="14">
+          <el-form :model="ruleForm" :rules="rules" ref="ruleForm"  class="demo-ruleForm">
             <el-form-item label="作品名称" prop="name">
               <el-input v-model="ruleForm.name"></el-input>
             </el-form-item>
@@ -69,7 +67,7 @@
               <el-input v-model="ruleForm.tuijianyu"></el-input>
             </el-form-item> -->
             <el-form-item label="作品介绍" prop="region">
-              <el-input type="textarea" :rows="2" v-model="ruleForm.zuopinjieshao"></el-input>
+              <el-input type="textarea" :rows="4" v-model="ruleForm.zuopinjieshao"></el-input>
             </el-form-item>
             <!-- <el-form-item label="扉页寄语" prop="region">
               <el-input type="textarea" :rows="2" v-model="ruleForm.feiyejiyu"></el-input>
@@ -152,7 +150,7 @@ export default {
           pointColor: 'yellow', // *关键点颜色 可选red yellow green
           img: '1', // 图片地址 可留空
           title: '《三国志》', // *时间点标题
-          text: '', // *时间点内容
+          text: '简介.............................', // *时间点内容
           date: '自有作品' // 时间点
         },
         {
@@ -196,7 +194,11 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert('submit!')
+          this.$message({
+            message: '创建成功，骗你的啦!',
+            type: 'success'
+          })
+          this.showAddBookDialog = false
         } else {
           console.log('error submit!!')
           return false
