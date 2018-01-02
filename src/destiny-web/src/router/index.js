@@ -125,6 +125,42 @@ export const asyncRouterMap = [
     ]
   },
   {
+    path: '/environment',
+    component: Layout,
+    redirect: '/environment/index',
+    meta: { role: ['writer'] },
+    children: [
+      {
+        path: 'index',
+        component: _import('environment/index'),
+        name: 'environment',
+        meta: {
+          title: 'environment',
+          icon: 'lock',
+          role: ['writer']
+        }
+      }
+    ]
+  },
+  {
+    path: '/event',
+    component: Layout,
+    redirect: '/event/index',
+    meta: { role: ['writer'] },
+    children: [
+      {
+        path: 'index',
+        component: _import('event/index'),
+        name: 'event',
+        meta: {
+          title: 'event',
+          icon: 'lock',
+          role: ['writer']
+        }
+      }
+    ]
+  },
+  {
     path: '/chapter',
     component: Layout,
     redirect: '/chapter/index',

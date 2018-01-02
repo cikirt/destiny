@@ -1,5 +1,7 @@
 export default {
   route: {
+    event: 'event',
+    environment: 'environment',
     commits: 'commits',
     books: 'books',
     writer_tools: 'writer_tools',
