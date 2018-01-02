@@ -1,9 +1,18 @@
 <template>
     <div class="dndList-list" :style="{width:width1}">
-      <h3>{{list1Title}}</h3>
+      <!-- <h3>{{list1Title}}</h3>  -->
+      <el-button type="success" round icon="el-icon-circle-plus" @click="addEle">新增分卷</el-button>
       <draggable :list="list1" class="dragArea" :options="{group:'article'}">
         <div class="list-complete-item" v-for="element in list1" :key='element.id'>
-          <div class="list-complete-item-handle">[{{element.author}}] {{element.title}}</div>
+          <!-- <div style="position:absolute;left:0px;"> -->
+             <span style="float: left ;margin-left:5px;margin-right:5px;" @click="editEle(element)">
+              <i style="color:#ff4949" class="el-icon-edit"></i>
+            </span>
+          <!-- </div> -->
+          <div class="list-complete-item-handle" v-bind:class="{ active: element.click}"
+           @click="clickEle(element)">
+            {{element.title}}
+          </div>
           <div style="position:absolute;right:0px;">
             <span style="float: right ;margin-top: -20px;margin-right:5px;" @click="deleteEle(element)">
               <i style="color:#ff4949" class="el-icon-delete"></i>
@@ -11,6 +20,18 @@
           </div>
         </div>
       </draggable>
+
+  <el-dialog title="分卷大纲" :visible.sync="dialogFormVisible">
+  <el-form :model="form">
+    <el-form-item label="分卷名称" :label-width="formLabelWidth">
+      <el-input v-model="form.title" auto-complete="off"></el-input>
+    </el-form-item>
+  </el-form>
+  <div slot="footer" class="dialog-footer">
+    <el-button @click="dialogFormVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+  </div>
+</el-dialog>
     </div>
 </template>
 
@@ -20,6 +41,13 @@ import draggable from 'vuedraggable'
 export default {
   name: 'DndList',
   components: { draggable },
+  data() {
+    return {
+      dialogFormVisible: false,
+      form: {},
+      formLabelWidth: '120px'
+    }
+  },
   props: {
     list1: {
       type: Array,
@@ -33,7 +61,7 @@ export default {
     },
     width1: {
       type: String,
-      default: '48%'
+      default: '100%'
     }
   },
   methods: {
@@ -45,6 +73,20 @@ export default {
           break
         }
       }
+    },
+    editEle(ele) {
+      this.dialogFormVisible = true
+      this.form = ele
+    },
+    addEle() {
+      this.dialogFormVisible = true
+    },
+    clickEle(ele) {
+      for (const item of this.list1) {
+        if (item.click === true) item.click = false
+      }
+      ele.click = true
+      this.$emit('selectitm', ele)
     },
     pushEle(ele) {
       this.list1.push(ele)
@@ -75,7 +117,9 @@ export default {
     }
   }
 }
-
+.active {
+  font-weight: bold;
+}
 .list-complete-item {
   cursor: pointer;
   position: relative;
