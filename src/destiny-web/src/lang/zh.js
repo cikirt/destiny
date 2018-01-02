@@ -1,11 +1,11 @@
 export default {
   route: {
-    event: '事件设定',
-    environment: '环境设定',
+    event: '事件任务',
+    environment: '环境任务',
     commits: '审核投稿',
     books: '作品管理',
     writer_tools: '辅助工具',
-    players: '角色管理',
+    players: '角色任务',
     outline: '分卷大纲',
     chapter: '章节编写',
     dashboard: '首页',
