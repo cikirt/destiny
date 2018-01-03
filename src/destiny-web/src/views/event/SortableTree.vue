@@ -10,8 +10,6 @@
       <li v-for="(item, index) in children" :class="{'parent-li': hasChildren(item), 'exist-li': !item['_replaceLi_'], 'blank-li': item['_replaceLi_']}" :key="index">
         <sortable-tree :data="item" :attr="attr" :childrenAttr="childrenAttr" :mixinParentKey="mixinParentKey" :closeStateKey="closeStateKey" :draggable="draggable"
                        :parentData="data" :idx="index" :dragInfo="dragInfo" @changePosition="changePosition">
-          <!--slot scope only support vue 2.5+ -->
-          <!--<template slot-scope="{item: item}">-->
           <template slot-scope="{item: item}">
             <slot :item="item">
               <span>{{item[attr]}}</span>
