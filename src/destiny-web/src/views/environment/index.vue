@@ -90,7 +90,7 @@ export default {
     charpartsInBooks: function () {
       //根据索引获取
       for(var i= 0 ;i< this.books.length; i++) {
-        var value = this.books[i]
+        var value = this.books[i].value
         if (value == this.value7)
         {
             return this.books[i].charparts
