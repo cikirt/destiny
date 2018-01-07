@@ -14,7 +14,7 @@
 </el-row>
 
   <el-collapse v-model="activeNames" @change="handleChange">
-  <el-collapse-item title="分卷大纲" name="1">
+  <el-collapse-item title="分卷大纲解决" name="1">
   <SingleList @selectitm='ele=>selectitm(ele)' :list1="list1"  list1Title="分卷大纲" ></SingleList>
   </el-collapse-item>
   <el-collapse-item title="一句话故事" name="2">
