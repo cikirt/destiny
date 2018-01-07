@@ -140,32 +140,11 @@ export default {
           pointColor: 'red', // *关键点颜色 可选red yellow green
           img:
             'http://www.jikexueyuan.com/event/static/images/bootstrap/bootstrap-logo.png', // 图片地址 可留空
-          title: '《红楼梦》', // *时间点标题
-          text: '红楼梦简介....', // *时间点内容
+          title: '《韶华倾负》', // *时间点标题
+          text: '追寻一生，只为触碰那一瞬美好。飘零半世，不足道尽数十载孤独', // *时间点内容
           linkUrl: '', // *链接url 留空则不显示按钮
           linkText: '在此之后添加条目', // 按钮显示内容 默认为Read more
           date: '自有作品' // 时间点
-        },
-        {
-          pointColor: 'yellow', // *关键点颜色 可选red yellow green
-          img: '1', // 图片地址 可留空
-          title: '《三国志》', // *时间点标题
-          text: '简介.............................', // *时间点内容
-          date: '自有作品' // 时间点
-        },
-        {
-          pointColor: 'green', // *关键点颜色 可选red yellow green
-          title: '《水浒传》', // *时间点标题
-          text: '....', // *时间点内容
-          linkUrl: '', // *链接url 留空则不显示按钮
-          date: '编辑作品' // 时间点
-        },
-        {
-          pointColor: 'green', // *关键点颜色 可选red yellow green
-          title: '《天龙八部》', // *时间点标题
-          text: '。。。。', // *时间点内容
-          linkUrl: '', // *链接url 留空则不显示按钮
-          date: '撰稿作品' // 时间点
         }
       ]
     }
