@@ -1,0 +1,16 @@
+{
+  "name": "wangwen-web",
+  "dependencies": {
+    "@nuxtjs/vuetify": "^0.4.0",
+    "axios": "^0.16.1",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "nuxt": "latest"
+  },
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start"
+  }
+}
