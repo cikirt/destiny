@@ -30,7 +30,7 @@
         <span>写作</span>
         <v-icon>favorite</v-icon>
       </v-btn>
-      <v-btn flat color="teal" @click="$router.push('/scenarist/scenes')">
+      <v-btn flat color="teal" @click="$router.push('/scenarist/me')">
         <span>自己</span>
         <v-icon>favorite</v-icon>
       </v-btn>
