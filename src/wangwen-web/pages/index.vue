@@ -1,21 +1,45 @@
 <template>
-  <div class="container">
-    <h1>Please login to see the secret content</h1>
-    <form v-if="!$store.state.authUser" @submit.prevent="login">
-      <p class="error" v-if="formError">{{ formError }}</p>
-      <p><i>To login, use <b>demo</b> as username and <b>demo</b> as password.</i></p>
-      <p>Username: <input type="text" v-model="formUsername" name="username" /></p>
-      <p>Password: <input type="password" v-model="formPassword" name="password" /></p>
-      <button type="submit">Login</button>
-    </form>
-    <div v-else>
-      Hello {{ $store.state.authUser.username }}!
-      <pre>I am the secret content, I am shown only when the use is connected.</pre>
-      <p><i>You can also refresh this page, you'll still be connected!</i></p>
-      <button @click="logout">Logout</button>
-    </div>
-    <p><nuxt-link to="/scenarist">Super secret page</nuxt-link></p>
-  </div>
+ <v-layout row wrap>
+ <v-flex   xs12 sm10 offset-sm1>
+<v-app >
+  <v-content >
+   
+      <v-card height="100%">
+        <v-card-media
+           height="60%"
+          class="white--text"
+          src="/docks.jpg"
+        >
+          <v-container fill-height fluid>
+            <v-layout fill-height>
+              <v-flex xs12 align-end flexbox>
+                <span class="headline">网文助手</span><br>
+                 <span class="title">高效快捷的网络码字工具</span><br>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card-media>
+        <v-card-title>
+          <div>
+            <span class="grey--text">特色功能</span><br>
+            <span>系统化创作</span><br>
+            <span>团队创作</span>
+          </div>
+        </v-card-title>
+        <v-card-actions>
+          <v-btn flat color="orange" @click="$router.push('/scenarist')">开始创作</v-btn>
+        </v-card-actions>
+      </v-card>
+  
+  </v-content>
+   <v-footer class="pa-3">
+    <v-spacer></v-spacer>
+    <div>© {{ new Date().getFullYear() }}</div>
+  </v-footer>
+</v-app>
+  </v-flex>
+   </v-layout>
+   
 </template>
 
 <script>

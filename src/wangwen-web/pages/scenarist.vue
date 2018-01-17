@@ -3,6 +3,7 @@
     编剧,可以创建和设计作品。下面的两个功能请尽情使用。
     如要切换大功能，点击左上方。
     <nuxt-link to="/">Back to the home page</nuxt-link>
+    <nuxt-child/>
 </div>
 </template>
 <script>

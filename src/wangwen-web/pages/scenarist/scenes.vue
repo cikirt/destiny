@@ -8,7 +8,6 @@
 <script>
 export default {
    middleware: 'auth',
-  layout: 'designbooks' ,
   data: () => ({
     e2: 3,
     drawer: null,
