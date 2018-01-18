@@ -11,21 +11,13 @@
     <v-content>
      <v-card id="create" height="100%" style="overflow: hidden;">
     <nuxt/>
-    <v-bottom-nav absolute :value="true" :active.sync="e2" color="computedColor">
-      <v-btn flat color="teal" >
-        <span></span>
-        <v-icon>工具1</v-icon>
-      </v-btn>
-      <v-btn flat color="teal" >
-        <span>工具2</span>
+     <v-bottom-nav absolute :value="true" :active.sync="e2">
+      <v-btn dark @click="$router.push('/home/books')">
+        <span>保存</span>
         <v-icon>favorite</v-icon>
       </v-btn>
-      <v-btn flat color="teal" >
-        <span>工具3</span>
-        <v-icon>favorite</v-icon>
-      </v-btn>
-      <v-btn flat color="teal" >
-        <span>工具4</span>
+      <v-btn dark @click="$router.push('/home/books')">
+        <span>取消</span>
         <v-icon>favorite</v-icon>
       </v-btn>
     </v-bottom-nav>

@@ -1,6 +1,6 @@
 <template>
-  <div>
-   消息列表。
+<div>
+    写就对了
 </div>
 </template>
 <script>

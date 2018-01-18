@@ -11,25 +11,17 @@
     <v-content>
      <v-card id="create" height="100%" style="overflow: hidden;">
     <nuxt/>
-    <!-- <v-bottom-nav absolute :value="true" :active.sync="e2" color="computedColor">
-      <v-btn flat color="teal" @click="$router.push('/scenarist/books')">
-        <span>消息</span>
-        <v-icon>book</v-icon>
-      </v-btn>
-      <v-btn flat color="teal" @click="$router.push('/scenarist/books')">
-        <span>灵感●素材</span>
+     <v-bottom-nav absolute :value="true" :active.sync="e2">
+      <v-btn dark @click="$router.push('/home/books')">
+        <span>保存</span>
         <v-icon>favorite</v-icon>
       </v-btn>
-      <v-btn flat color="teal" @click="$router.push('/scenarist/scenes')">
-        <span>畅想●文字</span>
-        <v-icon>favorite</v-icon>
-      </v-btn>
-      <v-btn flat color="teal" @click="$router.push('/scenarist/me')">
-        <span>自己</span>
+      <v-btn dark @click="$router.push('/home/books')">
+        <span>取消</span>
         <v-icon>favorite</v-icon>
       </v-btn>
     </v-bottom-nav>
-    <usercenter></usercenter> -->
+    <!-- <usercenter></usercenter> -->
      </v-card>
     </v-content>     
   </v-app>

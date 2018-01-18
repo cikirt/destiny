@@ -5,7 +5,7 @@
       <v-container fluid>
         <v-layout row>
           <v-flex xs4>
-            <v-subheader>Normal with hint text/label</v-subheader>
+            <v-subheader>场景设计，比较复杂。这里就是灵感和素材按照场景排放的地方。</v-subheader>
           </v-flex>
           <v-flex xs8>
             <v-text-field

@@ -2,15 +2,17 @@
   <div>
     <v-container fluid v-bind="{ [`grid-list-xs`]: true }">
       <v-layout row wrap>
-          <v-flex xs12 md3 v-for="n in 20" :key="n">
+          <v-flex xs12 md3 v-for="n in 2" :key="n">
              <v-card flat tile>
             <v-card-media
              :src="`https://unsplash.it/150/300?image=${Math.floor(Math.random() * 100) + 1}`" 
              height="150px">
                 <v-container fill-height fluid>
             <v-layout fill-height>
-              <v-flex xs12 align-end flexbox>
+              <v-flex xs12 align-start flexbox>
                 <span class="headline">《红楼梦》</span>
+                <span class="h6">在这写每个章节的文字。可以实时看到章节对应场景所准备的素材，
+                  灵感，可以对素材标记为已使用或者废弃</span>
               </v-flex>
             </v-layout>
           </v-container>
@@ -31,7 +33,7 @@
               <v-list-tile-sub-title>{{ item.subtitle }}</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
-              <v-btn icon ripple>
+              <v-btn icon ripple @click="$router.push('/chapterpages/edit')">
                 <v-icon color="grey lighten-1">edit</v-icon>
               </v-btn>
             </v-list-tile-action>
@@ -39,8 +41,8 @@
         </v-list>
         </v-card-title>
             <v-card-actions>
-          <v-btn flat color="orange" @click="$router.push('/bookpages/setting')">新增章节</v-btn>
-          <v-btn flat color="orange" @click="$router.push('/bookpages/setting')">删除章节</v-btn>
+          <v-btn flat color="orange" @click="$router.push('/chapterpages/edit')">新增章节</v-btn>
+          <v-btn flat color="orange" >删除章节</v-btn>
         </v-card-actions>
           </v-card>
    

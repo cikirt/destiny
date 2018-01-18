@@ -59,7 +59,7 @@ export default {
       v => !!v || 'Name is required',
       v => (v && v.length <= 10) || 'Name must be less than 10 characters'
     ],
-    checkbox: false
+    checkbox: true
   }),
   methods: {
     submit() {
