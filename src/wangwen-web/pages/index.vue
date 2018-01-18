@@ -27,7 +27,7 @@
           </div>
         </v-card-title>
         <v-card-actions>
-          <v-btn flat color="orange" @click="$router.push('/scenarist')">开始创作</v-btn>
+          <v-btn flat color="orange" @click="$router.push('/home/message')">开始创作</v-btn>
         </v-card-actions>
       </v-card>
   

@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-layout row wrap>
-      <v-flex xs12 sm6 offset-sm3>
+      <v-flex xs12 md6 offset-md3>
         <v-app>
-          <v-content>
+          <v-content class="justify-center align-center">
             <v-card height="100%" color="grey lighten-4">
               <v-card-text>
                 <v-form v-if="!$store.state.authUser" v-model="valid" ref="form" lazy-validation>
@@ -34,7 +34,7 @@
                   <p><i>你可以选择注销或者前往其它页面</i></p>
                   <button @click="logout">Logout</button>
                   <p>
-                    <nuxt-link to="/scenarist">开始创作</nuxt-link>
+                    <nuxt-link to="/home/message">开始创作</nuxt-link>
                   </p>
                 </div>
                 <nuxt-link to="/">回主页</nuxt-link>
@@ -51,8 +51,8 @@ export default {
   data: () => ({
     e1: true,
     formError: null,
-    formUsername: '',
-    formPassword: '',
+    formUsername: 'demo',
+    formPassword: 'demo',
     valid: true,
     name: '',
     nameRules: [
@@ -80,7 +80,7 @@ export default {
         this.formUsername = ''
         this.formPassword = ''
         this.formError = null
-        self.$router.push('/scenarist')
+        self.$router.push('/home/message')
       } catch (e) {
         this.formError = e.message
       }

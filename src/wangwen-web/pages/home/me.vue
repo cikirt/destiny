@@ -1,8 +1,8 @@
 <template>
   <v-layout row>
-    <v-flex xs12 sm6 offset-sm3>
-      <v-card>
-        <v-card-media src="/static/doc-images/lists/ali.png" height="300px">
+    <v-flex xs12 sm10 offset-sm1>
+      <v-card height="100%">
+        <v-card-media src="/docks.jpg" height="30%" >
           <v-layout column class="media">
             <v-card-title>
               <v-btn dark icon>
@@ -22,7 +22,7 @@
             </v-card-title>
           </v-layout>
         </v-card-media>
-        <v-list two-line>
+        <v-list  two-line>
           <v-list-tile >
             <v-list-tile-action>
               <v-icon color="indigo">phone</v-icon>
@@ -62,24 +62,25 @@
               <v-list-tile-sub-title>Work</v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-        <v-divider inset></v-divider>
-          <v-list-tile >
-            <v-list-tile-action>
-              <v-icon color="indigo">location_on</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>1400 Main Street</v-list-tile-title>
-              <v-list-tile-sub-title>Orlando, FL 79938</v-list-tile-sub-title>
-            </v-list-tile-content>
-          </v-list-tile>
         </v-list>
       </v-card>
     </v-flex>
   </v-layout>
 </template>
-
-<style lang="stylus">
-  .media
-    height: 100%
-    margin: 0
+<script>
+export default {
+  middleware: 'auth',
+  methods: {
+    test() {}
+  },
+  data() {
+    return {}
+  }
+}
+</script>
+<style>
+.media{
+    height: 100%;
+    margin: 0;
+}
 </style>

@@ -10,27 +10,21 @@
     </v-toolbar> -->
     <v-content>
      <v-card id="create" height="100%" style="overflow: hidden;">
-    <v-card-text class="text-xs-center">
-       <v-container fluid fill-height>
-      <v-layout justify-center align-center>
-       <nuxt/>
-        </v-layout>
-         </v-container>
-    </v-card-text>
-    <v-bottom-nav absolute :value="true" :active.sync="e2" color="computedColor">
-      <v-btn flat color="teal" @click="$router.push('/scenarist/books')">
+    <nuxt/>
+    <v-bottom-nav   :value="true" :active.sync="e2" :color="computedColor">
+      <v-btn dark  @click="$router.push('/home/message')">
         <span>消息</span>
         <v-icon>book</v-icon>
       </v-btn>
-      <v-btn flat color="teal" @click="$router.push('/scenarist/books')">
-        <span>设计</span>
+      <v-btn dark  @click="$router.push('/home/books')">
+        <span>灵感●素材</span>
         <v-icon>favorite</v-icon>
       </v-btn>
-      <v-btn flat color="teal" @click="$router.push('/scenarist/scenes')">
-        <span>写作</span>
+      <v-btn dark @click="$router.push('/home/chapter')">
+        <span>畅想●文字</span>
         <v-icon>favorite</v-icon>
       </v-btn>
-      <v-btn flat color="teal" @click="$router.push('/scenarist/me')">
+      <v-btn dark  @click="$router.push('/home/me')">
         <span>自己</span>
         <v-icon>favorite</v-icon>
       </v-btn>
@@ -56,6 +50,23 @@ export default {
   methods: {
     test() {}
   },
-  computed: {}
+   computed: {
+      computedColor () {
+        switch (this.e2) {
+          case 0:
+            return 'blue-grey'
+          break
+          case 1:
+            return 'teal'
+          break
+          case 2:
+            return 'brown'
+          break
+          case 4:
+            return 'brown lighten-1'
+          break
+        }
+      }
+    }
 }
 </script>
