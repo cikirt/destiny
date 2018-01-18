@@ -27,7 +27,7 @@
         small
         color="green"
       >
-        <v-icon>edit</v-icon>文章设计
+        <v-icon>edit</v-icon>自动取名
       </v-btn>
       <v-btn
         fab
@@ -36,7 +36,7 @@
         color="indigo"
       >
         <v-icon>add</v-icon>
-        码字
+        自动生成素材2
       </v-btn>
       <v-btn
         fab
@@ -45,7 +45,7 @@
         color="red"
       >
       <v-icon>delete</v-icon>
-      回主页
+      小工具3
       </v-btn>
       </v-speed-dial>
      </div>
@@ -60,9 +60,9 @@ export default {
       hover: false,
       tabs: null,
       top: true,
-      right: false,
+      right: true,
       bottom: false,
-      left: true,
+      left: false,
       transition: 'slide-y-reverse-transition'
     }
   }

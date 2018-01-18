@@ -60,6 +60,7 @@
 </template>
 <script>
 export default {
+  middleware: 'auth',
   layout: 'booksetting',
   methods: {
     test() {}

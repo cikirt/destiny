@@ -20,6 +20,7 @@
                     <v-layout row>
                       <p v-if="formError">{{formError}}</p>
                     </v-layout>
+                    <v-chip close v-model="chip2" color="red" text-color="white">步骤2-点击-><kbd>登录</kbd></v-chip>
                     <v-layout row>
                       <v-btn @click="submit" :disabled="!valid">
                         登录

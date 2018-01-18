@@ -27,7 +27,10 @@
           </div>
         </v-card-title>
         <v-card-actions>
-          <v-btn flat color="orange" @click="$router.push('/home/message')">开始创作</v-btn>
+  
+
+        <v-btn slot="activator" flat color="orange" @click="$router.push('/home/message')">开始创作</v-btn>
+        <v-chip close v-model="chip2" color="red" text-color="white">步骤1-点击-><kbd>开始创作</kbd></v-chip>
         </v-card-actions>
       </v-card>
   
@@ -46,6 +49,7 @@
 export default {
   data() {
     return {
+      chip2: true,
       formError: null,
       formUsername: '',
       formPassword: ''

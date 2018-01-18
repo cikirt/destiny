@@ -11,7 +11,7 @@
     <v-content>
      <v-card id="create" height="100%" style="overflow: hidden;">
     <nuxt/>
-     <v-bottom-nav absolute :value="true" :active.sync="e2">
+     <v-bottom-nav  :value="true" :active.sync="e2">
       <v-btn dark @click="$router.push('/home/chapter')">
         <span>保存</span>
         <v-icon>favorite</v-icon>
@@ -21,7 +21,7 @@
         <v-icon>favorite</v-icon>
       </v-btn>
     </v-bottom-nav>
-    <!-- <usercenter></usercenter> -->
+    <usercenter></usercenter>
      </v-card>
     </v-content>     
   </v-app>

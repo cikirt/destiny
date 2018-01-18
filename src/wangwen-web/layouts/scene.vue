@@ -11,29 +11,25 @@
     <v-content>
      <v-card id="create" height="100%" style="overflow: hidden;">
     <nuxt/>
-    <v-bottom-nav   :value="true" :active.sync="e2" :color="computedColor">
-      <v-btn dark  @click="$router.push('/home/message')">
-        <span>消息</span>
-        <v-icon>book</v-icon>
-      </v-btn>
-  
-      <v-badge right>
-      <span slot="badge">3</span>
-      <v-btn dark  @click="$router.push('/home/books')">
-        <span>灵感●素材</span>
+     <v-bottom-nav  :value="true" :active.sync="e2">
+      <v-btn dark @click="$router.push('/home/books')">
+        <span>新增</span>
         <v-icon>favorite</v-icon>
       </v-btn>
-    </v-badge>
-      <v-btn dark @click="$router.push('/home/chapter')">
-        <span>畅想●文字</span>
+          <v-btn dark @click="$router.push('/home/books')">
+        <span>删除</span>
         <v-icon>favorite</v-icon>
       </v-btn>
-      <v-btn dark  @click="$router.push('/home/me')">
-        <span>自己</span>
+          <v-btn dark @click="$router.push('/home/books')">
+        <span>保存</span>
+        <v-icon>favorite</v-icon>
+      </v-btn>
+      <v-btn dark @click="$router.push('/home/books')">
+        <span>取消</span>
         <v-icon>favorite</v-icon>
       </v-btn>
     </v-bottom-nav>
-
+    <!-- <usercenter></usercenter> -->
      </v-card>
     </v-content>     
   </v-app>
@@ -45,7 +41,7 @@ import usercenter from './components/usercenter'
 export default {
   components: { navigationlist,usercenter },
   data: () => ({
-    e2: 0,
+    e2: 1,
     drawer: null
   }),
   props: {
@@ -54,23 +50,6 @@ export default {
   methods: {
     test() {}
   },
-   computed: {
-      computedColor () {
-        switch (this.e2) {
-          case 0:
-            return 'blue-grey'
-          break
-          case 1:
-            return 'teal'
-          break
-          case 2:
-            return 'brown'
-          break
-          case 4:
-            return 'brown lighten-1'
-          break
-        }
-      }
-    }
+  computed: {}
 }
 </script>

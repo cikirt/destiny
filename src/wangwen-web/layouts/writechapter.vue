@@ -18,7 +18,7 @@
          </v-container>
 
     </v-card-text>
-    <v-bottom-nav absolute :value="true" :active.sync="e2" color="computedColor">
+    <v-bottom-nav  :value="true" :active.sync="e2" color="computedColor">
       <v-btn flat color="teal" @click="$router.push('/writer/write')">
         <span>作品管理</span>
         <v-icon>book</v-icon>
