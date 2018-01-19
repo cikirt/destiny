@@ -9,7 +9,7 @@
       <v-toolbar-title>作品设计</v-toolbar-title>
     </v-toolbar> -->
     <v-content>
-     <v-card id="create" height="100%" style="overflow: hidden;">
+     <v-card id="create" height="100%" style="padding-bottom:50px;overflow: hidden;">
     <nuxt/>
     <v-bottom-nav   :value="true" :active.sync="e2" :color="computedColor">
       <v-btn dark  @click="$router.push('/home/message')">
@@ -17,13 +17,10 @@
         <v-icon>book</v-icon>
       </v-btn>
   
-      <v-badge right>
-      <span slot="badge">3</span>
       <v-btn dark  @click="$router.push('/home/books')">
         <span>灵感●素材</span>
         <v-icon>favorite</v-icon>
       </v-btn>
-    </v-badge>
       <v-btn dark @click="$router.push('/home/chapter')">
         <span>畅想●文字</span>
         <v-icon>favorite</v-icon>

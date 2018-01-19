@@ -1,13 +1,32 @@
 <template>
   <div>
-    <v-layout row wrap>
-      <v-flex xs12 md6 offset-md3>
-        <v-app>
-          <v-content class="justify-center align-center">
-            <v-card height="100%" color="grey lighten-4">
-              <v-card-text>
-                <v-form v-if="!$store.state.authUser" v-model="valid" ref="form" lazy-validation>
-                  <v-container fluid>
+     <v-layout row>
+    <v-flex sm12 md10 offset-md1>
+      <v-card height="100%">
+        <v-card-media  height="30%" >
+          <v-layout column class="media">
+            <v-card-title>
+              <v-btn dark icon @click="$router.push('/')">
+                     <!-- <nuxt-link to="/"><v-icon>chevron_left</v-icon></nuxt-link> -->
+                <v-icon>chevron_left</v-icon>
+              </v-btn>
+              <v-spacer></v-spacer>
+              <!-- <v-btn dark icon class="mr-3">
+                <v-icon>edit</v-icon>
+              </v-btn> -->
+              <!-- <v-btn dark icon>
+                <v-icon>more_vert</v-icon>
+              </v-btn> -->
+            </v-card-title>
+            <v-spacer></v-spacer>
+            <v-card-title class="white--text pl-5 pt-5">
+              <div class="display-1 pl-5 pt-5">登录</div>
+            </v-card-title>
+          </v-layout>
+        </v-card-media>
+        <v-card-text>
+       <v-form v-if="!$store.state.authUser" v-model="valid" ref="form" lazy-validation>
+                  <!-- <v-container fluid> -->
                     <v-layout row>
                       <v-text-field label="用户名" v-model="formUsername" :rules="nameRules" :counter="10" required></v-text-field>
                     </v-layout>
@@ -20,31 +39,25 @@
                     <v-layout row>
                       <p v-if="formError">{{formError}}</p>
                     </v-layout>
-                    <v-chip close v-model="chip2" color="red" text-color="white">步骤2-点击-><kbd>登录</kbd></v-chip>
                     <v-layout row>
                       <v-btn @click="submit" :disabled="!valid">
                         登录
                       </v-btn>
                       <v-btn @click="clear">清理</v-btn>
                     </v-layout>
-                  </v-container>
+                  <!-- </v-container> -->
                 </v-form>
                 <div v-else>
-                  你好 {{ $store.state.authUser.username }}!
-                  <pre>你已登录成功.</pre>
-                  <p><i>你可以选择注销或者前往其它页面</i></p>
-                  <button @click="logout">Logout</button>
+                  欢迎您， {{ $store.state.authUser.username }}!
+                  <button @click="logout">注销</button>
                   <p>
                     <nuxt-link to="/home/message">开始创作</nuxt-link>
                   </p>
                 </div>
-                <nuxt-link to="/">回主页</nuxt-link>
-              </v-card-text>
-            </v-card>
-          </v-content>
-        </v-app>
-      </v-flex>
-    </v-layout>
+                </v-card-text>
+      </v-card>
+    </v-flex>
+  </v-layout>
   </div>
 </template>
 <script>

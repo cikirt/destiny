@@ -1,59 +1,73 @@
 <template>
 <div>
       <v-card color="grey lighten-4" flat>
-    <v-card-text>
-      <v-container fluid>
+    <v-card-text style="padding-bottom:50px;">
+      <!-- <v-container fluid> -->
         <v-layout row>
-          <v-flex xs4>
-            <v-subheader>基本书籍信息配置</v-subheader>
-          </v-flex>
-          <v-flex xs8>
-            <v-text-field
+         <v-text-field
               name="input-1"
-              label="Label Text"
+              label="作品名称"
               id="testing"
             ></v-text-field>
-          </v-flex>
         </v-layout>
-        <v-layout row>
-          <v-flex xs4>
-            <v-subheader>Focus</v-subheader>
-          </v-flex>
-          <v-flex xs8>
-            <v-text-field
-              name="input-2"
-              label="Label Text"
-              value="Input text"
-              class="input-group--focused"
+           <v-layout row>
+         <v-text-field
+              name="input-1"
+              label="故事题材"
+              id="testing"
             ></v-text-field>
-          </v-flex>
         </v-layout>
-        <v-layout row>
-          <v-flex xs4>
-            <v-subheader>Normal with input text + label</v-subheader>
-          </v-flex>
-          <v-flex xs8>
-            <v-text-field
-              name="input-3"
-              label="Label Text"
-              value="Input text"
+         <v-layout row>
+         <v-text-field
+              name="input-1"
+              label="故事风格"
+              id="testing"
             ></v-text-field>
-          </v-flex>
         </v-layout>
-        <v-layout row>
-          <v-flex xs4>
-            <v-subheader>Disabled</v-subheader>
-          </v-flex>
-          <v-flex xs8>
-            <v-text-field
-              name="input-3"
-              label="Label Text"
-              value="Input text"
-              disabled
+         <v-layout row>
+         <v-text-field
+              name="input-1"
+              label="故事起因"
+              id="testing"
             ></v-text-field>
-          </v-flex>
         </v-layout>
-      </v-container>
+             <v-layout row>
+         <v-text-field
+              name="input-1"
+              label="故事发展"
+              id="testing"
+            ></v-text-field>
+        </v-layout>
+             <v-layout row>
+         <v-text-field
+              name="input-1"
+              label="故事高潮"
+              id="testing"
+            ></v-text-field>
+        </v-layout>
+             <v-layout row>
+         <v-text-field
+              name="input-1"
+              label="故事结局"
+              id="testing"
+            ></v-text-field>
+        </v-layout>
+             <v-layout row>
+         <v-text-field
+              name="input-1"
+              label="故事中心思想"
+              id="testing"
+            ></v-text-field>
+        </v-layout>
+           <v-layout row>
+                 <v-text-field
+              name="input-1"
+              label="故事主要角色"
+              id="testing"
+            ></v-text-field>
+        </v-layout>
+       
+      <!-- </v-container> -->
     </v-card-text>
   </v-card>
 </div>

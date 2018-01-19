@@ -5,17 +5,16 @@
           <v-flex xs12 md3 v-for="n in 2" :key="n">
              <v-card flat tile>
             <v-card-media
-             :src="`https://unsplash.it/150/300?image=${Math.floor(Math.random() * 100) + 1}`" 
              height="150px">
-                <v-container fill-height fluid>
-            <v-layout fill-height>
-              <v-flex xs12 align-start flexbox>
-                <span class="headline">《红楼梦》</span>
+                <!-- <v-container light-green lighten-4 fill-height fluid> -->
+
+              <v-flex light-green lighten-4 md12  flexbox>
+                <span class="headline">《红楼梦》</span><br/>
                 <span class="h6">在这写每个章节的文字。可以实时看到章节对应场景所准备的素材，
                   灵感，可以对素材标记为已使用或者废弃</span>
               </v-flex>
-            </v-layout>
-          </v-container>
+ 
+          <!-- </v-container> -->
             </v-card-media>
              <v-card-title >
         <v-list two-line subheader>

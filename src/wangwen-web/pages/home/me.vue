@@ -55,11 +55,11 @@
               <v-list-tile-sub-title>Personal</v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile >
-            <v-list-tile-action></v-list-tile-action>
+           <v-divider inset></v-divider>
+              <v-list-tile @click="logout" >
             <v-list-tile-content>
-              <v-list-tile-title>ali_connors@example.com</v-list-tile-title>
-              <v-list-tile-sub-title>Work</v-list-tile-sub-title>
+              <v-list-tile-title>注销</v-list-tile-title>
+              <v-list-tile-sub-title>退出登录，回到主页面</v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -75,6 +75,15 @@ export default {
   },
   data() {
     return {}
+  },methods:{
+    async logout() {
+      try {
+        await this.$store.dispatch('logout')
+      } catch (e) {
+        
+      }
+      this.$router.push('/')
+    }
   }
 }
 </script>
