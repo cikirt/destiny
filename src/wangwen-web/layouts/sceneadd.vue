@@ -12,24 +12,16 @@
      <v-card id="create" height="100%" style="overflow: hidden;">
     <nuxt/>
      <v-bottom-nav  :value="true" :active.sync="e2">
-      <v-btn dark @click="$router.push('/bookpages/sceneadd')">
-        <span>新增</span>
-        <v-icon>favorite</v-icon>
-      </v-btn>
-          <v-btn dark @click="$router.push('/home/books')">
-        <span>删除</span>
-        <v-icon>favorite</v-icon>
-      </v-btn>
-          <v-btn dark @click="$router.push('/home/books')">
+      <v-btn dark @click="$router.push('/bookpages/scene')">
         <span>保存</span>
         <v-icon>favorite</v-icon>
       </v-btn>
-      <v-btn dark @click="$router.push('/home/books')">
+      <v-btn dark @click="$router.push('/bookpages/scene')">
         <span>取消</span>
         <v-icon>favorite</v-icon>
       </v-btn>
     </v-bottom-nav>
-    <!-- <usercenter></usercenter> -->
+    <usercenter></usercenter>
      </v-card>
     </v-content>     
   </v-app>
