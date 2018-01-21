@@ -72,20 +72,24 @@
             </v-card-text>
 
             <v-flex xs8> <v-text-field name="input-1" label="自然因子关联描述"></v-text-field> </v-flex>
-            <v-card-text> 下面可以提供添加自然因子关联图，现在没找到添加图片compent </v-card-text>
+            <v-btn color="primary">添加关联图</v-btn>
+            <v-card color="grey lighten-1" class="mb-5" height="200px">
+              显示关联图片
+            </v-card>
           </v-card>
         </v-expansion-panel-content>
 
-
-
-
-
         <v-expansion-panel-content :key="i1">
           <div slot="header">社会环境</div>
-          <v-card>
-            <v-card-text class="grey lighten-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-            </v-card-text>
-          </v-card>
+          <v-flex xs8> <v-text-field name="input-1" label="经济体系描述" textarea></v-text-field> </v-flex>
+          <v-btn color="primary">经济关系图</v-btn>
+          <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
+          <v-flex xs8> <v-text-field name="input-1" label="政治体系描述" textarea></v-text-field> </v-flex>
+          <v-btn color="primary">政治关系图</v-btn>
+          <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
+          <v-flex xs8> <v-text-field name="input-1" label="文化体系描述" textarea></v-text-field> </v-flex>
+          <v-btn color="primary">文化关系图</v-btn>
+          <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
         </v-expansion-panel-content>
       </v-expansion-panel>
 
