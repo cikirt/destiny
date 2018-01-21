@@ -67,7 +67,25 @@
                 <v-icon>more_vert</v-icon>
               </v-btn>
             </v-card-title>
-          <v-card-text>人物素材 该场景下出场人物特征、外貌、性格等等。</v-card-text>
+          <v-card-text>
+
+                <v-expansion-panel>
+          <v-expansion-panel-content :key="i">
+            <div slot="header">关羽</div>
+            <v-flex xs8> <v-text-field name="input-1" label="人物基本信息"></v-text-field></v-flex>
+            <v-flex xs8> <v-text-field name="input-1" label="人物生命周期"></v-text-field> </v-flex>
+            <v-flex xs8> <v-text-field name="input-1" label="人物前因后果"></v-text-field> </v-flex>
+            <v-flex xs8> <v-text-field name="input-1" label="人物故事设定" textarea></v-text-field> </v-flex>
+          </v-expansion-panel-content>
+          <v-expansion-panel-content :key="i1">
+            <div slot="header">赵云</div>
+            <v-flex xs8> <v-text-field name="input-1" label="人物基本信息"></v-text-field> </v-flex>
+            <v-flex xs8> <v-text-field name="input-1" label="人物生命周期"></v-text-field> </v-flex>
+            <v-flex xs8> <v-text-field name="input-1" label="人物前因后果"></v-text-field> </v-flex>
+            <v-flex xs8> <v-text-field name="input-1" label="人物故事设定" textarea></v-text-field> </v-flex>
+          </v-expansion-panel-content>
+      </v-expansion-panel>
+          </v-card-text>
         </v-card>
       </v-tabs-content>
             <v-tabs-content
