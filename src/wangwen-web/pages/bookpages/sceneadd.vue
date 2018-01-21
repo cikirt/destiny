@@ -110,7 +110,22 @@
 
     <v-stepper-step step="4">人物概述</v-stepper-step>
     <v-stepper-content step="4">
-      <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
+      <v-expansion-panel>
+          <v-expansion-panel-content :key="i">
+            <div slot="header">关羽</div>
+            <v-flex xs8> <v-text-field name="input-1" label="人物基本信息"></v-text-field></v-flex>
+            <v-flex xs8> <v-text-field name="input-1" label="人物生命周期"></v-text-field> </v-flex>
+            <v-flex xs8> <v-text-field name="input-1" label="人物前因后果"></v-text-field> </v-flex>
+            <v-flex xs8> <v-text-field name="input-1" label="人物故事设定" textarea></v-text-field> </v-flex>
+          </v-expansion-panel-content>
+          <v-expansion-panel-content :key="i1">
+            <div slot="header">赵云</div>
+            <v-flex xs8> <v-text-field name="input-1" label="人物基本信息"></v-text-field> </v-flex>
+            <v-flex xs8> <v-text-field name="input-1" label="人物生命周期"></v-text-field> </v-flex>
+            <v-flex xs8> <v-text-field name="input-1" label="人物前因后果"></v-text-field> </v-flex>
+            <v-flex xs8> <v-text-field name="input-1" label="人物故事设定" textarea></v-text-field> </v-flex>
+          </v-expansion-panel-content>
+      </v-expansion-panel>
       <v-btn color="primary" @click.native="e6 = 3">Previous</v-btn>
       <v-btn color="primary" @click.native="e6 = 1">Continue</v-btn>
       <v-btn flat>Cancel</v-btn>
