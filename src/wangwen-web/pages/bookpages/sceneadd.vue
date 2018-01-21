@@ -100,7 +100,9 @@
 
     <v-stepper-step step="3" v-bind:complete="e6 > 3">故事概述</v-stepper-step>
     <v-stepper-content step="3">
-      <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
+      <v-flex xs8> <v-text-field name="input-1" label="故事来源"></v-text-field> </v-flex>
+      <v-flex xs8> <v-text-field name="input-1" label="其他参考"></v-text-field> </v-flex>
+      <v-flex xs8> <v-text-field name="input-1" label="故事简要概述" textarea></v-text-field> </v-flex>
       <v-btn color="primary" @click.native="e6 = 2">Previous</v-btn>
       <v-btn color="primary" @click.native="e6 = 4">Continue</v-btn>
       <v-btn flat>Cancel</v-btn>
