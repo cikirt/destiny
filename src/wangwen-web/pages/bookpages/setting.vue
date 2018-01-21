@@ -80,8 +80,7 @@ export default {
     test() {}
   },
   data() {
-    return {
-    }
+    return {}
   }
 }
 </script>
