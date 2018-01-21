@@ -40,7 +40,7 @@
               </v-list-tile-content>
              
               <v-list-tile-action style="min-width:30px">
-                <v-icon middle color="light-blue darken-1">add_circle</v-icon>
+                <v-icon middle color="light-blue darken-1"  @click="$router.push('/bookpages/scenesetting')">add_circle</v-icon>
                 <v-icon middle color="light-blue darken-1">reply</v-icon>
               </v-list-tile-action>
 
