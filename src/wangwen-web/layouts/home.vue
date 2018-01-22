@@ -12,11 +12,6 @@
      <v-card id="create" height="100%" style="padding-bottom:50px;overflow: hidden;">
     <nuxt/>
     <v-bottom-nav   :value="true" :active.sync="e2" :color="computedColor">
-      <v-btn dark  @click="$router.push('/home/message')">
-        <span>消息</span>
-        <v-icon>book</v-icon>
-      </v-btn>
-  
       <v-btn dark  @click="$router.push('/home/books')">
         <span>灵感●素材</span>
         <v-icon>home</v-icon>
@@ -24,6 +19,10 @@
       <v-btn dark @click="$router.push('/home/chapter')">
         <span>畅想●文字</span>
         <v-icon>home</v-icon>
+      </v-btn>
+      <v-btn dark  @click="$router.push('/home/message')">
+        <span>消息</span>
+        <v-icon>book</v-icon>
       </v-btn>
       <v-btn dark  @click="$router.push('/home/me')">
         <span>自己</span>

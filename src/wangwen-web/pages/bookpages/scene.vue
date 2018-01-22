@@ -17,7 +17,7 @@
           <v-icon middle color="red darken-1"  @click="$router.push('/bookpages/scenesetting')" >add_circle</v-icon>
           <v-icon middle color="red darken-1" >remove_circle</v-icon>  
       </v-list-tile-action>
-      <v-list-tile-content>
+      <v-list-tile-content  @click="$router.push('/bookpages/scenesetting')">
         <v-list-tile-title >
           <b>
             场景 {{ item.vseq + "&nbsp;&nbsp;" + item.title }} 
@@ -40,7 +40,6 @@
       </v-list-tile-content>
              
       <v-list-tile-action style="min-width:30px">
-        <v-icon middle color="light-blue darken-1">border_color</v-icon>
         <v-icon middle color="light-blue darken-1">reply</v-icon>
       </v-list-tile-action>
               
