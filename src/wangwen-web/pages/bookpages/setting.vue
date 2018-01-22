@@ -1,6 +1,25 @@
 <template>
 <div>
-      <v-card color="grey lighten-4" flat>
+      <v-toolbar dark color="primary">
+    <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
+       <v-btn icon @click="$router.push('/home/books')">
+      <v-icon>chevron_left</v-icon>
+    </v-btn>
+    <v-toolbar-title class="white--text">作品信息</v-toolbar-title>
+    <v-spacer></v-spacer>
+ 
+    <!-- <v-btn icon>
+      <v-icon>apps</v-icon>
+    </v-btn>
+    <v-btn icon>
+      <v-icon>refresh</v-icon>
+    </v-btn> -->
+    <v-btn icon>
+      <v-icon>more_vert</v-icon>
+    </v-btn>
+  </v-toolbar>
+  <v-content>
+      <v-card color="grey lighten-4" >
     <v-card-text style="padding-bottom:50px;">
       <!-- <v-container fluid> -->
         <v-layout row>
@@ -70,12 +89,13 @@
       <!-- </v-container> -->
     </v-card-text>
   </v-card>
+  </v-content>
 </div>
 </template>
 <script>
 export default {
   middleware: 'auth',
-  layout: 'booksetting',
+  layout: 'home',
   methods: {
     test() {}
   },
