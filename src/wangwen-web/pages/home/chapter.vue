@@ -3,26 +3,41 @@
     <v-container fluid v-bind="{ [`grid-list-xs`]: true }">
       <v-layout row wrap>
           <v-flex xs12 md3 v-for="n in 2" :key="n">
-             <v-card flat tile>
-            <v-card-media
-             height="150px">
-                <!-- <v-container light-green lighten-4 fill-height fluid> -->
+             <v-card color="purple" class="white--text">
+            <v-container fluid grid-list-lg>
+              <v-layout row>
+                <v-flex xs7>
+                  <div>
+                    <div class="h2">《多情剑客无情剑》</div>
+                    <span>累计字数：10万字</span><br/>
+                    <span>XXXXXX </span><br/>
+                    <span>XXXXX </span><br/>
+                     <span>XXXXX </span>
+                      <span>XXXXX </span>
+                               <v-card-actions>
+          <v-btn flat color="orange" @click="$router.push('/chapterpages/edit')">新增章节</v-btn>
+          <v-btn flat color="orange" @click="$router.push('/chapterpages/list')">章节列表</v-btn>
+        </v-card-actions>
+          
+                  </div>
+                </v-flex>
+                <v-flex xs5>
+                    <v-card-media
+                      src="/boook.png"
+                      height="150px"
+                      contain
+                    ></v-card-media>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card>
 
-              <v-flex light-green lighten-4 md12  flexbox>
-                <span class="headline">《红楼梦》</span><br/>
-                <span class="h6">在这写每个章节的文字。可以实时看到章节对应场景所准备的素材，
-                  灵感，可以对素材标记为已使用或者废弃</span>
-              </v-flex>
- 
-          <!-- </v-container> -->
-            </v-card-media>
-             <v-card-title >
-        <v-list two-line subheader>
+           <v-list two-line subheader>
           <!-- <v-divider inset></v-divider> -->
-          <v-subheader inset>最近修改的章节</v-subheader>
+          <v-subheader inset>最近修改章节</v-subheader>
           <v-list-tile v-for="item in items2" v-bind:key="item.title" avatar >
-             <v-list-tile-action>
-              <v-icon v-if="item.selected" color="pink">star</v-icon>
+             <v-list-tile-action v-if="item.selected">
+              <v-icon  color="pink">star</v-icon>
             </v-list-tile-action>
             <!-- <v-list-tile-avatar>
               <v-icon v-bind:class="[item.iconClass]">{{ item.icon }}</v-icon>
@@ -38,12 +53,6 @@
             </v-list-tile-action>
           </v-list-tile>
         </v-list>
-        </v-card-title>
-            <v-card-actions>
-          <v-btn flat color="orange" @click="$router.push('/chapterpages/edit')">新增章节</v-btn>
-          <v-btn flat color="orange" >删除章节</v-btn>
-        </v-card-actions>
-          </v-card>
    
         </v-flex >
       </v-layout>
@@ -59,8 +68,7 @@ export default {
   data() {
     return {
         items2: [
-          { selected:true,icon: 'assignment', iconClass: 'blue white--text', title: '第一章 怎么怎么怎么', subtitle: '少时诵诗书  2018-01-02' },
-          { icon: 'call_to_action', iconClass: 'amber white--text', title: '第二章 巴拉巴拉吧', subtitle: '少时诵诗书  2018-01-02' },
+          { icon: 'assignment', iconClass: 'blue white--text', title: '第一章 怎么怎么怎么', subtitle: '少时诵诗书  2018-01-02' },
           { icon: 'call_to_action', iconClass: 'amber white--text', title: '第二章 巴拉巴拉吧', subtitle: '少时诵诗书  2018-01-02' },
           { icon: 'call_to_action', iconClass: 'amber white--text', title: '第二章 巴拉巴拉吧', subtitle: '少时诵诗书  2018-01-02' }
           
