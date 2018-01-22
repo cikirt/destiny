@@ -1,60 +1,54 @@
 <template>
-<div class="red accent-1">
-    
-        <v-list two-line>
-          <template v-for="(item, index) in items">
-            <v-list-tile
-              avatar
-              ripple
-              @click="toggle(index)"
-              :key="item.title"
-            >
-              <v-list-tile-content>
-                <v-list-tile-title>
-               
-   {{ item.title }} 
+<div class="red">
 
-                  
-                 
-                 
-                   </v-list-tile-title>
-                <v-list-tile-sub-title class="grey--text text--darken-4">{{ item.headline }}</v-list-tile-sub-title>
-                <v-list-tile-sub-title> 
-            
-             <v-layout row justify-space-between>
-      <v-flex xs5>
-        <v-icon left small color="accent lighten-4">library_books</v-icon>{{item.date}}
-      </v-flex>
-      <v-flex xs3>
-        <v-icon left small color="blue lighten-3">folder_shared</v-icon>{{item.human}}
-      </v-flex>
-      <v-flex xs3>
-        <v-icon left  small color="indigo lighten-3">place</v-icon>{{item.place}}
-      </v-flex>
-    </v-layout>
+ <v-toolbar color="cyan" dark fixed app>
+      <v-spacer></v-spacer>
+      <v-toolbar-title align="center">场景列表</v-toolbar-title>
+      <v-icon middle color="light-blue darken-1"  @click="$router.push('/bookpages/scenesetting')">add</v-icon>
+    </v-toolbar>
 
-    
-    
-                 
-                 </v-list-tile-sub-title>
-              </v-list-tile-content>
+<v-list two-line>
+  <template v-for="(item, index) in items">
+    <v-list-tile
+      avatar
+      ripple
+      @click="toggle(index)"
+      :key="item.title"
+    >
+      <v-list-tile-content>
+        <v-list-tile-title>
+          {{ item.title }} 
+        </v-list-tile-title>
+            <v-list-tile-sub-title class="grey--text text--darken-4">{{ item.headline }}</v-list-tile-sub-title>
+              <v-list-tile-sub-title> 
+                <v-layout row justify-space-between>
+                  <v-flex xs5>
+                    <v-icon left small color="accent lighten-4">library_books</v-icon>{{item.date}}
+                  </v-flex>
+                  <v-flex xs3>
+                    <v-icon left small color="blue lighten-3">folder_shared</v-icon>{{item.human}}
+                  </v-flex>
+                  <v-flex xs3>
+                    <v-icon left  small color="indigo lighten-3">place</v-icon>{{item.place}}
+                  </v-flex>
+                </v-layout>
+              </v-list-tile-sub-title>
+      </v-list-tile-content>
              
-              <v-list-tile-action style="min-width:30px">
-                <v-icon middle color="light-blue darken-1"  @click="$router.push('/bookpages/scenesetting')">add_circle</v-icon>
-                <v-icon middle color="light-blue darken-1">reply</v-icon>
-              </v-list-tile-action>
+      <v-list-tile-action style="min-width:30px">
+        <v-icon middle color="light-blue darken-1">reply</v-icon>
+      </v-list-tile-action>
 
-              <v-list-tile-action style="min-width:30px">
-                <v-icon middle color="light-blue darken-1">border_color</v-icon>
-                <v-icon middle color="light-blue darken-1">remove_circle</v-icon>  
-              </v-list-tile-action>
+      <v-list-tile-action style="min-width:30px">
+          <v-icon middle color="light-blue darken-1">border_color</v-icon>
+          <v-icon middle color="light-blue darken-1">remove_circle</v-icon>  
+      </v-list-tile-action>
               
            
-            </v-list-tile>
-            <v-divider v-if="index + 1 < items.length" :key="item.title"></v-divider>
-          </template>
-        </v-list>
-    
+    </v-list-tile>
+    <v-divider v-if="index + 1 < items.length" :key="item.title"></v-divider>
+  </template>
+</v-list>   
 </div>
 </template>
 
