@@ -1,11 +1,23 @@
 <template>
 <div>
-  <v-icon>anchor</v-icon>
- <v-toolbar color="cyan" dark fixed app>
-      <v-spacer><p>场景列表</p></v-spacer>
-      <v-icon middle color="light-blue darken-1" @click="disFlag = !disFlag">settings</v-icon>
-    </v-toolbar>
-
+     <v-toolbar class="cyan darken-3" dark color="primary">
+    <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
+       <v-btn icon @click="$router.push('/home/books')">
+      <v-icon>chevron_left</v-icon>
+    </v-btn>
+    <v-toolbar-title class="white--text">场景列表</v-toolbar-title>
+    <v-spacer></v-spacer>
+ 
+    <!-- <v-btn icon>
+      <v-icon>apps</v-icon>
+    </v-btn>
+    <v-btn icon>
+      <v-icon>refresh</v-icon>
+    </v-btn> -->
+    <v-btn  @click="disFlag = !disFlag" icon>
+       <v-icon >settings</v-icon>
+    </v-btn>
+  </v-toolbar>
 <v-list two-line>
   <template v-for="(item, index) in items">
     <v-list-tile

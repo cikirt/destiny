@@ -1,5 +1,23 @@
 <template>
   <div>
+     <v-toolbar class="cyan darken-3" dark >
+    <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
+       <v-btn icon @click="$router.push('/bookpages/scene')">
+      <v-icon>chevron_left</v-icon>
+    </v-btn>
+    <v-toolbar-title class="white--text">灵感素材</v-toolbar-title>
+    <v-spacer></v-spacer>
+ 
+    <!-- <v-btn icon>
+      <v-icon>apps</v-icon>
+    </v-btn>
+    <v-btn icon>
+      <v-icon>refresh</v-icon>
+    </v-btn> -->
+    <v-btn icon>
+      <v-icon>more_vert</v-icon>
+    </v-btn>
+  </v-toolbar>
      <v-tabs fixed icons centered grow v-model="tabs">
     <v-tabs-bar dark color="cyan">
       <v-tabs-slider color="yellow"></v-tabs-slider>
@@ -26,19 +44,7 @@
         id='tab-1'
       >
         <v-card flat>
-       
-           <v-card-title style="padding:5px;" class="light-green lighten-3">
-              <v-btn dark icon>
-                <v-icon>chevron_left</v-icon>
-              </v-btn>
-              <v-spacer></v-spacer>
-              <v-btn dark icon class="mr-3">
-                <v-icon>done</v-icon>
-              </v-btn>
-              <v-btn dark icon>
-                <v-icon>more_vert</v-icon>
-              </v-btn>
-            </v-card-title>
+      
           <v-card-text>
                   <v-flex xs8> <v-text-field name="input-1" label="故事标题"></v-text-field> </v-flex>
       <v-flex xs8> <v-text-field name="input-1" label="发生位置"></v-text-field> </v-flex>
@@ -51,18 +57,7 @@
         id='tab-2'
       >
         <v-card flat>
-               <v-card-title style="padding:5px;" class="light-green lighten-3">
-              <v-btn dark icon>
-                <v-icon>chevron_left</v-icon>
-              </v-btn>
-              <v-spacer></v-spacer>
-              <v-btn dark icon class="mr-3">
-                <v-icon>done</v-icon>
-              </v-btn>
-              <v-btn dark icon>
-                <v-icon>more_vert</v-icon>
-              </v-btn>
-            </v-card-title>
+     
           <v-card-text>
 
                 <v-expansion-panel>
@@ -89,18 +84,7 @@
         id='tab-3'
       >
         <v-card flat>
-               <v-card-title style="padding:5px;" class="light-green lighten-3">
-              <v-btn dark icon>
-                <v-icon>chevron_left</v-icon>
-              </v-btn>
-              <v-spacer></v-spacer>
-              <v-btn dark icon class="mr-3">
-                <v-icon>done</v-icon>
-              </v-btn>
-              <v-btn dark icon>
-                <v-icon>more_vert</v-icon>
-              </v-btn>
-            </v-card-title>
+      
           <v-card-text>
              <v-expansion-panel>
         <v-expansion-panel-content :key="i">
@@ -189,18 +173,7 @@
         id='tab-4'
       >
         <v-card flat>
-               <v-card-title style="padding:5px;" class="light-green lighten-3">
-              <v-btn dark icon>
-                <v-icon>chevron_left</v-icon>
-              </v-btn>
-              <v-spacer></v-spacer>
-              <v-btn dark icon class="mr-3">
-                <v-icon>done</v-icon>
-              </v-btn>
-              <v-btn dark icon>
-                <v-icon>more_vert</v-icon>
-              </v-btn>
-            </v-card-title>
+   
           <v-card-text>其它素材 段子，包袱啥都行自己设定。</v-card-text>
         </v-card>
       </v-tabs-content>

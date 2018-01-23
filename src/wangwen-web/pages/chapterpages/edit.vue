@@ -1,6 +1,6 @@
 <template>
 <div>
-      <v-toolbar dark color="primary">
+      <v-toolbar class="cyan darken-3" dark color="primary">
     <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
        <v-btn icon @click="$router.push('/chapterpages/list')">
       <v-icon>chevron_left</v-icon>
