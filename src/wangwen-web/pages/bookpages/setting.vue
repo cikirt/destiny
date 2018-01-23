@@ -31,7 +31,7 @@
             </div>
             <div class="album">
               <label for="img-upload">上传照片</label>
-              <imageHtml5Upload :img-arr.sync="imgList"></imageHtml5Upload>
+              <imageHtml5Upload @loadok="imgListTmp=>{imgList = imgListTmp }"></imageHtml5Upload>
             </div>
           </div>
           <v-layout row>

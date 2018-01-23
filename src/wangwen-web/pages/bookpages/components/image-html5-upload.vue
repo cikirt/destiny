@@ -1,7 +1,7 @@
 <template>
     <div>
         <input type="file" style="display: none;" id="img-upload" 
-        capture="camera"  accept="image/*" @change="uploadImg($event)"/>
+        multiple accept="image/*" @change="uploadImg($event)"/>
     </div>
 </template>
 <script>
@@ -9,15 +9,15 @@ import EXIF from 'exif-js'
 export default {
   name: 'image-html5-upload',
   props: {
-    imgArr: {
-      type: Array,
-      twoWay: true,
-      default: Array
-    },
     imgNumLimit: {
       //一次最多可以上传多少张照片
       type: Number,
-      default: 4
+      default: 1
+    }
+  },
+  data(){
+    return {
+      imgArr:[]
     }
   },
   methods: {
@@ -32,6 +32,7 @@ export default {
         return
       }
       var Orientation
+      //暂时只支持选择一个图片，需要多图片支持时加入promise 控制
       for (let i = 0; i < imgNum; i++) {
         EXIF.getData(fileList[i], function() {
           Orientation = EXIF.getTag(fileList[i], 'Orientation')
@@ -48,16 +49,16 @@ export default {
               var expectHeight = this.naturalHeight
               if (
                 this.naturalWidth > this.naturalHeight &&
-                this.naturalWidth > 800
+                this.naturalWidth > 200
               ) {
-                expectWidth = 800
+                expectWidth = 200
                 expectHeight =
                   expectWidth * this.naturalHeight / this.naturalWidth
               } else if (
                 this.naturalHeight > this.naturalWidth &&
-                this.naturalHeight > 1200
+                this.naturalHeight > 600
               ) {
-                expectHeight = 1200
+                expectHeight = 600
                 expectWidth =
                   expectHeight * this.naturalWidth / this.naturalHeight
               }
@@ -90,6 +91,7 @@ export default {
               }
               console.log(JSON.stringify(_this.imgArr))
             }
+            _this.$emit("loadok",_this.imgArr)
           }
           oReader.readAsDataURL(fileList[i])
         }
