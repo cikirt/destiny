@@ -11,15 +11,11 @@
         <v-icon>favorite</v-icon>
         人物素材
       </v-tabs-item>
-      <v-tabs-item href="#tab-3">
-        <v-icon>account_box</v-icon>
-        故事素材
-      </v-tabs-item>
-         <v-tabs-item href="#tab-4">
+         <v-tabs-item href="#tab-3">
         <v-icon>account_box</v-icon>
         环境素材
       </v-tabs-item>
-           <v-tabs-item href="#tab-5">
+           <v-tabs-item href="#tab-4">
         <v-icon>account_box</v-icon>
         其它素材
       </v-tabs-item>
@@ -44,9 +40,9 @@
               </v-btn>
             </v-card-title>
           <v-card-text>
-                  <v-flex xs8> <v-text-field name="input-1" label="场景名称"></v-text-field> </v-flex>
-      <v-flex xs8> <v-text-field name="input-1" label="场景位置"></v-text-field> </v-flex>
-      <v-flex xs8> <v-text-field name="input-1" label="场景描述"></v-text-field> </v-flex>
+                  <v-flex xs8> <v-text-field name="input-1" label="故事标题"></v-text-field> </v-flex>
+      <v-flex xs8> <v-text-field name="input-1" label="发生位置"></v-text-field> </v-flex>
+      <v-flex xs8> <v-text-field name="input-1" label="故事简述"></v-text-field> </v-flex>
           </v-card-text>
         </v-card>
       </v-tabs-content>
@@ -88,35 +84,9 @@
           </v-card-text>
         </v-card>
       </v-tabs-content>
-            <v-tabs-content
+                  <v-tabs-content
         key=3
         id='tab-3'
-      >
-        <v-card flat>
-               <v-card-title style="padding:5px;" class="light-green lighten-3">
-              <v-btn dark icon>
-                <v-icon>chevron_left</v-icon>
-              </v-btn>
-              <v-spacer></v-spacer>
-              <v-btn dark icon class="mr-3">
-                <v-icon>done</v-icon>
-              </v-btn>
-              <v-btn dark icon>
-                <v-icon>more_vert</v-icon>
-              </v-btn>
-            </v-card-title>
-          <v-card-text>     <v-flex xs8> <v-text-field name="input-1" label="故事来源"></v-text-field> </v-flex>
-      <v-flex xs8> <v-text-field name="input-1" label="其他参考"></v-text-field> </v-flex>
-      <v-flex xs8> <v-text-field name="input-1" label="故事简要概述" textarea></v-text-field> </v-flex>
-      <v-btn color="primary" @click.native="e6 = 2">Previous</v-btn>
-      <v-btn color="primary" @click.native="e6 = 4">Continue</v-btn>
-      <v-btn flat>Cancel</v-btn>
-      </v-card-text>
-        </v-card>
-      </v-tabs-content>
-                  <v-tabs-content
-        key=4
-        id='tab-4'
       >
         <v-card flat>
                <v-card-title style="padding:5px;" class="light-green lighten-3">
@@ -215,8 +185,8 @@
         </v-card>
       </v-tabs-content>
               <v-tabs-content
-        key=5
-        id='tab-5'
+        key=4
+        id='tab-4'
       >
         <v-card flat>
                <v-card-title style="padding:5px;" class="light-green lighten-3">
@@ -231,7 +201,7 @@
                 <v-icon>more_vert</v-icon>
               </v-btn>
             </v-card-title>
-          <v-card-text>其它素材 该场景下出场人物特征、外貌、性格等等。</v-card-text>
+          <v-card-text>其它素材 段子，包袱啥都行自己设定。</v-card-text>
         </v-card>
       </v-tabs-content>
     </v-tabs-items>
