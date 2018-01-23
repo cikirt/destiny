@@ -12,7 +12,7 @@ module.exports = {
     ]
   },
   build: {
-    vendor: ['axios']
+    vendor: ['axios','exif-js']
   },
   router: {
     extendRoutes (routes) {

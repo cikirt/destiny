@@ -247,6 +247,7 @@
 </template>
 <script>
 export default {
+  components:{imagupload},
   middleware: 'auth',
   layout: 'home',
   methods: {
