@@ -1,5 +1,6 @@
 <template>
-<div class="red">
+<div>
+  <v-icon>anchor</v-icon>
  <v-toolbar color="cyan" dark fixed app>
       <v-spacer><p>场景列表</p></v-spacer>
       <v-icon middle color="light-blue darken-1" @click="disFlag = !disFlag">settings</v-icon>

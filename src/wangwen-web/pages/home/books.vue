@@ -3,14 +3,14 @@
     <v-container fluid v-bind="{ [`grid-list-${size}`]: true }">
       <v-layout row wrap>
         <v-flex xs12 md4 v-for="n in 3" :key="n">
-           <v-card color="purple" class="white--text">
+           <v-card color="grey lighten-4" class="black--text">
             <v-container fluid grid-list-lg>
               <v-layout row>
                 <v-flex xs7>
                   <div>
-                    <div class="h2">《多情剑客无情剑》</div>
+                    <div class="h2"><b>《多情剑客无情剑》</b></div>
                     <span style="height:125px;display:block;overflow: hidden;text-overflow: ellipsis;">
-                      古龙小说代表作之一不仅是一部阐明武学真谛的作品，还是一部写尽人间世态炎凉的人情历史画，
+                        古龙小说代表作之一不仅是一部阐明武学真谛的作品，还是一部写尽人间世态炎凉的人情历史画，
                       更是一部触动社会现实，探索人生哲理的警世名著。</span>
                     <v-divider dark ></v-divider>
                     <v-card-actions>
@@ -22,13 +22,13 @@
                 </v-flex>
                 <v-flex xs5>
                     <v-card-media
-                      src="/boook.png"
+                      src="/timg2.jpg"
                       height="150px"
                       contain
                     ></v-card-media>
                 </v-flex>
               </v-layout>
-               <v-list dark two-line subheader>
+               <v-list grey lighten-1 two-line subheader>
           <!-- <v-divider inset></v-divider> -->
           <v-subheader >总字数：10万 总章节数:10章<br/>最近修改时间 2018-01-02 11:11:11</v-subheader>
           <v-list-tile v-for="item in items2" v-bind:key="item.title" avatar >
@@ -85,10 +85,14 @@ export default {
           value: 'xl'
         }
       ],
-              items2: [
-          { icon: 'assignment', iconClass: 'blue white--text', title: '第三章 怎么怎么怎么', subtitle: '字数 100字' }
-          
-        ]
+      items2: [
+        {
+          icon: 'assignment',
+          iconClass: 'blue white--text',
+          title: '第三章 怎么怎么怎么',
+          subtitle: '字数 100字'
+        }
+      ]
     }
   }
 }
