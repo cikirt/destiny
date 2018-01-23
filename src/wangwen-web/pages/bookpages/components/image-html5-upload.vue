@@ -1,7 +1,7 @@
 <template>
     <div>
         <input type="file" style="display: none;" id="img-upload" 
-        capture="camera" multiple accept="image/*" @change="uploadImg($event)"/>
+        capture="camera"  accept="image/*" @change="uploadImg($event)"/>
     </div>
 </template>
 <script>
