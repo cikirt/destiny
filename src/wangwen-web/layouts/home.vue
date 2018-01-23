@@ -13,11 +13,11 @@
     <nuxt/>
     <v-bottom-nav   :value="true" :active.sync="e2" :color="computedColor">
       <v-btn dark  @click="$router.push('/home/books')">
-        <span>灵感●素材</span>
+        <span>作品管理</span>
         <v-icon>home</v-icon>
       </v-btn>
-      <v-btn dark @click="$router.push('/home/chapter')">
-        <span>畅想●文字</span>
+      <v-btn dark @click="$router.push('/home/publicbooks')">
+        <span>公共作品</span>
         <v-icon>home</v-icon>
       </v-btn>
       <v-btn dark  @click="$router.push('/home/message')">

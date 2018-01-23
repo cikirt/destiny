@@ -2,7 +2,7 @@
 <div>
         <v-toolbar dark color="primary">
     <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
-       <v-btn icon @click="$router.push('/home/chapter')">
+       <v-btn icon @click="$router.push('/home/books')">
       <v-icon>chevron_left</v-icon>
     </v-btn>
     <v-toolbar-title class="white--text">章节列表 《多情剑客无情剑》</v-toolbar-title>

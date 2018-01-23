@@ -51,7 +51,7 @@
                   欢迎您， {{ $store.state.authUser.username }}!
                   <button @click="logout">注销</button>
                   <p>
-                    <nuxt-link to="/home/message">开始创作</nuxt-link>
+                    <nuxt-link to="/home/books">开始创作</nuxt-link>
                   </p>
                 </div>
                 </v-card-text>
@@ -94,7 +94,7 @@ export default {
         this.formUsername = ''
         this.formPassword = ''
         this.formError = null
-        self.$router.push('/home/message')
+        self.$router.push('/home/books')
       } catch (e) {
         this.formError = e.message
       }
