@@ -7,7 +7,7 @@ import { Text, Button, Icon, Card } from 'react-native-elements';
 import colors from 'HSColors';
 import socialColors from 'HSSocialColors';
 import fonts from 'HSFonts';
-import { Tree } from "./charts/Tree";
+import  Tree  from "./charts/Tree";
 
 class IconsDetail extends Component {
   ratingCompleted(rating) {
@@ -67,7 +67,7 @@ class IconsDetail extends Component {
     
     return (
       <View>
-      {/* <Tree data={data} options={options}  /> */}
+      <Tree data={data} options={options}  />
     </View>
       
     );
