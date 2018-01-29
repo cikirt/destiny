@@ -111,7 +111,7 @@ export default class LoginScreen2 extends Component {
         isConfirmationValid:
           password == passwordConfirmation || this.confirmationInput.shake()
       })
-    }, 1500)
+    }, 800)
   }
 
   render() {
