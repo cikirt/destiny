@@ -5,7 +5,10 @@ import { View, Text, StyleSheet } from 'react-native'
 import { StackNavigator } from 'react-navigation'
 
 import ListsHome from '../views/books_home'
-import MessageDetail from '../views/books_detail'
+import BooksDetail from '../views/books_detail'
+import BooksChapter from '../views/books_chapter'
+import BooksGlobal from '../views/books_global'
+import BooksScene from '../views/books_scene'
 
 const ListsTabView = ({ navigation }) => (
   <ListsHome banner="消息" navigation={navigation} />
@@ -24,11 +27,41 @@ const ListsTab = StackNavigator(
         title: '书本列表'
       })
     },
-    MessageDetail: {
-      screen: MessageDetail,
-      path: 'message_detail',
+    BooksDetail: {
+      screen: BooksDetail,
+      path: 'books_detail',
       navigationOptions: {
-        title: '消息详情',
+        title: '作品信息',
+        cardStack: {
+          gesturesEnabled: true
+        }
+      }
+    },
+    BooksChapter: {
+      screen: BooksChapter,
+      path: 'books_chapter',
+      navigationOptions: {
+        title: '章节编写',
+        cardStack: {
+          gesturesEnabled: true
+        }
+      }
+    },
+    BooksGlobal: {
+      screen: BooksGlobal,
+      path: 'books_global',
+      navigationOptions: {
+        title: '全局设定',
+        cardStack: {
+          gesturesEnabled: true
+        }
+      }
+    },
+    BooksScene: {
+      screen: BooksScene,
+      path: 'books_scene',
+      navigationOptions: {
+        title: '灵感素材',
         cardStack: {
           gesturesEnabled: true
         }

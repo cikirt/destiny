@@ -81,20 +81,21 @@ export default class LoginScreen2 extends Component {
     return re.test(email)
   }
 
-  async login() {
+  login() {
     let nava = this.props.navigation
     const { email, password } = this.state
     this.setState({ isLoading: true })
     // Simulate an API call
-    await setTimeout(() => {
-      // LayoutAnimation.easeInEaseOut()
-      // this.setState({
-      //   isLoading: false,
-      //   isEmailValid: this.validateEmail(email) || this.emailInput.shake(),
-      //   isPasswordValid: password.length >= 8 || this.passwordInput.shake()
-      // })
+     setTimeout(() => {
+      LayoutAnimation.easeInEaseOut()
+      this.setState({
+        isLoading: false,
+        isEmailValid: this.validateEmail(email) || this.emailInput.shake(),
+        isPasswordValid: password.length >= 8 || this.passwordInput.shake()
+      })
+      nava.navigate('Components')
     }, 1500)
-    nava.navigate('Components')
+   
   }
 
   signUp() {

@@ -18,7 +18,7 @@ class IconsDetail extends Component {
 
     return (
       <Card
-        title="detail"
+        title="chapter"
         containerStyle={{ marginTop: 15, marginBottom: 15 }}
       />
     );

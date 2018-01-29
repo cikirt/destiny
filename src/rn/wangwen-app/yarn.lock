@@ -4597,6 +4597,10 @@ path-type@^2.0.0:
   dependencies:
     pify "^2.0.0"
 
+paths-js@^0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/paths-js/-/paths-js-0.4.5.tgz#a030f8a0405ad1e30adcf560d2552bf3c2877921"
+
 pause@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/pause/-/pause-0.1.0.tgz#ebc8a4a8619ff0b8a81ac1513c3434ff469fdb74"
@@ -4948,6 +4952,14 @@ react-native-scripts@^1.11.0:
     qrcode-terminal "^0.11.0"
     rimraf "^2.6.1"
     xdl "48.0.2"
+
+react-native-svg@^6.0.1-rc.3:
+  version "6.0.1-rc.3"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-6.0.1-rc.3.tgz#9a54b6f70d350ee5f0169b3023ec6221254177fd"
+  dependencies:
+    color "^2.0.1"
+    lodash "^4.16.6"
+    pegjs "^0.10.0"
 
 "react-native-svg@https://github.com/expo/react-native-svg/archive/5.5.1-exp.1.tar.gz":
   version "5.5.1"
