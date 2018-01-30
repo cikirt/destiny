@@ -1,36 +1,54 @@
+import * as shape from 'd3-shape'
+import { Svg } from 'expo';
 import React from 'react'
-import {
-    View,
-    ART
-} from 'react-native'
+import {PieChart} from '../../svg-charts'
 
-const {Surface, Shape, Path} = ART;
 
-export default class DashLine extends React.Component{
+class PieChartWithLabelExample extends React.PureComponent {
 
-  constructor(props) {
-    super(props)
+    render() {
 
-    this.state = {
-      cloloo: "#000000"
-    }
+        const data = [ 50, 10, 40, 95, -4, -24, 85, 91 ]
 
-   
-  }
+        const randomColor = () => ('#' + (Math.random() * 0xFFFFFF << 0).toString(16) + '000000').slice(0, 7)
 
-    render(){
+        const pieData = data
+            .filter(value => value > 0)
+            .map((value, index) => ({
+                value,
+                color: randomColor(),
+                key: `pie-${index}`,
+            }))
 
-        const path = Path()
-            .moveTo(1,1)
-            .lineTo(300,200);
+        return (
+            <PieChart
+                style={ { height: 200 } }
+                data={ pieData }
+                innerRadius={ 20 }
+                outerRadius={ 55 }
+                labelRadius={ 80 }
+                renderDecorator={ ({ item, pieCentroid, labelCentroid, index }) => (
+                    <Svg.G key={ index }>
+                        <Svg.Line
+                            x1={ labelCentroid[ 0 ] }
+                            y1={ labelCentroid[ 1 ] }
+                            x2={ pieCentroid[ 0 ] }
+                            y2={ pieCentroid[ 1 ] }
+                            stroke={ item.color }
+                        />
+                        <Svg.Circle
+                            cx={ labelCentroid[ 0 ] }
+                            cy={ labelCentroid[ 1 ] }
+                            r={ 15 }
+                            fill={ item.color }
+                        />
+                    </Svg.G>
+                ) }
 
-        return(
-            <View style={this.props.style}>
-                <Surface width={300} height={600}>
-                    <Shape   onPress={ this.setState({ cloloo: "#245678" })}
-                      d={path} stroke={this.state.cloloo} strokeWidth={2} strokeDash={[10,5]}/>
-                </Surface>
-            </View>
+            />
         )
     }
+
 }
+
+export default PieChartWithLabelExample

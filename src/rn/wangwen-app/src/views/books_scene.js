@@ -7,8 +7,9 @@ import { Text, Button, Icon, Card } from 'react-native-elements';
 import colors from 'HSColors';
 import socialColors from 'HSSocialColors';
 import fonts from 'HSFonts';
-import  Tree  from "./charts/Tree";
-
+import  {PanExample} from "./charts/PanResponder";
+import GroupExample from  "./charts/Tree";
+import AppTest from  "../svg-charts/app";
 class IconsDetail extends Component {
   ratingCompleted(rating) {
     console.log('Rating is: ' + rating);
@@ -67,7 +68,7 @@ class IconsDetail extends Component {
     
     return (
       <View>
-      <Tree data={data} options={options}  />
+      <AppTest />
     </View>
       
     );
