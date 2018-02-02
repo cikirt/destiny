@@ -147,7 +147,23 @@ export default class LoginScreen2 extends Component {
                   </View>
                 </View>
                 <View style={{ flexDirection: 'row' }}>
+                <Button
+                    disabled={isLoading}
+                    clear
+                    activeOpacity={0.7}
+                    onPress={() => this.selectCategory(0)}
+                    textStyle={[styles.categoryText, isLoginPage && styles.selectedCategoryText]}
+                    text={'登 录'}
+                  />
                   <Button
+                    disabled={isLoading}
+                    clear
+                    activeOpacity={0.7}
+                    onPress={() => this.selectCategory(1)}
+                    textStyle={[styles.categoryText, isSignUpPage && styles.selectedCategoryText]}
+                    text={'注 册'}
+                  />
+                  {/* <Button
                     disabled={isLoading}
                     clear
                     activeOpacity={0.7}
@@ -168,7 +184,7 @@ export default class LoginScreen2 extends Component {
                       isSignUpPage && styles.selectedCategoryText
                     ]}
                     text={'注册'}
-                  />
+                  /> */}
                 </View>
                 <View style={styles.rowSelector}>
                   <TabSelector selected={isLoginPage} />
@@ -300,16 +316,16 @@ export default class LoginScreen2 extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   rowSelector: {
     height: 20,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   selectorContainer: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   selected: {
     position: 'absolute',
@@ -320,27 +336,27 @@ const styles = StyleSheet.create({
     borderRightWidth: 70,
     borderBottomWidth: 70,
     borderColor: 'white',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   loginContainer: {
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   loginTextButton: {
     fontSize: 16,
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   loginButton: {
     backgroundColor: 'rgba(232, 147, 142, 1)',
     borderRadius: 10,
     height: 50,
-    width: 200
+    width: 200,
   },
   titleContainer: {
     height: 150,
     backgroundColor: 'transparent',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   formContainer: {
     backgroundColor: 'white',
@@ -348,12 +364,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingTop: 32,
     paddingBottom: 32,
-    alignItems: 'center'
+    alignItems:'center',
   },
   loginText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: 'white'
+    color: 'white',
   },
   bgImage: {
     flex: 1,
@@ -362,32 +378,28 @@ const styles = StyleSheet.create({
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   categoryText: {
+    
     textAlign: 'center',
     color: 'white',
     fontSize: 24,
     fontFamily: 'light',
     backgroundColor: 'transparent',
-    opacity: 0.54
+    opacity: 0.54,
   },
   selectedCategoryText: {
-    opacity: 1
+    opacity: 1,
   },
   titleText: {
     color: 'white',
     fontSize: 30,
-    fontFamily: 'regular'
-  },
-  titleText2: {
-    color: 'white',
-    fontSize: 20,
-    fontFamily: 'regular'
+    fontFamily: 'regular',
   },
   helpContainer: {
     height: 64,
     alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+    justifyContent: 'center',
+  },
+});

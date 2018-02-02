@@ -9,18 +9,33 @@ import socialColors from 'HSSocialColors';
 import fonts from 'HSFonts';
 
 class IconsDetail extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+       
+    }
+    this.someFunction = this.someFunction.bind(this)
+  }
   ratingCompleted(rating) {
     console.log('Rating is: ' + rating);
   }
+  someFunction(){
 
+  }
   render() {
     const { navigation } = this.props;
 
     return (
       <Card
-        title="detail"
+        title="jj"
         containerStyle={{ marginTop: 15, marginBottom: 15 }}
-      />
+      >
+   
+      </Card>
+    
+
+
     );
   }
 }

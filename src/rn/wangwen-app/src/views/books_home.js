@@ -122,26 +122,36 @@ class Test extends React.PureComponent {
     return (
       <View
         style={{
+          paddingTop: SCREEN_HEIGHT*0.05,
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
           width: Dimensions.get('window').width,
-          height: '100%'
+          height: '90%'
         }}
       >
         <Card
+          width="80%"
           title={item + '《多情剑客无情剑》'}
-          image={require('../../assets//images/bg_screen1.jpg')}
+          // image={require('../../assets//images/bg_screen1.jpg')}
         >
-          <Text style={{ marginBottom: 10 }}>
-            The idea with React Native Elements is more about component
-            structure than actual design.
+
+          <Image
+            style={styles.bookImage}
+            resizeMode="cover"
+            defaultSource={require('../../assets//images/bg_screen1.jpg')}
+             source={require('../../assets//images/bg_screen1.jpg')}
+          />
+ 
+          <Text style={{ marginTop: 10 }}>
+            系统化创作。高效快捷的网文创作工具系统化创作。高效快捷的网文创作工具。
+            系统化创作。高效快捷的网文创作工具。
           </Text>
 
           <View style={{ flexDirection: 'row' }}>
           <Button
                     buttonStyle={styles.loginButton}
-                    containerStyle={{ marginTop: 32, flex: 4 }}
+                    containerStyle={{ marginTop: 10, flex: 6 }}
                     activeOpacity={0.8}
                     text='作品信息'
                     onPress={() =>this.props.navigation.navigate('BooksDetail')}
@@ -150,7 +160,7 @@ class Test extends React.PureComponent {
                   />
                    <Button
                     buttonStyle={styles.loginButton}
-                    containerStyle={{ marginTop: 32, flex: 4 }}
+                    containerStyle={{ marginTop: 10, flex: 6 }}
                     activeOpacity={0.8}
                     text='灵感素材'
                     onPress={() =>this.props.navigation.navigate('BooksScene')}
@@ -163,7 +173,7 @@ class Test extends React.PureComponent {
                 <View style={{ flexDirection: 'row' }}>
           <Button
                     buttonStyle={styles.loginButton}
-                    containerStyle={{ marginTop: 32, flex: 4 }}
+                    containerStyle={{ marginTop: 10, flex: 6 }}
                     activeOpacity={0.8}
                     text='全局设定'
                     onPress={() =>this.props.navigation.navigate('BooksGlobal')}
@@ -172,7 +182,7 @@ class Test extends React.PureComponent {
                   />
                    <Button
                     buttonStyle={styles.loginButton}
-                    containerStyle={{ marginTop: 32, flex: 4 }}
+                    containerStyle={{ marginTop: 10, flex: 6 }}
                     activeOpacity={0.8}
                     text='章节编写'
                     onPress={() =>this.props.navigation.navigate('BooksChapter')}
@@ -442,6 +452,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: 'white'
+  },
+  bookImage: {
+    justifyContent: 'center',
+                  alignItems: 'center' ,
+                  width: SCREEN_WIDTH*0.3,
+                  height: "40%",
+                  marginLeft: SCREEN_WIDTH*0.2
   },
   bgImage: {
     flex: 1,
