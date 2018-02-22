@@ -1,0 +1,140 @@
+<!--index.wxml-->
+<view style='height: 100%;width: 100%;'>
+  <!-- 书本类型选择 -->
+  <view class="page-body">
+    <view style='height: 50vh;' class="page-section page-section-spacing swiper">
+      <swiper previous-margin="0px" next-margin="90px" 
+      style='height: 100%;'
+      indicator-dots="{{indicatorDots}}" 
+      autoplay="{{autoplay}}" 
+      interval="{{interval}}" 
+      duration="{{duration}}"
+      circular
+      display-multiple-items
+      bindchange="bookChange">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item item-id="{{item}}">
+            <!-- <view class="swiper-item {{item}}"> -->
+            <view class="swiper-item {{item}}" style='height: 100%;background-color: gray;display:flex;flex-flow: nowrap;flex-direction:row;justify-content:center'>
+              <view style='margin-top:10px;height:80%;width:40vw;background-color: #666666'>
+                <text>{{"《红楼梦》"+index}}</text>
+              </view>
+            </view>
+            <!-- </view> -->
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view style='height: 10vh;' class="page-section page-section-spacing">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">
+            <navigator url="../../pages/chapterlist/chapterlist?param1=345" hover-class="navigator-hover">{{book}}全部章节(共1章/10000字)</navigator>
+          </view>
+          <!-- <view class="weui-cell__ft">
+            <icon type="success_no_circle" size="40" color="gray" />
+          </view> -->
+        </view>
+      </view>
+    </view>
+    <scroll-view scroll-y style='height: 40vh;' 
+    bindscrolltoupper="upper" bindscrolltolower="lower" 
+    bindscroll="scroll" 
+    scroll-into-view="{{toView}}" 
+    scroll-top="{{scrollTop}}">
+      <view id="green" class="scroll-view-item bc_green">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">第四章 ...
+          </view>
+          <view class="weui-cell__ft">
+            <icon type="success_no_circle" size="30" color="gray" />
+          </view>
+        </view>
+      </view>
+      <view id="green" class="scroll-view-item bc_green">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">
+            <navigator url="../../pages/chapteredit/chapteredit?param1=4" hover-class="navigator-hover">第四章</navigator>
+          </view>
+          <view class="weui-cell__ft">
+            <icon type="success_no_circle" size="30" color="gray" />
+          </view>
+        </view>
+      </view>
+      <view id="green" class="scroll-view-item bc_green">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">第四章 ...
+          </view>
+          <view class="weui-cell__ft">
+            <icon type="success_no_circle" size="30" color="gray" />
+          </view>
+        </view>
+      </view>
+      <view id="green" class="scroll-view-item bc_green">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">第四章 ...
+          </view>
+          <view class="weui-cell__ft">
+            <icon type="success_no_circle" size="30" color="gray" />
+          </view>
+        </view>
+      </view>
+      <view id="green" class="scroll-view-item bc_green">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">第四章 ...
+          </view>
+          <view class="weui-cell__ft">
+            <icon type="success_no_circle" size="30" color="gray" />
+          </view>
+        </view>
+      </view>
+      <view id="red" class="scroll-view-item bc_red">
+        <view class="weui-cell weui-cell_switch weui-cells_after-title">
+          <view class="weui-cell__bd">第三张....
+          </view>
+          <view class="weui-cell__ft">
+            <icon type="success_no_circle" size="30" color="gray" />
+          </view>
+        </view>
+      </view>
+      <view id="yellow" class="scroll-view-item bc_yellow">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">第二张 ...
+          </view>
+          <view class="weui-cell__ft">
+            <icon type="success_no_circle" size="30" color="gray" />
+          </view>
+        </view>
+      </view>
+      <view id="yellow" class="scroll-view-item bc_yellow">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">第二张 ...
+          </view>
+          <view class="weui-cell__ft">
+            <icon type="success_no_circle" size="30" color="gray" />
+          </view>
+        </view>
+      </view>
+      <view id="yellow" class="scroll-view-item bc_yellow">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">第二张 ...
+          </view>
+          <view class="weui-cell__ft">
+            <icon type="success_no_circle" size="30" color="gray" />
+          </view>
+        </view>
+      </view>
+      <view id="blue" class="scroll-view-item bc_blue">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">第一章 。。。。。。。。。。
+          </view>
+          <view class="weui-cell__ft">
+            <icon type="success_no_circle" size="30" color="gray" />
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+
+</view>
