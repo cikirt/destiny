@@ -23,7 +23,8 @@ Page({
     //   data: [{name:"红楼梦",id:1,desc:"描述1"},{name:"三国演义",id:2,desc:"描述2"}]
     // })
     try {
-      wx.setStorageSync("booklist", [{ name: "红楼梦", id: 1, desc: "描述1", class: 'demo-text-1' }, { name: "三国演义", id: 2, desc: "描述2", class: 'demo-text-2' }])
+      wx.setStorageSync("booklist", [{ name: "红楼梦", id: 1, desc: "描述1", class: 'book_color_1' },
+        { name: "三国演义", id: 2, desc: "描述2", class: 'book_color_2' }])
       wx.getStorage({
         key: "booklist",
         success: function (res) {

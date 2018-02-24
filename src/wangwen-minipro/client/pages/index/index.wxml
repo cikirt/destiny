@@ -6,88 +6,87 @@
       <swiper previous-margin="0px" next-margin="90px" style='height: 100%;' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" display-multiple-items bindchange="bookChange">
         <block wx:for="{{booklist}}" wx:key="*this">
           <swiper-item item-id="{{item.id}}">
-            <view class="swiper-item {{item.class}}" style='height: 100%;background-color: white;display:flex;flex-flow: nowrap;flex-direction:row;justify-content:center'>
-              <view bindtap='gotoBookEdit' style='margin-top:10px;height:80%;width:40vw;background-color: #666666'>
-                <view style='margin-top:80px;display:flex;flex-direction:row;justify-content:center;'>
+            <view class="swiper-item " style='height: 100%;background-color: white;display:flex;flex-flow: nowrap;flex-direction:row;justify-content:center'>
+              <view bindtap='gotoBookEdit' class='{{item.class}}' style='margin-top:10px;height:80%;width:40vw;'>
+                <view style='margin-top:50px;display:flex;flex-direction:row;justify-content:center;'>
                   <text>{{item.name}}</text>
+                </view>
+                  <view style='margin-top:20px;display:flex;flex-direction:row;justify-content:center;'>
+                  <text class='fa fa-cog fa-2x'></text>
                 </view>
               </view>
             </view>
             <!-- </view> -->
           </swiper-item>
         </block>
-              <swiper-item item-id="{{item}}">
-            <!-- <view class="swiper-item {{item}}"> -->
-            <view class="swiper-item {{item}}" style='height: 100%;background-color: white;display:flex;flex-flow: nowrap;flex-direction:row;justify-content:center'>
-              <view bindtap='gotoBookAdd' style='margin-top:10px;height:80%;width:40vw;background-color: #666666'>
-                <view style='margin-top:80px;display:flex;flex-direction:row;justify-content:center;'>
-                  <text>{{"点此新增作品"+index}}</text>
-                </view>
+        <swiper-item item-id="{{item}}">
+          <!-- <view class="swiper-item {{item}}"> -->
+          <view class="swiper-item {{item}}" style='height: 100%;background-color: white;display:flex;flex-flow: nowrap;flex-direction:row;justify-content:center'>
+            <view bindtap='gotoBookAdd' class='book_color_0' style='margin-top:10px;height:80%;width:40vw;'>
+              <view style='margin-top:70px;display:flex;flex-direction:row;justify-content:center;'>
+                <text class="fa fa-plus fa-3x"></text>
               </view>
             </view>
-            <!-- </view> -->
-          </swiper-item>
+          </view>
+          <!-- </view> -->
+        </swiper-item>
       </swiper>
     </view>
     <view style='height: 10vh;' class="page-section page-section-spacing">
       <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_switch">
-          <view  bindtap="gotoChapterList" class="weui-cell__bd">
-            {{book}}全部章节(共1章/10000字)
-          </view>
-          <!-- <view class="weui-cell__ft">
-            <icon type="success_no_circle" size="40" color="gray" />
-          </view> -->
-        </view>
+        <navigator url="../../pages/chapterlist/chapterlist?param1=345" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">全部章节(共1章/10000字)</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
       </view>
     </view>
     <scroll-view scroll-y style='height: 40vh;' bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
       <view id="first" class="weui-cell  scroll-view-item weui-cell_access" hover-class="weui-cell_active">
-        <view bindtap="gotoChapterEdit" class="weui-cell__bd" >
-         第六章 哦哦哦哦哦哦哦哦哦哦哦哦
+        <view bindtap="gotoChapterEdit" class="weui-cell__bd">
+          第六章 哦哦哦哦哦哦哦哦哦哦哦哦
         </view>
-        <view  bindtap="open" class="weui-cell__ft">
-          <icon type="success_no_circle" size="20" color="gray" />
-        </view>
-      </view>
-            <view id="first" class="weui-cell  scroll-view-item weui-cell_access" hover-class="weui-cell_active">
-        <view bindtap="gotoChapterEdit" class="weui-cell__bd" >
-         第五章 的点点滴滴多多多
-        </view>
-        <view  bindtap="open" class="weui-cell__ft">
-          <icon type="success_no_circle" size="20" color="gray" />
+        <view bindtap="open" class="weui-cell__ft">
+          <text class='fa fa-ellipsis-v'></text>
         </view>
       </view>
-            <view id="first" class="weui-cell  scroll-view-item weui-cell_access" hover-class="weui-cell_active">
-        <view  bindtap="gotoChapterEdit" class="weui-cell__bd" >
-         第四章
+      <view id="first" class="weui-cell  scroll-view-item weui-cell_access" hover-class="weui-cell_active">
+        <view bindtap="gotoChapterEdit" class="weui-cell__bd">
+          第五章 的点点滴滴多多多
+        </view>
+        <view bindtap="open" class="weui-cell__ft">
+           <text class='fa fa-ellipsis-v'></text>
+        </view>
+      </view>
+      <view id="first" class="weui-cell  scroll-view-item weui-cell_access" hover-class="weui-cell_active">
+        <view bindtap="gotoChapterEdit" class="weui-cell__bd">
+          第四章
         </view>
         <view class="weui-cell__ft">
-          <icon type="success_no_circle" size="20" color="gray" />
+           <text class='fa fa-ellipsis-v'></text>
         </view>
       </view>
-            <view id="first" class="weui-cell  scroll-view-item">
-        <view bindtap="gotoChapterEdit" class="weui-cell__bd" >
-         第三章
+      <view id="first" class="weui-cell  scroll-view-item">
+        <view bindtap="gotoChapterEdit" class="weui-cell__bd">
+          第三章
         </view>
         <view class="weui-cell__ft">
-          <icon type="success_no_circle" size="20" color="gray" />
+           <text class='fa fa-ellipsis-v'></text>
         </view>
       </view>
-   <view id="first" class="weui-cell  scroll-view-item">
-        <view bindtap="gotoChapterEdit" class="weui-cell__bd" >
-         第二章
+      <view id="first" class="weui-cell  scroll-view-item">
+        <view bindtap="gotoChapterEdit" class="weui-cell__bd">
+          第二章
         </view>
         <view class="weui-cell__ft">
-          <icon type="success_no_circle" size="20" color="gray" />
+           <text class='fa fa-ellipsis-v'></text>
         </view>
       </view>
-         <view id="first" class="weui-cell  scroll-view-item">
-        <view bindtap="gotoChapterEdit" class="weui-cell__bd" >
-         第一章
+      <view id="first" class="weui-cell  scroll-view-item">
+        <view bindtap="gotoChapterEdit" class="weui-cell__bd">
+          第一章
         </view>
         <view class="weui-cell__ft">
-          <icon type="success_no_circle" size="20" color="gray" />
+           <text class='fa fa-ellipsis-v'></text>
         </view>
       </view>
     </scroll-view>

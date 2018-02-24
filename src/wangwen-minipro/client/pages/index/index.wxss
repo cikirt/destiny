@@ -26,12 +26,15 @@ button:last-child{
 .page-foot{
   margin-top: 50rpx;
 }
-.demo-text-1{
-  background-color: #353535;
+.book_color_0{
+  background-color: #b0bec5;
 }
-.demo-text-2{
-  background-color: #377322;
+.book_color_1{
+  background-color: #a5d6a7;
 }
-.demo-text-3{
-  background-color: #883377;
+.book_color_2{
+  background-color: #81d4fa;
+}
+.book_color_3{
+  background-color: #c5e1a5;
 }
