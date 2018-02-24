@@ -57,10 +57,24 @@ Page({
 
     // 切换是否带有登录态
     switchRequestMode: function (e) {
-        this.setData({
-            takeSession: e.detail.value
-        })
-        this.doRequest()
+      if(e.detail.value){
+        wx.showToast({
+          title: '打开自动同步',
+          icon: 'success',
+          duration: 3000
+        });
+      }else{
+        wx.showToast({
+          title: '关闭自动同步',
+          icon: 'success',
+          duration: 3000
+        });
+      }
+        // 在此实现打开同步开关
+        // this.setData({
+        //     takeSession: e.detail.value
+        // })
+        // this.doRequest()
     },
 
     doRequest: function () {

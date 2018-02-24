@@ -4,6 +4,7 @@ var config = require('../../config')
 var util = require('../../utils/util.js')
 Page({
   data: {
+    book:{},
     showTopTips: false,
 
     radioItems: [
@@ -21,13 +22,13 @@ Page({
     countryCodes: ["+86", "+80", "+84", "+87"],
     countryCodeIndex: 0,
 
-    countries: ["玄幻", "情色", "历史"],
-    countryIndex: 0,
+    booktypes: ["玄幻", "情色", "历史"],
+    booktypeIndex: 0,
 
     accounts: ["微信号", "QQ", "Email"],
     accountIndex: 0,
 
-    isAgree: false
+    isAgree: true
   },
   showTopTips: function () {
     var that = this;
@@ -88,11 +89,14 @@ Page({
       countryCodeIndex: e.detail.value
     })
   },
-  bindCountryChange: function (e) {
-    console.log('picker country 发生选择改变，携带值为', e.detail.value);
+  bindBooktypeChange: function (e) {
 
     this.setData({
-      countryIndex: e.detail.value
+      booktypeIndex: e.detail.value
+    })
+    this.data.book.booktype = e.detail.value
+    this.setData({
+      book: this.data.book
     })
   },
   bindAccountChange: function (e) {
@@ -106,5 +110,69 @@ Page({
     this.setData({
       isAgree: !!e.detail.value.length
     });
+  },
+  bindinputName: function (e) {
+    this.data.book.name = e.detail.value
+    this.setData({
+      book: this.data.book
+    });
+  },
+  bindinputDesc: function (e) {
+    this.data.book.desc = e.detail.value
+    this.setData({
+      book: this.data.book
+    });
+  },
+  bindCreate: function (e) {
+    wx.showLoading({
+      title: '作品创建中',
+    })
+    try {
+      var value = wx.getStorageSync('booklist')
+      console.log(value)
+      if (value) {
+        var itm = this.data.book
+        value.push(itm)
+        console.log(value)
+        try {
+          wx.setStorageSync('booklist', value)
+        } catch (e) {
+          console.log(e)
+        }
+      } else {
+        value = [{ name: "水浒传", id: 1, desc: "描述1", class: 'book_color_1' }]
+        try {
+          wx.setStorageSync('booklist', value)
+        } catch (e) {
+          console.log(e)
+        }
+      }
+      wx.hideLoading()
+      wx.showToast({
+        title: '作品创建完成',
+        icon: 'success',
+        duration: 1000,
+        complete: function () {
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 1
+            })
+          }, 1000)
+
+        }
+      });
+
+    } catch (e) {
+      console.log(e)
+      // Do something when catch error
+      wx.hideLoading()
+      wx.showToast({
+        title: '作品创建失败',
+        icon: 'none',
+        duration: 2000
+      });
+    }
+
+
   }
 });

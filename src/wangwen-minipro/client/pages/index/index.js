@@ -4,7 +4,6 @@ var config = require('../../config')
 var util = require('../../utils/util.js')
 
 Page({
-
   data: {
     indicatorDots: false,
     vertical: false,
@@ -13,38 +12,124 @@ Page({
     duration: 250,
     toView: 'first',
     scrollTop: 0,
-    book: '红楼梦',
-    booklist: []
+    cBookId: -1,
+    booklist: [],
+    chapterCount: 0,
+    wordCount: 0,
+    chapterList: []
   },
-  onLoad: function () {
+  onShow: function (options) {
+    // 每次界面重新打开时都从存储直接读取
+    // TODO 优化成首次才读文件 后续都直接通过app.js 内存增删查改对象 
     var self = this
-    // wx.setStorage({
-    //   key: "booklist",
-    //   data: [{name:"红楼梦",id:1,desc:"描述1"},{name:"三国演义",id:2,desc:"描述2"}]
-    // })
-    try {
-      wx.setStorageSync("booklist", [{ name: "红楼梦", id: 1, desc: "描述1", class: 'book_color_1' },
-        { name: "三国演义", id: 2, desc: "描述2", class: 'book_color_2' }])
-      wx.getStorage({
-        key: "booklist",
-        success: function (res) {
-          console.log(res.data)
-          self.setData({ booklist: res.data })
+    wx.getStorage({
+      key: "booklist",
+      success: function (res) {
+        self.data.booklist = res.data
+        self.data.booklist.forEach(function (itm, index, array) {
+          self.data.booklist[index].bookclass = self.getBookClass(itm.booktype)
+        })
+        self.setData({ booklist: self.data.booklist })
+        // 获取滑块所在的id 获取章节列表  和章节统计信息
+        if (self.data.cBookId == -1) {
+          self.data.cBookId = self.data.booklist[0].id
+          self.setData({ cBookId: self.data.cBookId })
         }
-      })
-    } catch (e) {
-    }
-
-  },
-  bookChange: function (e) {
-    console.log(e)
-    this.setData({
-      book: e.detail.currentItemId
+        var chapterList = self.getChapterList(self.data.cBookId)
+        self.setData({ chapterCount: chapterList.chapterCount })
+        self.setData({ wordCount: chapterList.wordCount })
+        self.setData({ chapterList: chapterList.chapterList })
+      }
     })
   },
+  onLoad: function () {
+  },
+  bookChange: function (e) {
+    var self =this
+    this.setData({
+      cBookId: e.detail.currentItemId
+    })
+    var chapterList = self.getChapterList(self.data.cBookId)
+    if (chapterList){
+    self.setData({ chapterCount: chapterList.chapterCount })
+    self.setData({ wordCount: chapterList.wordCount })
+    self.setData({ chapterList: chapterList.chapterList })
+    }
+  },
+  getChapterList: function (bookid) {
+    var data =
+      [{
+        chapterCount: 44,
+        wordCount: 66666,
+        chapterList: [
+          { id: 1, index: 1, title: 'oooo' },
+          { id: 122, index: 2, title: '什么情况，这一章是' },
+          { id: 133, index: 3, title: '什么情况，这一章是' },
+          { id: 144, index: 4, title: '什么情况，这一章是' },
+          { id: 155, index: 5, title: '什么情况，这一章是' },
+          { id: 166, index: 6, title: '什么情况，这一章是' },
+          { id: 177, index: 7, title: '什么情况，这一章是' },
+          { id: 188, index: 8, title: '什么情况，这一章是' }]
+      },
+      {
+        chapterCount: 11,
+        wordCount: 6666,
+        chapterList: [
+          { id: 1, index: 1, title: 'yyyy' },
+          { id: 122, index: 2, title: '什么情况，这一章是' },
+          { id: 133, index: 3, title: '什么情况，这一章是' },
+          { id: 144, index: 4, title: '什么情况，这一章是' },
+          { id: 155, index: 5, title: '什么情况，这一章是' },
+          { id: 166, index: 6, title: '什么情况，这一章是' },
+          { id: 177, index: 7, title: '什么情况，这一章是' },
+          { id: 188, index: 8, title: '什么情况，这一章是' }]
+      },
+      {
+        chapterCount: 88,
+        wordCount: 89,
+        chapterList: [
+          { id: 1, index: 1, title: 'aaaa' },
+          { id: 122, index: 2, title: '什么情况，这一章是' },
+          { id: 133, index: 3, title: '什么情况，这一章是' },
+          { id: 144, index: 4, title: '什么情况，这一章是' },
+          { id: 155, index: 5, title: '什么情况，这一章是' },
+          { id: 166, index: 6, title: '什么情况，这一章是' },
+          { id: 177, index: 7, title: '什么情况，这一章是' },
+          { id: 188, index: 8, title: '什么情况，这一章是' }]
+      },
+      {
+        chapterCount: 66,
+        wordCount: 999,
+        chapterList: [
+          { id: 1, index: 1, title: 'bbbb' },
+          { id: 122, index: 2, title: '什么情况，这一章是' },
+          { id: 133, index: 3, title: '什么情况，这一章是' },
+          { id: 144, index: 4, title: '什么情况，这一章是' },
+          { id: 155, index: 5, title: '什么情况，这一章是' },
+          { id: 166, index: 6, title: '什么情况，这一章是' },
+          { id: 177, index: 7, title: '什么情况，这一章是' },
+          { id: 188, index: 8, title: '什么情况，这一章是' }]
+      },
+      {
+        chapterCount: 6616,
+        wordCount: 444,
+        chapterList: [
+          { id: 1, index: 1, title: 'cccccc' },
+          { id: 122, index: 2, title: '什么情况，这一章是' },
+          { id: 133, index: 3, title: '什么情况，这一章是' },
+          { id: 144, index: 4, title: '什么情况，这一章是' },
+          { id: 155, index: 5, title: '什么情况，这一章是' },
+          { id: 166, index: 6, title: '什么情况，这一章是' },
+          { id: 177, index: 7, title: '什么情况，这一章是' },
+          { id: 188, index: 8, title: '什么情况，这一章是' }]
+      }
+      ]
+    return data[bookid - 1]
+  },
   gotoChapterEdit: function (e) {
+
     wx.navigateTo({
-      url: '../../pages/chapteredit/chapteredit?param1=4'
+      url: '../../pages/chapteredit/chapteredit'
     })
   },
   gotoChapterList: function (e) {
@@ -52,7 +137,20 @@ Page({
       url: '../../pages/chapterlist/chapterlist?param1=345'
     })
   },
+  getBookClass: function (booktype) {
+    switch (booktype) {
+      case 0:
+        return 'book_color_1'
+      case 1:
+        return 'book_color_2'
+      default:
+        return 'book_color_3'
+    }
+  },
   gotoBookEdit: function (e) {
+    var app = getApp()
+    // Get the global data and change it.
+    app.currentBook = e.currentTarget.dataset.itm
     wx.navigateTo({
       url: '../../pages/bookedit/bookedit?param1=345'
     })
@@ -60,6 +158,11 @@ Page({
   gotoBookAdd: function (e) {
     wx.navigateTo({
       url: '../../pages/bookadd/bookadd?param1=345'
+    })
+  },
+  gotoBookOutLine: function (e) {
+    wx.navigateTo({
+      url: '../../pages/bookoutline/bookoutline?param1=345'
     })
   },
   open: function () {

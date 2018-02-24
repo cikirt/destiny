@@ -1,28 +1,28 @@
 <view class="page">
   <view class="page__bd">
-    <view class="weui-cells__title">作品信息</view>
+    <view class="weui-cells__title">请在此修改您的作品信息</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
           <view class="weui-label">作品名称</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入作品名称" />
+          <input bindinput="bindinputName" class="weui-input" value="{{book.name}}" placeholder="请输入作品名称" />
         </view>
       </view>
-      <view class="weui-cells weui-cells_after-title">
+      <!-- <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_switch">
           <view class="weui-cell__bd">是否公开</view>
           <view class="weui-cell__ft">
             <switch checked />
           </view>
         </view>
-      </view>
-      <view class="weui-cells__title">作品描述</view>
+      </view> -->
+      <!-- <view class="weui-cells__title">作品描述</view> -->
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell">
           <view class="weui-cell__bd">
-            <textarea class="weui-textarea" placeholder="请输入作品描述" style="height: 3.3em" />
+            <textarea bindinput="bindinputDesc" class="weui-textarea" value="{{book.desc}}" placeholder="请输入作品描述" style="height: 3.3em" />
             <view class="weui-textarea-counter">0/200</view>
           </view>
         </view>
@@ -38,8 +38,8 @@
         </view>
       </view>
     </view>
-    <view class="weui-cells__tips">作品基本信息</view>
-    <checkbox-group bindchange="bindAgreeChange">
+    <!-- <view class="weui-cells__tips">作品基本信息</view> -->
+    <!-- <checkbox-group bindchange="bindAgreeChange">
       <label class="weui-agree" for="weuiAgree">
         <view class="weui-agree__text">
           <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
@@ -50,10 +50,11 @@
           <navigator url="" class="weui-agree__link">《相关条款》</navigator>
         </view>
       </label>
-    </checkbox-group>
+    </checkbox-group> -->
 
     <view class="weui-btn-area">
-      <button class="weui-btn" type="primary" bindtap="showTopTips">保存</button>
+      <button class="weui-btn" type="primary" bindtap="bindSave">保存修改</button>
+      <button class="weui-btn" type="warn" bindtap="bindDelete">删除作品</button>
     </view>
   </view>
 </view>

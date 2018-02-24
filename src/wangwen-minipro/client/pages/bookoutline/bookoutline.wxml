@@ -1,8 +1,9 @@
 <view class="page">
   <view class="page__bd">
-    <view class="weui-cells__title">全部文章</view>
+    <view class="weui-cells__title">请在此完善作品大纲，收集写作素材</view>
+    <view class="weui-cells__title">大纲目录</view>
     <view class="weui-cells weui-cells_after-title">
-        <view bindtap="gotoChapterEdit" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view bindtap="gotoChapterEdit" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__bd">
           <text style='color:#e53935;' class='fa fa-plus-circle'>
         </text>
@@ -10,24 +11,25 @@
         </text>
         </view>
       </view>
-      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-        <view bindtap="gotoChapterEdit" class="weui-cell__bd">第一章 罢罢罢</view>
-        <view bindtap="open" class="weui-cell__ft">
-           <text class='fa fa-ellipsis-v'></text>
-        </view>
-      </view>
 
-    </view>
-        <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-        <view bindtap="gotoChapterEdit" class="weui-cell__bd">第一章 罢罢罢</view>
+        <view bindtap="gotoChapterEdit" class="weui-cell__bd">场景1 主角出场</view>
         <view bindtap="open" class="weui-cell__ft">
           <text class='fa fa-ellipsis-v'></text>
         </view>
       </view>
 
     </view>
-        <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view bindtap="gotoChapterEdit" class="weui-cell__bd">场景2 不知道</view>
+        <view bindtap="open" class="weui-cell__ft">
+          <text class='fa fa-ellipsis-v'></text>
+        </view>
+      </view>
+
+    </view>
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view bindtap="gotoChapterEdit" class="weui-cell__bd">第一章 罢罢罢</view>
         <view bindtap="open" class="weui-cell__ft">
@@ -36,7 +38,7 @@
       </view>
 
     </view>
-        <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view bindtap="gotoChapterEdit" class="weui-cell__bd">第一章 罢罢罢</view>
         <view bindtap="open" class="weui-cell__ft">
@@ -45,7 +47,7 @@
       </view>
 
     </view>
-        <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view bindtap="gotoChapterEdit" class="weui-cell__bd">第一章 罢罢罢</view>
         <view bindtap="open" class="weui-cell__ft">
@@ -54,7 +56,7 @@
       </view>
 
     </view>
-        <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view bindtap="gotoChapterEdit" class="weui-cell__bd">第一章 罢罢罢</view>
         <view bindtap="open" class="weui-cell__ft">
@@ -63,7 +65,7 @@
       </view>
 
     </view>
-        <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view bindtap="gotoChapterEdit" class="weui-cell__bd">第一章 罢罢罢</view>
         <view bindtap="open" class="weui-cell__ft">
@@ -72,7 +74,7 @@
       </view>
 
     </view>
-        <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view bindtap="gotoChapterEdit" class="weui-cell__bd">第一章 罢罢罢</view>
         <view bindtap="open" class="weui-cell__ft">
@@ -81,7 +83,7 @@
       </view>
 
     </view>
-        <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view bindtap="gotoChapterEdit" class="weui-cell__bd">第一章 罢罢罢</view>
         <view bindtap="open" class="weui-cell__ft">
@@ -90,7 +92,7 @@
       </view>
 
     </view>
-        <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view bindtap="gotoChapterEdit" class="weui-cell__bd">第一章 罢罢罢</view>
         <view bindtap="open" class="weui-cell__ft">
@@ -99,7 +101,7 @@
       </view>
 
     </view>
-        <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view bindtap="gotoChapterEdit" class="weui-cell__bd">第一章 罢罢罢</view>
         <view bindtap="open" class="weui-cell__ft">
@@ -108,7 +110,7 @@
       </view>
 
     </view>
-        <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view bindtap="gotoChapterEdit" class="weui-cell__bd">第一章 罢罢罢</view>
         <view bindtap="open" class="weui-cell__ft">
@@ -117,7 +119,7 @@
       </view>
 
     </view>
-        <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view bindtap="gotoChapterEdit" class="weui-cell__bd">第一章 罢罢罢</view>
         <view bindtap="open" class="weui-cell__ft">

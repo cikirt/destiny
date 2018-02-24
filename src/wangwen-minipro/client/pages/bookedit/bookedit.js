@@ -5,7 +5,7 @@ var util = require('../../utils/util.js')
 Page({
   data: {
     showTopTips: false,
-
+    book: {},
     radioItems: [
       { name: 'cell standard', value: '0' },
       { name: 'cell standard', value: '1', checked: true }
@@ -28,6 +28,14 @@ Page({
     accountIndex: 0,
 
     isAgree: false
+  },
+  onLoad: function () {
+    var app = getApp()
+    // Get the global data and change it.
+    console.log(app.currentBook)
+    this.setData({
+      book: app.currentBook
+    })
   },
   showTopTips: function () {
     var that = this;
@@ -106,5 +114,128 @@ Page({
     this.setData({
       isAgree: !!e.detail.value.length
     });
+  },
+  bindinputName: function (e) {
+    this.data.book.name = e.detail.value
+    this.setData({
+      book: this.data.book
+    });
+  },
+  bindinputDesc: function (e) {
+    this.data.book.desc = e.detail.value
+    this.setData({
+      book: this.data.book
+    });
+  },
+  bindSave: function (e) {
+    var self = this
+    wx.showLoading({
+      title: '作品保存中',
+    })
+    try {
+      var value = wx.getStorageSync('booklist')
+      console.log("before", value)
+      if (value) {
+        value.forEach(function (itm, index, array) {
+          if (itm.id === self.data.book.id) {
+            value[index] = self.data.book
+          }
+        });
+        console.log("after:", value)
+        try {
+          wx.setStorageSync('booklist', value)
+        } catch (e) {
+          console.log(e)
+        }
+      }
+      wx.hideLoading()
+      wx.showToast({
+        title: '作品修改完成',
+        icon: 'success',
+        duration: 1000,
+        complete: function () {
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 1
+            })
+          }, 1000)
+
+        }
+      });
+
+    } catch (e) {
+      console.log(e)
+      // Do something when catch error
+      wx.hideLoading()
+      wx.showToast({
+        title: '作品修改失败',
+        icon: 'none',
+        duration: 2000
+      });
+    }
+
+
+  },
+  bindDelete: function (e) {
+    var self = this
+    wx.showModal({
+      title: '警告',
+      content: '删除作品将用不可找回，请慎重',
+      confirmText: "确定删除",
+      cancelText: "取消",
+      success: function (res) {
+        console.log(res);
+        if (res.confirm) {
+          wx.showLoading({
+            title: '作品删除中',
+          })
+          try {
+            var value = wx.getStorageSync('booklist')
+            if (value) {
+              value.forEach(function (itm, index, array) {
+                if (itm.id === self.data.book.id) {
+                  value.splice(index, 1);
+                  return
+                }
+              });
+              try {
+                wx.setStorageSync('booklist', value)
+              } catch (e) {
+                console.log(e)
+              }
+            }
+            wx.hideLoading()
+            wx.showToast({
+              title: '作品删除完成',
+              icon: 'success',
+              duration: 1000,
+              complete: function () {
+                setTimeout(function () {
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                }, 1000)
+
+              }
+            });
+
+          } catch (e) {
+            console.log(e)
+            // Do something when catch error
+            wx.hideLoading()
+            wx.showToast({
+              title: '作品删除失败',
+              icon: 'none',
+              duration: 2000
+            });
+          }
+        } else {
+         
+        }
+      }
+    });
+    
+
+
   }
 });

@@ -1,0 +1,130 @@
+<view class="page">
+  <view class="page__bd">
+
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class="weui-cells__title">场景标题</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入场景标题" />
+              </view>
+            </view>
+          </view>
+          <view class="weui-cells__title">场景描述</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="请输入场景描述" style="height: 3.3em" />
+                <view class="weui-textarea-counter">0/200</view>
+              </view>
+            </view>
+          </view>
+          <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="showTopTips">保存</button>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view class="weui-cells__title">任务名称</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入人物名称" />
+              </view>
+            </view>
+          </view>
+          <view class="weui-cells__title">人物素材</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="请输入人物外貌......等相关描述" style="height: 3.3em" />
+                <view class="weui-textarea-counter">0/200</view>
+              </view>
+            </view>
+          </view>
+          <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="showTopTips">保存</button>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <view class="weui-cells__title">环境标题</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入环境名称" />
+              </view>
+            </view>
+          </view>
+          <view class="weui-cells__title">环境素材</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="请输入自然环境、社会环境....等相关描述" style="height: 3.3em" />
+                <view class="weui-textarea-counter">0/200</view>
+              </view>
+            </view>
+          </view>
+          <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="showTopTips">保存</button>
+          </view>
+        </view>
+         <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
+          <view class="weui-cells__title">故事标题</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入故事标题" />
+              </view>
+            </view>
+          </view>
+          <view class="weui-cells__title">故事素材</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="请输入故事素材" style="height: 3.3em" />
+                <view class="weui-textarea-counter">0/200</view>
+              </view>
+            </view>
+          </view>
+          <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="showTopTips">保存</button>
+          </view>
+        </view>
+         <view class="weui-tab__content" hidden="{{activeIndex != 4}}">
+          <view class="weui-cells__title">标题</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入标题" />
+              </view>
+            </view>
+          </view>
+          <view class="weui-cells__title">素材描述</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="请输入素材描述" style="height: 3.3em" />
+                <view class="weui-textarea-counter">0/200</view>
+              </view>
+            </view>
+          </view>
+          <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="showTopTips">保存</button>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+
+  </view>
+</view>
