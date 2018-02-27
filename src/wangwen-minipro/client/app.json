@@ -8,7 +8,8 @@
     "pages/bookoutline/bookoutline",
     "pages/chapteredit/chapteredit",
     "pages/chapterlist/chapterlist",
-     "pages/sceneedit/sceneedit"
+     "pages/sceneedit/sceneedit",
+     "pages/materialedit/materialedit"
     
   ],
   "window": {

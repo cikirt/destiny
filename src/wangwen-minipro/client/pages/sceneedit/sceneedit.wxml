@@ -34,94 +34,129 @@
           </view>
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
-          <view class="weui-cells__title">任务名称</view>
-          <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_input">
-              <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="请输入人物名称" />
+          <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__hd">人物素材收集</view>
+            <view class="weui-panel__bd">
+              <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                <!-- <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{icon60}}" />
+                    </view> -->
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                  <view class="weui-media-box__title">角色1</view>
+                  <view class="weui-media-box__desc">主角出场，都有属性，啥装备，啥性格...支持图文或者传文字的素材作为写作参考</view>
+                </view>
+              </navigator>
+              <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                <!-- <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{icon60}}" />
+                    </view> -->
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                  <view class="weui-media-box__title">角色2</view>
+                  <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
+                </view>
+              </navigator>
+            </view>
+            <view class="weui-panel__ft">
+              <view class="weui-cell weui-cell_access weui-cell_link">
+                <view class="weui-cell__bd" bindtap='gotoedit'>新增素材</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
               </view>
             </view>
-          </view>
-          <view class="weui-cells__title">人物素材</view>
-          <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-              <view class="weui-cell__bd">
-                <textarea class="weui-textarea" placeholder="请输入人物外貌......等相关描述" style="height: 3.3em" />
-                <view class="weui-textarea-counter">0/200</view>
-              </view>
-            </view>
-          </view>
-          <view class="weui-btn-area">
-            <button class="weui-btn" type="primary" bindtap="showTopTips">保存</button>
           </view>
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
-          <view class="weui-cells__title">环境标题</view>
-          <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_input">
-              <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="请输入环境名称" />
+          <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__hd">环境素材收集</view>
+            <view class="weui-panel__bd">
+              <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                <!-- <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{icon60}}" />
+                    </view> -->
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                  <view class="weui-media-box__title">场景2</view>
+                  <view class="weui-media-box__desc">主角出场，都有属性，啥装备，啥性格...支持图文或者传文字的素材作为写作参考</view>
+                </view>
+              </navigator>
+              <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                <!-- <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{icon60}}" />
+                    </view> -->
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                  <view class="weui-media-box__title">changing2</view>
+                  <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
+                </view>
+              </navigator>
+            </view>
+            <view class="weui-panel__ft">
+              <view class="weui-cell weui-cell_access weui-cell_link">
+                <view class="weui-cell__bd" bindtap='gotoedit'>新增素材</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
               </view>
             </view>
-          </view>
-          <view class="weui-cells__title">环境素材</view>
-          <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-              <view class="weui-cell__bd">
-                <textarea class="weui-textarea" placeholder="请输入自然环境、社会环境....等相关描述" style="height: 3.3em" />
-                <view class="weui-textarea-counter">0/200</view>
-              </view>
-            </view>
-          </view>
-          <view class="weui-btn-area">
-            <button class="weui-btn" type="primary" bindtap="showTopTips">保存</button>
           </view>
         </view>
-         <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
-          <view class="weui-cells__title">故事标题</view>
-          <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_input">
-              <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="请输入故事标题" />
+        <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
+          <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__hd">故事素材收集</view>
+            <view class="weui-panel__bd">
+              <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                <!-- <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{icon60}}" />
+                    </view> -->
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                  <view class="weui-media-box__title">角色1</view>
+                  <view class="weui-media-box__desc">主角出场，都有属性，啥装备，啥性格...支持图文或者传文字的素材作为写作参考</view>
+                </view>
+              </navigator>
+              <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                <!-- <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{icon60}}" />
+                    </view> -->
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                  <view class="weui-media-box__title">角色2</view>
+                  <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
+                </view>
+              </navigator>
+            </view>
+            <view class="weui-panel__ft">
+              <view class="weui-cell weui-cell_access weui-cell_link">
+                <view class="weui-cell__bd" bindtap='gotoedit'>新增素材</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
               </view>
             </view>
-          </view>
-          <view class="weui-cells__title">故事素材</view>
-          <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-              <view class="weui-cell__bd">
-                <textarea class="weui-textarea" placeholder="请输入故事素材" style="height: 3.3em" />
-                <view class="weui-textarea-counter">0/200</view>
-              </view>
-            </view>
-          </view>
-          <view class="weui-btn-area">
-            <button class="weui-btn" type="primary" bindtap="showTopTips">保存</button>
           </view>
         </view>
-         <view class="weui-tab__content" hidden="{{activeIndex != 4}}">
-          <view class="weui-cells__title">标题</view>
-          <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_input">
-              <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="请输入标题" />
+        <view class="weui-tab__content" hidden="{{activeIndex != 4}}">
+          <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__hd">其它素材收集</view>
+            <view class="weui-panel__bd">
+              <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                <!-- <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{icon60}}" />
+                    </view> -->
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                  <view class="weui-media-box__title">角色1</view>
+                  <view class="weui-media-box__desc">主角出场，都有属性，啥装备，啥性格...支持图文或者传文字的素材作为写作参考</view>
+                </view>
+              </navigator>
+              <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                <!-- <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{icon60}}" />
+                    </view> -->
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                  <view class="weui-media-box__title">角色2</view>
+                  <view class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</view>
+                </view>
+              </navigator>
+            </view>
+            <view class="weui-panel__ft">
+              <view class="weui-cell weui-cell_access weui-cell_link">
+                <view class="weui-cell__bd" bindtap='gotoedit'>新增素材</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
               </view>
             </view>
-          </view>
-          <view class="weui-cells__title">素材描述</view>
-          <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-              <view class="weui-cell__bd">
-                <textarea class="weui-textarea" placeholder="请输入素材描述" style="height: 3.3em" />
-                <view class="weui-textarea-counter">0/200</view>
-              </view>
-            </view>
-          </view>
-          <view class="weui-btn-area">
-            <button class="weui-btn" type="primary" bindtap="showTopTips">保存</button>
           </view>
         </view>
-
       </view>
     </view>
 

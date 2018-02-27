@@ -33,6 +33,11 @@ Page({
 
     isAgree: false
   },
+  gotoedit:function(){
+    wx.navigateTo({
+      url: '../../pages/materialedit/materialedit',
+    })
+  },
   onLoad: function () {
     var that = this;
     wx.getSystemInfo({

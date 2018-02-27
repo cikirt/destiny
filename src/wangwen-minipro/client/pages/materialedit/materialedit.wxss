@@ -6,15 +6,7 @@ page {
     flex-direction: column;
     justify-content: flex-start;
 }
-.placeholder{
-    margin: 5px;
-    padding: 0 10px;
-    text-align: center;
-    background-color: #aed581;
-    height: 2.3em;
-    line-height: 2.3em;
-    color: #FFFFFF;
-}
+
 .list {
     margin-top: 40rpx;
     height: auto;
