@@ -29,6 +29,11 @@ Page({
 
     isAgree: false
   },
+  gotoBookOutLine: function (e) {
+    wx.navigateTo({
+      url: '../../pages/bookoutline/bookoutline?param1=345'
+    })
+  },
   showTopTips: function () {
     var that = this;
     this.setData({
