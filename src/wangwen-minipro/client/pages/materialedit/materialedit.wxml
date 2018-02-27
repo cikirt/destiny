@@ -1,0 +1,74 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd">
+    <view class="weui-cells__title">请在此编辑你的素材</view>
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+
+    <view class="weui-cells__title">标题</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入素材标题" />
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">描述</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入素材文本描述" style="height: 3.3em" />
+          <view class="weui-textarea-counter">0/200</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__title">图片上传</view>
+              <view class="weui-uploader__info">{{files.length}}/2</view>
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files" id="uploaderFiles">
+                <block wx:for="{{files}}" wx:key="*this">
+                  <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                  </view>
+                </block>
+                <!-- <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill" />
+                </view>
+                <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill" />
+                </view>
+                <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill" />
+                </view>
+                <view class="weui-uploader__file weui-uploader__file_status">
+                  <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill" />
+                  <view class="weui-uploader__file-content">
+                    <icon type="warn" size="23" color="#F43530"></icon>
+                  </view>
+                </view>
+                <view class="weui-uploader__file weui-uploader__file_status">
+                  <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill" />
+                  <view class="weui-uploader__file-content">50%</view>
+                </view> -->
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="showTopTips">保存</button>
+  </view>
+</view>
+</view>
