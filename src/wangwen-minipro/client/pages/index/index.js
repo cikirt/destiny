@@ -12,7 +12,8 @@ Page({
     duration: 250,
     toView: 'first',
     scrollTop: 0,
-    cBookId: -1,
+    nextMargin: '90px',
+    cBookId: "add",
     booklist: [],
     chapterCount: 0,
     wordCount: 0,
@@ -26,41 +27,62 @@ Page({
       key: "booklist",
       success: function (res) {
         self.data.booklist = res.data
+        if (self.data.booklist.length > 0) {
+          self.setData({ nextMargin: '90px' })
+        } else {
+          self.setData({ nextMargin: '0px' })
+        }
         self.data.booklist.forEach(function (itm, index, array) {
+
           self.data.booklist[index].bookclass = self.getBookClass(itm.booktype)
         })
         self.setData({ booklist: self.data.booklist })
         // 获取滑块所在的id 获取章节列表  和章节统计信息
-        if (self.data.cBookId == -1) {
+        if (self.data.cBookId == "add" && self.data.booklist.length>0) {
           self.data.cBookId = self.data.booklist[0].id
           self.setData({ cBookId: self.data.cBookId })
         }
         var chapterList = self.getChapterList(self.data.cBookId)
-        self.setData({ chapterCount: chapterList.chapterCount })
-        self.setData({ wordCount: chapterList.wordCount })
-        self.setData({ chapterList: chapterList.chapterList })
+        if (chapterList) {
+          self.setData({ chapterCount: chapterList.chapterCount })
+          self.setData({ wordCount: chapterList.wordCount })
+          self.setData({ chapterList: chapterList.chapterList })
+        }
       }
     })
   },
   onLoad: function () {
   },
   bookChange: function (e) {
-    var self =this
+
+    var self = this
     this.setData({
       cBookId: e.detail.currentItemId
     })
+    console.log(this.data.cBookId)
     var chapterList = self.getChapterList(self.data.cBookId)
-    if (chapterList){
-    self.setData({ chapterCount: chapterList.chapterCount })
-    self.setData({ wordCount: chapterList.wordCount })
-    self.setData({ chapterList: chapterList.chapterList })
+    if (chapterList) {
+      self.setData({ chapterCount: chapterList.chapterCount })
+      self.setData({ wordCount: chapterList.wordCount })
+      self.setData({ chapterList: chapterList.chapterList })
+    } else {
+      self.setData({ chapterCount: 0 })
+      self.setData({ wordCount: 0 })
+      self.setData({ chapterList: [] })
     }
   },
   getChapterList: function (bookid) {
-    var data =
-      [{
-        chapterCount: 44,
-        wordCount: 66666,
+    if (bookid === "add") {
+      return {
+        chapterCount: 0,
+        wordCount: 0,
+        chapterList: [
+        ]
+      }
+    } else {
+      return {
+        chapterCount:8,
+        wordCount: 8999877,
         chapterList: [
           { id: 1, index: 1, title: 'oooo' },
           { id: 122, index: 2, title: '什么情况，这一章是' },
@@ -70,78 +92,45 @@ Page({
           { id: 166, index: 6, title: '什么情况，这一章是' },
           { id: 177, index: 7, title: '什么情况，这一章是' },
           { id: 188, index: 8, title: '什么情况，这一章是' }]
-      },
-      {
-        chapterCount: 11,
-        wordCount: 6666,
-        chapterList: [
-          { id: 1, index: 1, title: 'yyyy' },
-          { id: 122, index: 2, title: '什么情况，这一章是' },
-          { id: 133, index: 3, title: '什么情况，这一章是' },
-          { id: 144, index: 4, title: '什么情况，这一章是' },
-          { id: 155, index: 5, title: '什么情况，这一章是' },
-          { id: 166, index: 6, title: '什么情况，这一章是' },
-          { id: 177, index: 7, title: '什么情况，这一章是' },
-          { id: 188, index: 8, title: '什么情况，这一章是' }]
-      },
-      {
-        chapterCount: 88,
-        wordCount: 89,
-        chapterList: [
-          { id: 1, index: 1, title: 'aaaa' },
-          { id: 122, index: 2, title: '什么情况，这一章是' },
-          { id: 133, index: 3, title: '什么情况，这一章是' },
-          { id: 144, index: 4, title: '什么情况，这一章是' },
-          { id: 155, index: 5, title: '什么情况，这一章是' },
-          { id: 166, index: 6, title: '什么情况，这一章是' },
-          { id: 177, index: 7, title: '什么情况，这一章是' },
-          { id: 188, index: 8, title: '什么情况，这一章是' }]
-      },
-      {
-        chapterCount: 66,
-        wordCount: 999,
-        chapterList: [
-          { id: 1, index: 1, title: 'bbbb' },
-          { id: 122, index: 2, title: '什么情况，这一章是' },
-          { id: 133, index: 3, title: '什么情况，这一章是' },
-          { id: 144, index: 4, title: '什么情况，这一章是' },
-          { id: 155, index: 5, title: '什么情况，这一章是' },
-          { id: 166, index: 6, title: '什么情况，这一章是' },
-          { id: 177, index: 7, title: '什么情况，这一章是' },
-          { id: 188, index: 8, title: '什么情况，这一章是' }]
-      },
-      {
-        chapterCount: 6616,
-        wordCount: 444,
-        chapterList: [
-          { id: 1, index: 1, title: 'cccccc' },
-          { id: 122, index: 2, title: '什么情况，这一章是' },
-          { id: 133, index: 3, title: '什么情况，这一章是' },
-          { id: 144, index: 4, title: '什么情况，这一章是' },
-          { id: 155, index: 5, title: '什么情况，这一章是' },
-          { id: 166, index: 6, title: '什么情况，这一章是' },
-          { id: 177, index: 7, title: '什么情况，这一章是' },
-          { id: 188, index: 8, title: '什么情况，这一章是' }]
       }
-      ]
-    return data[bookid - 1]
+    }
+    
   },
   gotoChapterEdit: function (e) {
-
-    wx.navigateTo({
-      url: '../../pages/chapteredit/chapteredit'
-    })
+    console.log("??", this.data.cBookId)
+    if (this.data.cBookId === "add") {
+      wx.showToast({
+        title: '请先创建作品',
+        icon: 'none',
+        duration: 2000
+      });
+    } else {
+      wx.navigateTo({
+        url: '../../pages/chapteredit/chapteredit'
+      })
+    }
   },
   gotoChapterList: function (e) {
-    wx.navigateTo({
-      url: '../../pages/chapterlist/chapterlist?param1=345'
-    })
+    console.log("??", this.data.cBookId)
+    if (this.data.cBookId === "add") {
+      wx.showToast({
+        title: '请先创建作品',
+        icon: 'none',
+        duration: 2000
+      });
+    } else {
+      wx.navigateTo({
+        url: '../../pages/chapterlist/chapterlist?param1=345'
+      })
+    }
   },
   getBookClass: function (booktype) {
+    console.log(booktype)
     switch (booktype) {
-      case 0:
+
+      case "0":
         return 'book_color_1'
-      case 1:
+      case "1":
         return 'book_color_2'
       default:
         return 'book_color_3'

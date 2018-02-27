@@ -6,7 +6,7 @@ Page({
   data: {
     book:{},
     showTopTips: false,
-
+    wordCountDesc:0,
     radioItems: [
       { name: 'cell standard', value: '0' },
       { name: 'cell standard', value: '1', checked: true }
@@ -90,7 +90,6 @@ Page({
     })
   },
   bindBooktypeChange: function (e) {
-
     this.setData({
       booktypeIndex: e.detail.value
     })
@@ -122,6 +121,11 @@ Page({
     this.setData({
       book: this.data.book
     });
+    this.setData({
+      wordCountDesc: this.data.book.desc.length
+    });
+    
+    
   },
   bindCreate: function (e) {
     wx.showLoading({
@@ -140,7 +144,7 @@ Page({
           console.log(e)
         }
       } else {
-        value = [{ name: "水浒传", id: 1, desc: "描述1", class: 'book_color_1' }]
+        value = [this.data.book]
         try {
           wx.setStorageSync('booklist', value)
         } catch (e) {
@@ -167,7 +171,7 @@ Page({
       // Do something when catch error
       wx.hideLoading()
       wx.showToast({
-        title: '作品创建失败',
+        title: '作品创建失败'+e,
         icon: 'none',
         duration: 2000
       });
