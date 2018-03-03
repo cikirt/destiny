@@ -27,14 +27,18 @@ button:last-child{
   margin-top: 50rpx;
 }
 .book_color_0{
-  background-color: #b0bec5;
+  background-color: #26a69a;
+  
 }
 .book_color_1{
-  background-color: #a5d6a7;
+  background-color: #66bb6a;
 }
 .book_color_2{
-  background-color: #81d4fa;
+  background-color: #29b6f6;
 }
 .book_color_3{
-  background-color: #c5e1a5;
+  background-color: #ec407a;
+}
+.list_color{
+   background-color: #bdbdbd;
 }

@@ -2,7 +2,7 @@
 Page({
   onLoad: function () {
     wx.setNavigationBarTitle({
-      title: '《红楼梦》'
+      title: '《红楼梦》细纲'
     })
   },
   open: function () {

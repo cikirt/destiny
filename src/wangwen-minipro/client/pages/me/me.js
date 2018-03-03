@@ -10,7 +10,18 @@ Page({
         takeSession: false,
         requestResult: ''
     },
-
+    onLoad:function(){
+      var app = getApp()
+      var windowdata = app.windowdata
+      wx.setNavigationBarColor({
+        frontColor: windowdata.frontColor,
+        backgroundColor: windowdata.backgroundColor,
+        animation: {
+          duration: 400,
+          timingFunc: 'easeIn'
+        }
+    });
+    },
     // 用户登录示例
     login: function() {
         if (this.data.logged) return

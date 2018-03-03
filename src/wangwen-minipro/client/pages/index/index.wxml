@@ -2,7 +2,7 @@
 <view style='height: 100%;width: 100%;'>
   <!-- 书本类型选择 -->
   <view class="page-body">
-    <view style='height: 50vh;' class="page-section page-section-spacing swiper">
+    <view style='height: 50vh;' class="page-section page-section-spacing swiper list_color">
       <swiper previous-margin="0px" next-margin="{{nextMargin}}" style='height: 100%;'
        indicator-dots="{{indicatorDots}}" 
        autoplay="{{autoplay}}" 
@@ -12,13 +12,14 @@
        bindchange="bookChange">
         <block wx:for="{{booklist}}" wx:key="*this.id">
           <swiper-item item-id="{{item.name}}">
-            <view class="swiper-item " style='height: 100%;background-color: white;display:flex;flex-flow: nowrap;flex-direction:row;justify-content:center'>
-              <view class='{{item.bookclass}}' style='margin-top:10px;height:80%;width:40vw;'>
-                <view  bindtap='gotoBookEdit' data-itm="{{item}}" style='margin-top:70px;display:flex;flex-direction:row;justify-content:center;'>
+            <view class="swiper-item " style='height: 100%;display:flex;flex-flow: nowrap;flex-direction:row;justify-content:center'>
+              <view  class='{{item.bookclass}}' style='margin-top:10px;height:80%;width:40vw;'>
+                <view bindtap='gotoBookEdit'   data-itm="{{item}}" style='padding-top:70px;display:flex;flex-direction:row;justify-content:center;'>
                   <text class='fa-lg'>{{item.name}}</text>
                 </view>
                   <view style='margin-top:50px;display:flex;flex-direction:row;justify-content:space-around;'>
-                  <text  bindtap='gotoBookEdit'  data-itm="{{item}}" class='fa fa-cog fa-lg'></text><text  bindtap='gotoBookOutLine' class='fa fa-list fa-lg'></text>
+                  <text  bindtap='gotoBookEdit'  data-itm="{{item}}" class='fa fa-cog ' >编辑</text>
+                  <text hover-stop-propagation  bindtap='gotoBookOutLine' class='fa fa-list '>细纲</text>
                 </view>
               </view>
             </view>
@@ -27,7 +28,7 @@
         </block>
         <swiper-item item-id="add">
           <!-- <view class="swiper-item {{item}}"> -->
-          <view class="swiper-item {{item}}" style='height: 100%;background-color: white;display:flex;flex-flow: nowrap;flex-direction:row;justify-content:center'>
+          <view class="swiper-item " style='height: 100%;;display:flex;flex-flow: nowrap;flex-direction:row;justify-content:center'>
             <view bindtap='gotoBookAdd' class='book_color_0' style='margin-top:10px;height:80%;width:40vw;'>
               <view style='margin-top:70px;display:flex;flex-direction:row;justify-content:center;'>
                 <text class="fa fa-plus fa-lg"></text>
@@ -47,12 +48,12 @@
       <view class="weui-cells weui-cells_after-title">
         <view  bindtap="gotoChapterList"  
         class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-          <view  class="weui-cell__bd">全部章节(共{{chapterCount}}章/{{wordCount}}字)</view>
+          <view  class="weui-cell__bd " >全部章节(共{{chapterCount}}章/{{wordCount}}字)</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
       </view>
     </view>
-    <scroll-view scroll-y style='height: 40vh;' bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <scroll-view scroll-y style='height: 40vh;' scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
        <view  bindtap="gotoChapterEdit"   id="add" class="weui-cell  scroll-view-item weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__bd">
           <text style='color:#e53935;' class='fa fa-plus-circle'>
@@ -66,7 +67,8 @@
                 <view data-chapterid="{{item.id}}" bindtap="gotoChapterEdit" class="weui-cell__bd">
                   第{{item.index}}章 {{item.title}}
                 </view>
-                <view bindtap="open" data-chapterid="{{item.id}}" class="weui-cell__ft">
+                <view bindtap="open" style='padding-left:10px;padding-right:10px;' data-chapterid="{{item.id}}" class="weui-cell__ft ">
+ 
                   <text class='fa fa-ellipsis-v'></text>
                 </view>
               </view>

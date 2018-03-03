@@ -1,7 +1,8 @@
 //index.js
 var qcloud = require('../../vendor/wafer2-client-sdk/index')
 var config = require('../../config')
-var util = require('../../utils/util.js')
+var { setCache, getCache } = require('../../utils/cache.js')
+var { formatTime, showBusy, showSuccess, showModel } = require('../../utils/util.js')
 
 Page({
   data: {
@@ -23,33 +24,44 @@ Page({
     // 每次界面重新打开时都从存储直接读取
     // TODO 优化成首次才读文件 后续都直接通过app.js 内存增删查改对象 
     var self = this
-    wx.getStorage({
-      key: "booklist",
-      success: function (res) {
-        self.data.booklist = res.data
-        if (self.data.booklist.length > 0) {
-          self.setData({ nextMargin: '90px' })
-        } else {
-          self.setData({ nextMargin: '0px' })
-        }
-        self.data.booklist.forEach(function (itm, index, array) {
-
-          self.data.booklist[index].bookclass = self.getBookClass(itm.booktype)
-        })
-        self.setData({ booklist: self.data.booklist })
-        // 获取滑块所在的id 获取章节列表  和章节统计信息
-        if (self.data.cBookId == "add" && self.data.booklist.length>0) {
-          self.data.cBookId = self.data.booklist[0].id
-          self.setData({ cBookId: self.data.cBookId })
-        }
-        var chapterList = self.getChapterList(self.data.cBookId)
-        if (chapterList) {
-          self.setData({ chapterCount: chapterList.chapterCount })
-          self.setData({ wordCount: chapterList.wordCount })
-          self.setData({ chapterList: chapterList.chapterList })
-        }
+    getCache("booklist",function(value){
+      if (value){
+        self.showBookList(value)
+        // showSuccess("获取作品列表成功")
+      }else{
+        showModel("获取数据失败","失败啦")
       }
     })
+    
+  },
+  showBookList: function (value){
+    var self = this
+    self.data.booklist = value
+    if (self.data.booklist.length > 0) {
+      self.setData({ nextMargin: '90px' })
+    } else {
+      self.setData({ nextMargin: '0px' })
+    }
+    // 根据不同书籍类型给其不同的背景
+    self.data.booklist.forEach(function (itm, index, array) {
+      self.data.booklist[index].bookclass = self.getBookClass(itm.booktype)
+    })
+
+    self.setData({ booklist: self.data.booklist })
+    if (self.data.booklist.length == 0){
+      self.setData({ cBookId: "add" })
+    }
+    // 获取滑块所在的id 获取章节列表  和章节统计信息
+    if (self.data.cBookId == "add" && self.data.booklist.length > 0) {
+      self.data.cBookId = self.data.booklist[0].id
+      self.setData({ cBookId: self.data.cBookId })
+    }
+    var chapterList = self.getChapterList(self.data.cBookId)
+    if (chapterList) {
+      self.setData({ chapterCount: chapterList.chapterCount })
+      self.setData({ wordCount: chapterList.wordCount })
+      self.setData({ chapterList: chapterList.chapterList })
+    }
   },
   onLoad: function () {
   },

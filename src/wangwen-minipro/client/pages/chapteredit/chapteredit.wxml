@@ -4,7 +4,7 @@
     <view class="weui-flex">
       <view class="weui-flex__item">
         <view class='placeholder' bindtap="gotoBookOutLine" hover-class="weui-cell_active">
-          <text class="fa fa-envira fa-lg">查看素材</text>
+          <text class="fa fa-envira fa-lg">查看细纲</text>
         </view>
       </view>
     </view>
