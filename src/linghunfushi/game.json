@@ -1,0 +1,5 @@
+{
+    "deviceOrientation": "portrait",
+    "workers": "js/worker",
+    "openDataContext": "js/opencontext"
+}
