@@ -11,6 +11,7 @@ export default function render () {
   // this.ctx.clearRect(0, 0, screenWidth * pixelRatio, -screenHeight * pixelRatio)
   // this.ctxAssociate.clearRect(0, 0, screenWidth * pixelRatio, -screenHeight * pixelRatio)
 
+
   if (dataBus.gameStatus.toLowerCase() === 'clover') {
     cloverFuncs.call(this)
     this.mook.drawMook()

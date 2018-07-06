@@ -1,18 +1,14 @@
 let instance
-
+// 单例
 export default class DataBus {
   constructor () {
-    // 如果创建过DataBus了，就返回之前创造的
     if (instance) { return instance }
-
     instance = this
-
     this.init()
   }
 
   init () {
     this.height = 0
-
     this.frame = 0
     // 分数
     this.score = 0

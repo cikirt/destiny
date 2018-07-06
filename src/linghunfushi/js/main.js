@@ -36,6 +36,8 @@ sharedCanvas.width = sharedCanvas.width * pixelRatio
 // 创建ctx，更改坐标原点到左下角
 let ctx = canvas.getContext('2d')
 ctx.translate(0, canvas.height)
+const a = wx.createCanvas()
+
 
 // 副屏，用来绘制背景等不是一直需要刷新的东西
 // 切换也简单。只需要给不同的元素传不同的ctx就好

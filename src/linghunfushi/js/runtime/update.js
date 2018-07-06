@@ -10,6 +10,9 @@ export default function  () {
   if (!dataBus.isPaused && !dataBus.isStoped) {
     dataBus.frame++
 
+
+
+
     // if (!(dataBus.frame % 100)) {
     //   if (dataBus.frame >= 1000)
     //     dataBus.score = 1000
