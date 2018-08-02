@@ -1,14 +1,23 @@
 import './js/libs/weapp-adapter/index.js'
-//examples https://pixijs.io/examples/#/mesh/triangle.js
-// import './js/configs/global-data'
-// import { Matrix4, Vector3, Vector4 } from './js/libs/matrix'
-// import WebGLUtils from './js/libs/cuon-utils'
+import * as THREE from './js/libs/three.js'
+import Geometries from './js/libs/geometries.js'
+import * as dat from './js/libs/dat.gui.min.js'
+import  './js/libs/controls/OrbitControls.js'
+import  './js/libs/controls/TrackballControls.js'
+import './js/libs/objects/Sky.js'
+import './js/libs/GPUParticleSystem.js'
 
-// import Phenomenon from './js/libs/phenomenon'
-// import { showCube } from './js/actions/cube'
-// import { showTest } from './js/actions/test'
-// import { showMyTest } from './js/actions/mytest.js'
-// import { showMyTest2 } from './js/actions/mytest2.js'
+
+let ctx = canvas.getContext('webgl')
+const { pixelRatio, windowWidth, windowHeight } = wx.getSystemInfoSync()
+
+canvas.width = canvas.width * pixelRatio
+canvas.height = canvas.height * pixelRatio
+
+// ctx.translate(0, canvas.height)
+// 初始化
+let scene = new THREE.Scene()
+let renderer = new THREE.WebGLRenderer({ context: ctx, antialias: true })
 
 
 // import Main from './js/main'
@@ -16,214 +25,210 @@ import './js/libs/weapp-adapter/index.js'
 
 wx.setPreferredFramesPerSecond(60)
 
-// var gl = canvas.getContext("webgl")
-import * as PIXI  from './js/libs/pixi.min.js'
+var camera, controls;
+var sky, sunSphere;
 
-const { pixelRatio, windowWidth, windowHeight } = wx.getSystemInfoSync()
-
-var app =new PIXI.Application({
-  width: windowWidth * pixelRatio,
-  height: windowHeight * pixelRatio,
-  view: canvas
-})
-
-var p = './images/tools-number/0.png'
-
-// basic-------------------
-// // create a new Sprite from an image path
-// var bunny = PIXI.Sprite.fromImage('./images/tools-number/0.png')
-
-// // center the sprite's anchor point
-// bunny.anchor.set(0.5);
-
-// // move the sprite to the center of the screen
-// bunny.x = app.screen.width / 2;
-// bunny.y = app.screen.height / 2;
-
-// app.stage.addChild(bunny);
-
-// // Listen for animate update
-// app.ticker.add(function (delta) {
-//   // just for fun, let's rotate mr rabbit a little
-//   // delta is 1 if running at 100% performance
-//   // creates frame-independent transformation
-//   bunny.rotation += 0.1 * delta;
-// });
-
-// // container-------------------
-// var container = new PIXI.Container();
-
-// app.stage.addChild(container);
-
-// var texture = PIXI.Texture.fromImage('./images/tools-number/0.png');
-
-// // Create a 5x5 grid of bunnies
-// for (var i = 0; i < 25; i++) {
-//   var bunny = new PIXI.Sprite(texture);
-//   bunny.anchor.set(0.5);
-//   bunny.x = (i % 5) * 40;
-//   bunny.y = Math.floor(i / 5) * 40;
-//   container.addChild(bunny);
-// }
-
-// // Center on the screen
-// container.x = (app.screen.width - container.width) / 2;
-// container.y = (app.screen.height - container.height) / 2;
-
-//container pivot
-// var container = new PIXI.Container();
-
-// app.stage.addChild(container);
-
-// // Create a new texture
-// var texture = PIXI.Texture.fromImage(p);
-
-// // Create a 5x5 grid of bunnies
-// for (var i = 0; i < 25; i++) {
-//   var bunny = new PIXI.Sprite(texture);
-//   bunny.anchor.set(0.5);
-//   bunny.x = (i % 5) * 40;
-//   bunny.y = Math.floor(i / 5) * 40;
-//   container.addChild(bunny);
-// }
-
-// // Move container to the center
-// container.x = app.screen.width / 2;
-// container.y = app.screen.height / 2;
-
-// // Center bunny sprite in local container coordinates
-// container.pivot.x = container.width / 2;
-// container.pivot.y = container.height / 2;
-
-// // Listen for animate update
-// app.ticker.add(function (delta) {
-//   // rotate the container!
-//   // use delta to create frame-independent transform
-//   container.rotation -= 0.01 * delta;
-// });
+var  tick = 0,clock = new THREE.Clock(),
+  controls2, 
+  options, spawnerOptions, particleSystem;
 
 
-//spiritsheet animate
-PIXI.loader
-  .add('required/assets/basics/fighter.json')
-  .load(onAssetsLoaded);
-
-function onAssetsLoaded() {
-  // create an array of textures from an image path
-  var frames = [];
-
-  for (var i = 0; i < 30; i++) {
-    var val = i < 10 ? '0' + i : i;
-
-    // magically works since the spritesheet was loaded with the pixi loader
-    frames.push(PIXI.Texture.fromFrame('rollSequence00' + val + '.png'));
+var objects = [];
+init();
+animate();
+function initSky() {
+  // Add Sky
+  sky = new THREE.Sky();
+  sky.scale.setScalar(45000);
+  scene.add(sky);
+  // Add Sun Helper
+  sunSphere = new THREE.Mesh(
+    new THREE.SphereBufferGeometry(20000, 16, 8),
+    new THREE.MeshBasicMaterial({ color: 0xffffff })
+  );
+  sunSphere.position.y = - 700000;
+  sunSphere.visible = false;
+  scene.add(sunSphere);
+  // GUI
+  var effectController = {
+    turbidity: 10,
+    rayleigh: 2,
+    mieCoefficient: 0.005,
+    mieDirectionalG: 0.8,
+    luminance: 1,
+    inclination: 0.49, // elevation / inclination
+    azimuth: 0.25, // Facing front,
+    sun: ! true
+  };
+  
+  var distance = 4000;
+  function guiChanged() {
+    var uniforms = sky.material.uniforms;
+    uniforms.turbidity.value = effectController.turbidity;
+    uniforms.rayleigh.value = effectController.rayleigh;
+    uniforms.luminance.value = effectController.luminance;
+    uniforms.mieCoefficient.value = effectController.mieCoefficient;
+    uniforms.mieDirectionalG.value = effectController.mieDirectionalG;
+    var theta = Math.PI * (effectController.inclination - 0.5);
+    var phi = 2 * Math.PI * (effectController.azimuth - 0.5);
+    sunSphere.position.x = distance * Math.cos(phi);
+    sunSphere.position.y = distance * Math.sin(phi) * Math.sin(theta);
+    sunSphere.position.z = distance * Math.sin(phi) * Math.cos(theta);
+    sunSphere.visible = effectController.sun;
+    uniforms.sunPosition.value.copy(sunSphere.position);
+    renderer.render(scene, camera);
   }
+  guiChanged()
+  // var gui = new dat.GUI();
+  // gui.add(effectController, "turbidity", 1.0, 20.0, 0.1).onChange(guiChanged);
+  // gui.add(effectController, "rayleigh", 0.0, 4, 0.001).onChange(guiChanged);
+  // gui.add(effectController, "mieCoefficient", 0.0, 0.1, 0.001).onChange(guiChanged);
+  // gui.add(effectController, "mieDirectionalG", 0.0, 1, 0.001).onChange(guiChanged);
+  // gui.add(effectController, "luminance", 0.0, 2).onChange(guiChanged);
+  // gui.add(effectController, "inclination", 0, 1, 0.0001).onChange(guiChanged);
+  // gui.add(effectController, "azimuth", 0, 1, 0.0001).onChange(guiChanged);
+  // gui.add(effectController, "sun").onChange(guiChanged);
+  // guiChanged();
+}
+function init() {
+  camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 100, 20000);
+  camera.position.set(0, 0, 200);
+  //camera.setLens(20);
+  var helper = new THREE.GridHelper(10000, 2, 0xffffff, 0xffffff);
+  scene.add(helper);
+  
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.addEventListener('change', render);
+  //controls.maxPolarAngle = Math.PI / 2;
+  controls.enableZoom = false;
+  controls.enablePan = false;
+  initSky();
 
-  // create an AnimatedSprite (brings back memories from the days of Flash, right ?)
-  var anim = new PIXI.extras.AnimatedSprite(frames);
+  // scene.background = new THREE.Color(0x111111);
+  // scene.fog = new THREE.Fog(0x111111, 150, 200);
 
-  /*
-   * An AnimatedSprite inherits all the properties of a PIXI sprite
-   * so you can change its position, its anchor, mask it, etc
-   */
-  anim.x = app.screen.width / 2;
-  anim.y = app.screen.height / 2;
-  anim.anchor.set(0.5);
-  anim.animationSpeed = 0.5;
-  anim.play();
+  var subdivisions = 6;
+  var recursion = 1;
+  var points = Geometries.hilbert3D(new THREE.Vector3(0, 0, 0), 25.0, recursion, 0, 1, 2, 3, 4, 5, 6, 7);
+  var spline = new THREE.CatmullRomCurve3(points);
+  var samples = spline.getPoints(points.length * subdivisions);
+  var geometrySpline = new THREE.BufferGeometry().setFromPoints(samples);
+  var line = new THREE.Line(geometrySpline, new THREE.LineDashedMaterial({ color: 0xffffff, dashSize: 1, gapSize: 0.5 }));
+  line.computeLineDistances();
+  objects.push(line);
+  scene.add(line);
+  var geometryCube = cube(50);
+  var lineSegments = new THREE.LineSegments(geometryCube, new THREE.LineDashedMaterial({ color: 0xffaa00, dashSize: 3, gapSize: 1, linewidth: 2 }));
+  lineSegments.computeLineDistances();
+  objects.push(lineSegments);
+  scene.add(lineSegments);
 
-  app.stage.addChild(anim);
-
-  // Animate the rotation
-  app.ticker.add(function () {
-    anim.rotation += 0.01;
+  //
+  // container = document.getElementById('container');
+  // camera = new THREE.PerspectiveCamera(28, window.innerWidth / window.innerHeight, 1, 10000);
+  // camera.position.z = 100;
+  // scene = new THREE.Scene();
+  // The GPU Particle system extends THREE.Object3D, and so you can use it
+  // as you would any other scene graph component.	Particle positions will be
+  // relative to the position of the particle system, but you will probably only need one
+  // system for your whole scene
+  particleSystem = new THREE.GPUParticleSystem({
+    maxParticles: 25000
   });
+  scene.add(particleSystem);
+  // options passed during each spawned
+  options = {
+    position: new THREE.Vector3(),
+    positionRandomness: .3,
+    velocity: new THREE.Vector3(),
+    velocityRandomness: .5,
+    color: 0xaa88ff,
+    colorRandomness: .2,
+    turbulence: .5,
+    lifetime: 2,
+    size: 5,
+    sizeRandomness: 1
+  };
+  spawnerOptions = {
+    spawnRate: 15000,
+    horizontalSpeed: 1.5,
+    verticalSpeed: 1.33,
+    timeScale: 1
+  };
+  
+
+  // controls2 = new THREE.TrackballControls(camera, renderer.domElement);
+  // controls2.rotateSpeed = 5.0;
+  // controls2.zoomSpeed = 2.2;
+  // controls2.panSpeed = 1;
+  // controls2.dynamicDampingFactor = 0.3;
 }
 
+function cube(size) {
+  var h = size * 0.5;
+  var geometry = new THREE.BufferGeometry();
+  var position = [];
+  position.push(
+    -h, -h, -h,
+    -h, h, -h,
+    -h, h, -h,
+    h, h, -h,
+    h, h, -h,
+    h, -h, -h,
+    h, -h, -h,
+    -h, -h, -h,
+    -h, -h, h,
+    -h, h, h,
+    -h, h, h,
+    h, h, h,
+    h, h, h,
+    h, -h, h,
+    h, -h, h,
+    -h, -h, h,
+    -h, -h, -h,
+    -h, -h, h,
+    -h, h, -h,
+    -h, h, h,
+    h, h, -h,
+    h, h, h,
+    h, -h, -h,
+    h, -h, h
+  );
+  geometry.addAttribute('position', new THREE.Float32BufferAttribute(position, 3));
+  return geometry;
+}
 
+function animate() {
+  requestAnimationFrame(animate);
+  render();
+}
+function render() {
+  var time = Date.now() * 0.001;
+  scene.traverse(function (object) {
+    if (object.isLine) {
+      object.rotation.x = 0.25 * time;
+      object.rotation.y = 0.25 * time;
+    }
+  });
 
-//   another lib
-// // Update value for every frame
-// const step = 0.01;
-// // Multiplier of the canvas resolution
-// const devicePixelRatio = window.devicePixelRatio;
+  var delta = clock.getDelta() * spawnerOptions.timeScale;
+  tick += delta;
+  if (tick < 0) tick = 0;
+  if (delta > 0) {
+    options.position.x = Math.sin(tick * spawnerOptions.horizontalSpeed) * 20;
+    options.position.y = Math.sin(tick * spawnerOptions.verticalSpeed) * 10;
+    options.position.z = Math.sin(tick * spawnerOptions.horizontalSpeed + spawnerOptions.verticalSpeed) * 5;
+    for (var x = 0; x < spawnerOptions.spawnRate * delta; x++) {
+      // Yep, that's really it.	Spawning particles is super cheap, and once you spawn them, the rest of
+      // their lifecycle is handled entirely on the GPU, driven by a time uniform updated below
+      particleSystem.spawnParticle(options);
+    }
+  }
+  particleSystem.update(tick);
 
-// // Every uniform must have:
-// // - Key (used in the shader)
-// // - Type (what kind of value)
-// // - Value (based on the type)
-// const uniforms = {
-//   uProgress: {
-//     type: 'float',
-//     value: 0.0,
-//   },
-// };
-
-// function rotateX(m, angle) {
-//   let c = Math.cos(angle);
-//   let s = Math.sin(angle);
-//   let mv1 = m[1];
-//   let mv5 = m[5];
-//   let mv9 = m[9];
-
-//   m[1] = m[1] * c - m[2] * s;
-//   m[5] = m[5] * c - m[6] * s;
-//   m[9] = m[9] * c - m[10] * s;
-
-//   m[2] = m[2] * c + mv1 * s;
-//   m[6] = m[6] * c + mv5 * s;
-//   m[10] = m[10] * c + mv9 * s;
-// }
-
-// function rotateY(m, angle) {
-//   let c = Math.cos(angle);
-//   let s = Math.sin(angle);
-//   let mv0 = m[0];
-//   let mv4 = m[4];
-//   let mv8 = m[8];
-
-//   m[0] = c * m[0] + s * m[2];
-//   m[4] = c * m[4] + s * m[6];
-//   m[8] = c * m[8] + s * m[10];
-
-//   m[2] = c * m[2] - s * mv0;
-//   m[6] = c * m[6] - s * mv4;
-//   m[10] = c * m[10] - s * mv8;
-// }
-
-
-// // Boolean value to switch direction
-// let forward = true;
-
-// // Create the renderer
-// const phenomenon = new Phenomenon({
-//   canvas: canvas,
-//   settings: {
-//     devicePixelRatio,
-//     position: { x: 0, y: 0, z: 3 },
-//     shouldRender: true,
-//     uniforms,
-//     onRender: r => {
-//       const { uProgress, uModelMatrix } = r.uniforms;
-//       // 
-//       uProgress.value += forward ? step : -step;
-
-//       if (uProgress.value >= 1) forward = false;
-//       else if (uProgress.value <= 0) forward = true;
-
-//       // rotateY(uModelMatrix.value, step * 2);
-//       // rotateX(uModelMatrix.value, step * 2);
-//     },
-//   },
-// });
-
-// // Add an instance to the renderer
-// // phenomenon.add('cube', showCube());
-// phenomenon.add('mytest', showMyTest2());
-
-// // for (let i = 0; i < 20; i += 1) {
-// //   phenomenon.add('test'+i, showTest(i));
-// // }
-
+  renderer.render(scene, camera);
+}
 
 
