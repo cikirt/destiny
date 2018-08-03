@@ -603,8 +603,10 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 		//console.log( 'handleTouchMoveRotate' );
 
-		rotateEnd.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-
+		// rotateEnd.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+    // 禁止Y轴旋转  
+    rotateEnd.set(event.touches[0].pageX, rotateStart.y );
+  
 		rotateDelta.subVectors( rotateEnd, rotateStart ).multiplyScalar( scope.rotateSpeed );
 
 		var element = scope.domElement === document ? scope.domElement.body : scope.domElement;
