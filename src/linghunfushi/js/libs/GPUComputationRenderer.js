@@ -96,8 +96,8 @@
  * @param {int} sizeY Computation problem size is always 2d: sizeX * sizeY elements.
  * @param {WebGLRenderer} renderer The renderer
   */
-
-function GPUComputationRenderer( sizeX, sizeY, renderer ) {
+import * as THREE from './three.js'
+export default function GPUComputationRenderer( sizeX, sizeY, renderer ) {
 
 	this.variables = [];
 

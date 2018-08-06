@@ -59,7 +59,7 @@ export default class DataBus {
       isNeedRefreshPlaying: true
     }
     
-    this.drawMookFlag = 0
+    this.drawMookFlag = 1
 
   }
 }

@@ -7,8 +7,10 @@ export default class Mook {
   }
 
   drawMook(ctx = this.ctx) {
-    if (!dataBus.drawMookFlag)
+    if (!dataBus.drawMookFlag){
+      console.log("dataBus.drawMookFlag", dataBus.drawMookFlag)
       return false
+    }
     
     ctx.globalAlpha = dataBus.drawMookFlag / 15
     ctx.fillRect(0 ,0 ,screenWidth * pixelRatio ,-screenHeight * pixelRatio)

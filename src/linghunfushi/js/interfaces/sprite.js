@@ -2,8 +2,8 @@ import { API_PORT, IMG_PATH } from '../configs/options'
 /**
  * 精灵类
  */
-const screenWidth = window.innerWidth
-const screenHeight = window.innerHeight
+// const screenWidth = window.innerWidth
+// const screenHeight = window.innerHeight
 
 export default class Sprite {
   /**
@@ -52,7 +52,12 @@ export default class Sprite {
       this.y * pixelRatio,
       this.width * pixelRatio,
       this.height * pixelRatio)
-    return true
+    // console.log("", this.img,
+    //   this.x * pixelRatio,
+    //   this.y * pixelRatio,
+    //   this.width * pixelRatio,
+    //   this.height * pixelRatio)
+    // return true
   }
 
   drawClip (ctx, clipConf, enforce = false) {

@@ -1,7 +1,7 @@
 import '../libs/symbol'
 import '../libs/two-way-binding'
 import '../libs/get-last-one'
-
+import * as THREE from '../libs/three.js'
 import DataBus from '../databus'
 
 /**
@@ -10,6 +10,8 @@ import DataBus from '../databus'
  * 可以很方便的一次引入 到处使用
  * 需要挂载在window对象下（本为global对象，wx-adapter封装到了window对象下
  */
+// 已经在适配里封装
+// const { pixelRatio, windowWidth, windowHeight } = wx.getSystemInfoSync()
 // 屏幕长宽
 window.screenWidth = window.innerWidth
 window.screenHeight = window.innerHeight
@@ -18,6 +20,9 @@ window.pixelRatio = window.devicePixelRatio
 // 副canvas
 // 主canvas wx-adapter已经创建，为window.canvas
 window.canvasAssociate = wx.createCanvas()
+
+// 主canvas wx-adapter已经创建，为window.canvas
+window.canvasGUI = wx.createCanvas()
 
 window.openDataContext = wx.getOpenDataContext()
 window.sharedCanvas = window.openDataContext.canvas
@@ -28,3 +33,5 @@ window.sharedCanvas = window.openDataContext.canvas
  * 这样的好处是可以确保全局状态管理器永远都是最新的
  */
 window.dataBus = new DataBus()
+
+window.THREE = THREE
