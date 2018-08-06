@@ -19,4 +19,7 @@ export default class Level0 {
     var sky =new Sky(this.scene)
     this.renderer.render(this.scene, this.camera);
   }
+  update(){
+    this.renderer.render(this.scene, this.camera);
+  }
 }

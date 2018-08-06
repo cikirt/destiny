@@ -7,6 +7,8 @@ let showRankFlag = false
 let canDown = true
 
 export default function  () {
+
+  this.level0.update()
   // if (!dataBus.isPaused && !dataBus.isStoped) {
   //   dataBus.frame++
 
